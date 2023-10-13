@@ -1,17 +1,29 @@
 
 .thinking { 
 	background: white url("img/checking.gif") no-repeat; 
-	background-position: 150px 1px;   
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-position: 90% 50%;   
 }
 
 .approved { 
-	background: white url("img/true.gif") no-repeat; 
-	background-position: 150px 1px;   
+	background: white url("img/true.gif") no-repeat;   
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-position: 90% 50%;   
 }
 
 .denied { 
-	background: lightcoral url("img/false.gif") no-repeat; 
-	background-position: 150px 1px;   
+	background: pink ("img/false.gif") no-repeat; 
+    width: 100%;
+    padding: 10px;
+    border: 3px solid red;
+    border-radius: 5px;
+    background-position: 90% 50%;   
 }
 
 body {
@@ -116,10 +128,10 @@ a:hover {
 
 
 
-/* Media query for screens with a minimum width of 601px */
-@media screen and (min-width: 500px) {
+/* Media query for screens with 400px */
+@media screen and (min-width: 400px) and (max-width: 820px) {
     .form-container {
-        max-width: 500px;
+        max-width: 100%;
         margin: auto;
     }
 	.btn {
@@ -137,4 +149,30 @@ a:hover {
 		text-align: left;
 		margin-top: 10px;
 	}
+}
+
+/* Media query for screens with 821px */
+@media screen and (min-width: 821px) {
+    .form-container {
+        max-height: 90%;
+        margin: 30px;
+    }
+	.btn {
+		display: inline;
+		background-color: saddlebrown;
+		color: #fff;
+		font-size: large;
+		padding: 10px 15px;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+        float: unset;
+	}
+	form p {
+		text-align: left;
+		margin-top: 10px;
+	}
+    input {
+        max-width: 500px;
+    }
 }

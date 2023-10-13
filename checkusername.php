@@ -1,27 +1,25 @@
 <?php
-include 'connect.php'; // Include your database connection file
-$conn = mysqli_connect('localhost','root','','sweetie') or die('connection failed');
-if (isset($_GET['username'])) {
-    $username = mysqli_real_escape_string($conn, $_GET['username']);
-    
-    // Query the database to get the list of usernames
-    $query = "SELECT username FROM members";
-    $result = mysqli_query($conn, $query);
 
-    sleep(1); // Simulate a delay for demonstration purposes
+$conn = mysqli_connect("localhost", "root", "", "sweetie");
 
-    $existingUsernames = array();
+if ($conn) {
+    $username = $_GET["username"];
 
-    while ($row = mysqli_fetch_assoc($result)) {
-        $existingUsernames[] = $row['username'];
-    }
+    $stmt = $conn->prepare("SELECT * FROM members WHERE username LIKE ?");
+    $stmt->bind_param("s", $username);
+    $stmt->execute();
 
-    if (!in_array($username, $existingUsernames)) {
-        // Username is not in the database
-        echo "okay";
-    } else {
-        // Username is already in the database
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
         echo "denied";
+    } else {
+        echo "okay";
     }
+
+    $stmt->close();
+    $conn->close();
+} else {
+    echo mysqli_connect_error(); 
 }
 ?>
