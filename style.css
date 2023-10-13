@@ -1,0 +1,140 @@
+
+.thinking { 
+	background: white url("img/checking.gif") no-repeat; 
+	background-position: 150px 1px;   
+}
+
+.approved { 
+	background: white url("img/true.gif") no-repeat; 
+	background-position: 150px 1px;   
+}
+
+.denied { 
+	background: lightcoral url("img/false.gif") no-repeat; 
+	background-position: 150px 1px;   
+}
+
+body {
+    background-color: #f9f5e3;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+	text-align: center;
+	font-size: xx-large;
+    color: #f9f5e3;
+}
+
+.form-container {
+    background-color: chocolate;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 20px;
+	position: relative; 
+}
+
+.pass-group input {
+    margin-bottom: 20px;
+	width: 70%;
+}
+label {
+    display: flex;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.box {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn {
+	display: inline;
+    background-color: saddlebrown;
+    color: #fff;
+	font-size: large;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+	float: right;
+}
+
+.btn:hover {
+    background-color: #563c15;
+    font-size: large;
+}
+
+form p {
+	text-align: center;
+	margin-top: 50px;
+}
+p > a {
+	margin-top: 10px;
+
+}
+a {
+    color: white;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.status {
+    display: inline-block;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: bold;
+    color: #fff;
+    margin-left: 10px;
+}
+
+#togglePassword, #toggleCPassword {
+    background-color: saddlebrown;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 10px 10px;
+}
+
+#togglePassword:hover, #toggleCPassword:hover {
+    background-color: #563c15;
+}
+
+
+
+
+/* Media query for screens with a minimum width of 601px */
+@media screen and (min-width: 500px) {
+    .form-container {
+        max-width: 500px;
+        margin: auto;
+    }
+	.btn {
+		display: inline;
+		background-color: saddlebrown;
+		color: #fff;
+		font-size: large;
+		padding: 10px 15px;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+		float: unset;
+	}
+	form p {
+		text-align: left;
+		margin-top: 10px;
+	}
+}
