@@ -15,9 +15,9 @@
         
         <nav>
             <div class="topnav" id="top-nav">
-                <a href="Home_page.php" class="active">Home</a>
-                <a href="Cake.php">Cake</a>
-                <a href="Cupcake.php">Cupcake</a>
+                <a href="Home_page.php">Home</a>
+                <a href="Cake.php" >Cake</a>
+                <a href="Cupcake.php" class="active">Cupcake</a>
                 <a href="Other.php">Other</a>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
@@ -26,6 +26,7 @@
             </div>
         <nav>
            
+        <!-- ยังไม่ได้ใส่เดี๋ยวใส่เพิ่ม -->
         <!-- <div class="icon-nav">
             <input type="text" id="search" size="30%" placeholder="search menu">
             <div class="button"></div>
@@ -42,16 +43,14 @@
        
         <br><br>
         <div class="menu-recommend">
-            <hr><h1>3 MENU RECOMMEND</h1> <hr><br><br>
+            <hr><h1>Cupcake</h1> <hr><br><br>
             <?php
-                $stmt = $pdo->prepare("SELECT m.menuname, SUM(od.quantity) AS total_quantity FROM menu m 
-                LEFT JOIN orderdetails od ON m.menuID = od.menuID GROUP BY m.menuname 
-                ORDER BY total_quantity DESC LIMIT 3;");
+                $stmt = $pdo->prepare("SELECT * FROM `menu` WHERE menuname LIKE 'คัพเค้ก%';");
 
                 $stmt->execute();
                 while($row = $stmt->fetch()){
                     echo"<span class='menu-name'>{$row['menuname']}</span><br>";
-                    echo "<div class='menu-image'><a href='#'><img src='img/menu/{$row['menuname']}.jpg' width='500'></a></div><br><br><br>";
+                    // echo "<div class='menu-image'><a href='#'><img src='img/menu/{$row['menuname']}.jpg' width='500'></a></div><br><br><br>";
 
                 }
                 

@@ -9,16 +9,43 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
         <link href="css/home.css" rel="stylesheet">
+
+        <style>
+            .menu-container {
+                max-width: 1200px;
+                height: auto; 
+                margin: 0 auto; 
+                padding: 20px; 
+                display: flex;
+                flex-wrap: wrap;
+                
+                
+            }
+
+            .menu-item {
+                width: calc(33.33% - 5px); 
+                margin-bottom: -7%;
+                position: relative;
+            }
+
+            .menu-image img {
+                width: 100%;  
+            }
+            .menu-image {
+                width: 100%;
+                margin-bottom:0;
+            }
+        </style>
     </head>
     <body>
         <!-- !!!!!!! shop name not has been entered !!!!! -->
         
         <nav>
             <div class="topnav" id="top-nav">
-                <a href="Home_page.php" class="active">Home</a>
-                <a href="Cake.php">Cake</a>
-                <a href="Cupcake.php">Cupcake</a>
-                <a href="Other.php">Other</a>
+                <<a href="Home_page.php">Home</a>
+                <a href="Cake.php" >Cake</a>
+                <a href="Cupcake.php" >Cupcake</a>
+                <a href="Other.php" class="active">Other</a>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
                 </a>
@@ -36,31 +63,30 @@
         
         <div class="header">
             <img src="img/home/cake_head.jpg" alt="cake_head" width="100%" >
-            <!-- <h1>SWEETIE</h1> -->
+           
         </div>
 
        
         <br><br>
         <div class="menu-recommend">
-            <hr><h1>3 MENU RECOMMEND</h1> <hr><br><br>
-            <?php
-                $stmt = $pdo->prepare("SELECT m.menuname, SUM(od.quantity) AS total_quantity FROM menu m 
-                LEFT JOIN orderdetails od ON m.menuID = od.menuID GROUP BY m.menuname 
-                ORDER BY total_quantity DESC LIMIT 3;");
-
+            <hr><h1>Other Bakery</h1> <hr><br><br>
+            <div class="menu-container">
+                <?php
+                $stmt = $pdo->prepare("SELECT * FROM `menu` WHERE menuname NOT LIKE 'เค้ก%' AND menuname NOT LIKE 'คัพเค้ก%';");
                 $stmt->execute();
-                while($row = $stmt->fetch()){
-                    echo"<span class='menu-name'>{$row['menuname']}</span><br>";
-                    echo "<div class='menu-image'><a href='#'><img src='img/menu/{$row['menuname']}.jpg' width='500'></a></div><br><br><br>";
-
+                while ($row = $stmt->fetch()) {
+                    echo "<div class='menu-item'>";
+                    // echo "<span class='menu-name'>{$row['menuname']}</span>";
+                    echo "<div class='menu-image'><a href='#'><img src='img/menu/{$row['menuname']}.jpg' width='300'></a></div>";
+                    echo "</div>";
                 }
-                
-             ?>
+                ?>
+            </div>
 
             <!-- <img src=""> -->
             
         </div>
-
+        <br><br><br>
         <footer>
             <div class="footer-content">
                 
