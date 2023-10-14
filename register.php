@@ -1,35 +1,29 @@
 <?php
 include 'connect.php';
-
+ 
 if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
-    $name = $_POST['name'];
-    $tel = $_POST['tel'];
-    $email = $_POST['email'];
-    $pass = md5($_POST['password']);
-
     // Check if the username already exists
-    $stmt = $pdo->prepare("SELECT username FROM members WHERE username = :username");
-    $stmt->bindParam(':username', $username);
+    $stmt = $pdo->prepare("SELECT username FROM members WHERE username LIKE ?");
+    $stmt->bindParam(1, $_POST["username"]);
     $stmt->execute();
 
     if ($stmt->fetch()) {
+      echo '<script>var Failed = true;</script>';
+    } else {
         // Insert the new user into the database
-        $stmt = $pdo->prepare("INSERT INTO members (username, name, tel, email, password) VALUES (:username, :name, :tel, :email, :password)");
-        $stmt->bindParam(':username', $username);
-        $stmt->bindParam(':name', $name);
-        $stmt->bindParam(':tel', $tel);
-        $stmt->bindParam(':email', $email);
-        $stmt->bindParam(':password', $pass);
+        $stmt = $pdo->prepare("INSERT INTO members (username, name, tel, email, password) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bindParam(1, $_POST["username"]);
+        $stmt->bindParam(2, $_POST["name"]);
+        $stmt->bindParam(3, $_POST["tel"]);
+        $stmt->bindParam(4, $_POST["email"]);
+        $stmt->bindParam(5, $_POST["password"]);
         $stmt->execute();
-        $message[] = 'Registered successfully!';
+        echo '<script>var Failed = false;</script>';
         header('location: login.php');
     }
-    else {
-      echo '<script>var loginFailed = true;</script>';
-   }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,120 +39,81 @@ if (isset($_POST['submit'])) {
    <link rel="stylesheet" href="style.css">
    
    <script>
-       // Check if the login failed and show an alert
-       if (typeof loginFailed !== 'undefined' && loginFailed) {
-            alert('Incorrect email or password!');
-        }
+  
+     // Check if the login failed and show an alert
+       if (typeof Failed !== 'undefined' && Failed) {
+            alert('Username is already taken!');
+        }else{
+         alert('Create account successfully!');
+        } 
+
+      //  // Check if the login failed and show an alert
+      //  if (typeof Failed !== 'undefined' && Failed) {
+      //       alert('Username is already have!');
+      //   }else{
+      //    alert('Create account successfully!');
+      //   }
        // JavaScript to check the username
-      var xmlHttp;
-      function checkUsername() {
+       var xmlHttp;
+       function checkUsername() {
          document.getElementById("username").className = "thinking";
+         
          xmlHttp = new XMLHttpRequest();
          xmlHttp.onreadystatechange = showUsernameStatus;
+         
          var username = document.getElementById("username").value;
+
          var url = "checkusername.php?username=" + username;
-         xmlHttp.open("GET", url, true);
+         xmlHttp.open("GET", url);
          xmlHttp.send();
       }
+      
       function showUsernameStatus() {
-         var usernameStatus = document.getElementById("usernameStatus");
-         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-            if (xmlHttp.responseText == "okay") {
+      if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+         if (xmlHttp.responseText == "okay") {
             document.getElementById("username").className = "approved";
-            // usernameStatus.textContent = ""; // Clear the error message
-            } else {
+
+         } else {
             document.getElementById("username").className = "denied";
             document.getElementById("username").focus();
             document.getElementById("username").select();
-            usernameStatus.textContent = "Username already exists!";
-            }
          }
       }
-      //checkusername
-      // var xmlHttp;
-      // function checkUsername() {
-      //    // document.getElementById("username").className = "thinking";
-      //    xmlHttp = new XMLHttpRequest();
-      //    xmlHttp.onreadystatechange = showUsernameStatus;
-      //    var username = document.getElementById("username").value;
-      //    var url = "checkusername.php?username=" + username;
-      //    xmlHttp.open("GET", url, true);
-      //    xmlHttp.send(null);
-      // }
-      // function showUsernameStatus() {
-      //    if (xmlHttp.readyState == 4){
-      //       if (xmlHttp.status == 200) {
-      //          document.getElementById("username").className = "approved";
-      //    }else{
-      //       document.getElementById("username").className = "denied";
-      //       document.getElementById("username").focus();
-      //       document.getElementById("username").select();
-      //    } 
-      //    }
-      // } 
-      
-      //check_phonenumber
-      // var xmlHttp;
-      // function checkPhone() {
-      //    var telElement = document.getElementById("tel");
-      //    telElement.className = "thinking";
+      }
 
-      //    xmlHttp = new XMLHttpRequest();
-      //    xmlHttp.onreadystatechange = showPhoneStatus;
-
-      //    var tel = telElement.value;
-      //    var url = "checkphone.php?tel=" + tel;
-      //    xmlHttp.open("GET", url, true);
-      //    xmlHttp.send();
-      //    console.log("Checking phone..."); // Added a message to log
-      // }
-
-      // function showPhoneStatus() {
-      //    var telElement = document.getElementById("tel");
-      //    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-      //       if (xmlHttp.responseText === "okay") {
-      //          telElement.className = "approved";
-      //       } else {
-      //          telElement.className = "denied";
-      //          telElement.title = "Phone number is already in use. Please choose a different one.";
-      //          alert("Phone number is already in use. Please choose a different one.");
-      //       }
-      //    }
-      // }
-      
-         //check_password
-         function validateForm() {
-            var password1 = document.getElementById("password").value;
-            var password2 = document.getElementById("cpassword").value;
-            // Check if the password and confirm password match
-            if (password1 !== password2) {
-               alert("Passwords do not match.");
-               return false;
-            }
-
-            // Check if the password meets certain criteria using regex
-            var passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
-            if (!password.match(passwordPattern)) {
-               alert("Password must contain at least one lowercase letter, one uppercase letter, one number, and be at least 8 characters long.");
-               return false;
-            }
-            // Continue with form submission if all checks pass
-            return true;
+      //check_password
+      function validateForm() {
+         var password1 = document.getElementById("password").value;
+         var password2 = document.getElementById("cpassword").value;
+         // Check if the password and confirm password match
+         if (password1 !== password2) {
+            alert("Passwords do not match.");
+            return false;
          }
 
-         //showpasssword
-         function togglePasswordVisibility(inputId, buttonId) {
-            var input = document.getElementById(inputId);
-            var button = document.getElementById(buttonId);
-
-            if (input.type === "password") {
-               input.type = "text";
-               button.textContent = "Hide";
-            } else {
-               input.type = "password";
-               button.textContent = "Show";
-            }
+         // Check if the password meets certain criteria using regex
+         var passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+         if (!password.match(passwordPattern)) {
+            alert("Password must contain at least one lowercase letter, one uppercase letter, one number, and be at least 8 characters long.");
+            return false;
          }
+         // Continue with form submission if all checks pass
+         return true;
+      }
+
+      //showpasssword
+      function togglePasswordVisibility(inputId, buttonId) {
+         var input = document.getElementById(inputId);
+         var button = document.getElementById(buttonId);
+
+         if (input.type === "password") {
+            input.type = "text";
+            button.textContent = "Hide";
+         } else {
+            input.type = "password";
+            button.textContent = "Show";
+         }
+      }
    </script>
 </head>
 <body>
@@ -175,12 +130,11 @@ if (isset($_POST['submit'])) {
       }
    ?>
    <section class="form-container">
-      <form action="" method="post" onsubmit="return validateForm()">
+      <form method="post" onsubmit="return validateForm()">
          <h1>Register now</h1>
          <div class="form-group">
             <label for="username">Username:</label>
-            <input type="text" name="username" id="username" placeholder="Make your username" pattern="^[a-zA-Z0-9_]{3,20}$" title="Username must be 3-20 characters." required class="box" onkeyup="checkUsername()">
-            <span id="usernameStatus" class="status"></span>
+            <input id="username" type="text" name="username" id="username" placeholder="Make your username" pattern="^[a-zA-Z0-9_]{3,20}$" title="Username must be 3-20 characters." required class="box" onkeyup="checkUsername()">
          </div>
          <div class="form-group">
             <label for="name">Name:</label>
@@ -188,7 +142,7 @@ if (isset($_POST['submit'])) {
          </div>
          <div class="form-group">
             <label for="tel">Phone number:</label>
-            <input type="text" name="tel" id="tel" placeholder="Enter your phone number" required class="box" onblur="checkPhone()">
+            <input id="tel" type="text" name="tel" placeholder="Enter your phone number" required class="box">
          </div>
          <div class="form-group">
             <label for="email">Email:</label>
