@@ -1,15 +1,33 @@
 <?php
-	session_start();
-
+    session_start();
     $params = session_get_cookie_params();
     setcookie(session_name(), '', time() - 42000,
         $params["path"], $params["domain"],
         $params["secure"], $params["httponly"]
-    );
+);
 
-	session_destroy(); // ทำลาย session
+    session_destroy();
 ?>
 
-ออกจากระบบสำเร็จแล้ว<br>
-หากต้องการเข้าสู่ระบบอีกครั้งโปรดคลิก
-<a href='login.php'>เข้าสู่ระบบ</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logout</title>
+
+    <!-- font awesome cdn link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+   
+    <!-- custom css file link -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+   
+   <section class="form-container">
+      <h1>Logged out successfully</h1>
+      <p>If you want to log in again, please click <a href="login.php">here</a>.</p>
+   </section>
+</body>
+</html>
