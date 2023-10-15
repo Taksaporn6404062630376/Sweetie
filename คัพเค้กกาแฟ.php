@@ -9,7 +9,32 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
         <link href="css/home.css" rel="stylesheet">
+        
     </head>
+    <style>
+        .cakecontent{
+            background-color:#f4f4f4;
+            margin: 20px 50px;
+            border-radius:15px;
+            -webkit-box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+            -moz-box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+            position: relative;
+        }
+        .cakecontent a{
+            text-decoration: none;
+            color:#d2d3d2;
+            background-color: #573822;
+            padding:10px;
+            border-radius:15px;
+        }
+        .cakecontent a:hover{
+            color:#d2d3d2;
+            background-color: saddlebrown;     
+        }
+
+        
+    </style>
     <body>
         <!-- !!!!!!! shop name not has been entered !!!!! -->
         
@@ -34,7 +59,8 @@
         </div> -->
        
         <br><br>
-        <hr><h1>คัพเค้กกาแฟ</h1> <hr><br><br>
+        <hr><h1>คัพเค้กกาแฟ</h1> <hr>
+        <div class="cakecontent"><br><br>
         <?php
         $stmt = $pdo->prepare("SELECT menuID, menuname, Size_Pound_or_Piece, detail, price FROM menu WHERE menuname LIKE 'คัพเค้กกาแฟ' AND menuID = 10;");
         $stmt->execute();
@@ -47,7 +73,10 @@
 
             include("detail_template.php");
         }
-        ?>
+        ?><br>
+        <!-- <tocart> -->
+        <a href="addtocart.php"><i class="fa-solid fa-plus"></i> หยิบใส่ตะกร้า</a><br><br>
+        </div>
         
 
             <!-- <img src=""> -->
