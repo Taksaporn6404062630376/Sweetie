@@ -27,7 +27,10 @@
    
    <section class="form-container">
       <h1>Logged out successfully</h1>
-      <p>If you want to log in again, please click <a href="login.php">here</a>.</p>
    </section>
+   <footer>
+    <p>If you want to log in again, please click <br><a href="login.php">Log in</a></p>
+    <div class="btn"><a href="Home_page.php">Home page</a></div>
+   </footer>
 </body>
 </html>

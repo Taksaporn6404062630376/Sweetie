@@ -1,7 +1,7 @@
 <?php include "connect.php";?>
 <html>
     <head>
-        <title>Sweetie</title>
+        <title>ชื่อร้านยังไม่คิด</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, intitial-scale=1.0, minimum-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -14,20 +14,15 @@
         <!-- !!!!!!! shop name not has been entered !!!!! -->
         
         <nav>
-            <ul class="nav-container">
-                <li class="navlist"><a href="#">Home</a></li>
-                <li class="navlist"><a href="#">Cake</a></li>
-                <li class="navlist"><a href="#">Cupcake</a></li>
-                <li class="navlist"><a href="#">Other</a></li>
-                <!-- <li class="navlist"><a href="#">Other</a></li>
-                <li class="navlist"><a href="#">Other</a></li> -->
-            </ul>
-            
-            <div class="icon-nav">
-                <input type="text" id="search" size="30%" placeholder="search menu">
-                <div class="button"></div>
-                <div class="user-icon"><a href="userhome.php"></a></div>
-                <div class="shop-bag"></div>
+            <div class="topnav" id="top-nav">
+                <a href="Home_page.php">Home</a>
+                <a href="Cake.php" class="active">Cake</a>
+                <a href="Cupcake.php">Cupcake</a>
+                <a href="Other.php">Other</a>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+                
             </div>
         <nav>
            
@@ -47,16 +42,14 @@
        
         <br><br>
         <div class="menu-recommend">
-            <hr><h1>3 MENU RECOMMEND</h1> <hr><br><br>
+            <hr><h1>CAKE</h1> <hr><br><br>
             <?php
-                $stmt = $pdo->prepare("SELECT m.menuname, SUM(od.quantity) AS total_quantity FROM menu m 
-                LEFT JOIN orderdetails od ON m.menuID = od.menuID GROUP BY m.menuname 
-                ORDER BY total_quantity DESC LIMIT 3;");
+                $stmt = $pdo->prepare("SELECT * FROM `menu` WHERE menuname LIKE 'เค้ก%';");
 
                 $stmt->execute();
                 while($row = $stmt->fetch()){
                     echo"<span class='menu-name'>{$row['menuname']}</span><br>";
-                    echo "<div class='menu-image'><a href='#'><img src='img/menu/{$row['menuname']}.jpg' width='500'></a></div><br><br><br>";
+                    // echo "<div class='menu-image'><a href='#'><img src='img/menu/{$row['menuname']}.jpg' width='500'></a></div><br><br><br>";
 
                 }
                 
