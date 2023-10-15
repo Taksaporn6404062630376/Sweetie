@@ -10,8 +10,8 @@
 </head>
 <body>
         <img src="<?php echo $menu_image; ?>" alt="<?php echo $product_name; ?>" width='500'>
-        <h2><?php echo $product_name; ?></h2>
-        <p><?php echo $detail; ?></p>
-        <p>ราคา: <?php echo $price; ?> บาท</p>
+        <h2><?php echo $product_name; ?></h2><br>
+        <p>รายละเอียด : <?php echo $detail; ?></p>
+        <p>ราคา : <b><?php echo $price; ?></b> บาท </p>
 </body>
 </html>
