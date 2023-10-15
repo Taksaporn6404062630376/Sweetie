@@ -59,10 +59,11 @@
         </div> -->
        
         <br><br>
-        <hr><h1>คัพเค้กกาแฟ</h1> <hr>
+        <hr><h1>รายละเอียด</h1> <hr>
         <div class="cakecontent"><br><br>
         <?php
-        $stmt = $pdo->prepare("SELECT menuID, menuname, Size_Pound_or_Piece, detail, price FROM menu WHERE menuname LIKE 'คัพเค้กกาแฟ' AND menuID = 10;");
+        $stmt = $pdo->prepare("SELECT menuID, menuname, Size_Pound_or_Piece, detail, price FROM menu WHERE menuname = ?;");
+        $stmt->bindParam(1, $_GET["menuname"]);
         $stmt->execute();
 
         while ($row = $stmt->fetch()) {
@@ -78,7 +79,6 @@
         <a href="addtocart.php"><i class="fa-solid fa-plus"></i> หยิบใส่ตะกร้า</a><br><br>
         </div>
         
-
             <!-- <img src=""> -->
 
         <footer>

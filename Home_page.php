@@ -56,10 +56,9 @@
                 $stmt->execute();
                 while($row = $stmt->fetch()){
                     echo"<span class='menu-name'>{$row['menuname']}</span><br>";
-                    echo "<div class='menu-image'><a href='{$row['menuname']}.php'><img src='img/menu/{$row['menuname']}.jpg' width='500'></a></div><br><br><br>";
-
-                }
-                
+                    echo"<a href='detailcake.php?menuname=".$row["menuname"]."'><img src='img/menu/{$row['menuname']}.jpg'width='500'></a></div><br><br><br>";
+                   // echo "<div class='menu-image'><a href='{$row['menuname']}.php'><img src='img/menu/{$row['menuname']}.jpg' width='500'></a></div><br><br><br>";
+                }  
              ?>
 
             <!-- <img src=""> -->
