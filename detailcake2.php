@@ -9,7 +9,6 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
         <link href="css/home.css" rel="stylesheet">
-        
     </head>
     <body>
         <!-- !!!!!!! shop name not has been entered !!!!! -->
@@ -35,23 +34,18 @@
         </div> -->
        
         <br><br>
-        <hr><h1>DETAILS</h1> <hr>
-        <div><br><br>
-        <?php
-        $stmt = $pdo->prepare("SELECT * FROM menu WHERE menuID = ?;");
-        $stmt->bindParam(1, $_GET["menuID"]);
-        $stmt->execute();
+        <hr><h1>SELECT SIZE</h1> <hr><br><br>
+            <?php
+                $stmt = $pdo->prepare("SELECT * FROM menu WHERE menuname = ?;");
+                $stmt->bindParam(1, $_GET["menuname"]);
+                $stmt->execute();
 
-        while ($row = $stmt->fetch()) {
-            $product_name = $row['menuname'];
-            $detail = $row['detail'];
-            $price = $row['price'];
-            $menu_image = "img/menu/" . $product_name . ".jpg";
+                while($row = $stmt->fetch()){
+                    echo "<br><br>{$row['Size_Pound_or_Piece']} Pound<br>";
+                    echo "<a href='detailcake.php?menuID=" . $row["menuID"] ."'><img src='img/menu/{$row['menuname']}.jpg'width='300'></a><br><br><br><br>";
+                }
+            ?>
 
-            include("detail_template.php");
-        }
-        ?>
-        </div>
         <br><br><br>
         <footer>
             <div class="footer-content">

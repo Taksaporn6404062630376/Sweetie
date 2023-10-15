@@ -55,5 +55,6 @@
             <!-- <tocart> -->
             <a href="addtocart.php"><i class="fa-solid fa-plus"></i> หยิบใส่ตะกร้า</a><br><br>
         </div>
+    </div>
 </body>
 </html>
