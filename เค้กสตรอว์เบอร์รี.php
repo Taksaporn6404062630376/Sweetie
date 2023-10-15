@@ -1,7 +1,7 @@
 <?php include "connect.php";?>
 <html>
     <head>
-        <title>ชื่อร้านยังไม่คิด</title>
+        <title>เค้กสตรอว์เบอร์รี</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, intitial-scale=1.0, minimum-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -11,8 +11,6 @@
         <link href="css/home.css" rel="stylesheet">
     </head>
     <body>
-        <!-- !!!!!!! shop name not has been entered !!!!! -->
-        
         <nav>
             <div class="topnav" id="top-nav">
                 <a href="Home_page.php">Home</a>
@@ -48,9 +46,6 @@
             include("detail_template.php");
         }
         ?>
-        
-
-            <!-- <img src=""> -->
 
         <footer>
             <div class="footer-content">
