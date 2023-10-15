@@ -49,14 +49,14 @@
         <div class="menu-recommend">
             <hr><h1>3 MENU RECOMMEND</h1> <hr><br><br>
             <?php
-                $stmt = $pdo->prepare("SELECT m.menuname, SUM(od.quantity) AS total_quantity FROM menu m 
+                $stmt = $pdo->prepare("SELECT m.menuID, m.menuname, SUM(od.quantity) AS total_quantity FROM menu m 
                 LEFT JOIN orderdetails od ON m.menuID = od.menuID GROUP BY m.menuname 
                 ORDER BY total_quantity DESC LIMIT 3;");
 
                 $stmt->execute();
                 while($row = $stmt->fetch()){
                     echo"<span class='menu-name'>{$row['menuname']}</span><br>";
-                    echo"<a href='detailcake.php?menuname=".$row["menuname"]."'><img src='img/menu/{$row['menuname']}.jpg'width='500'></a></div><br><br><br>";
+                    echo"<a href='detailcake.php?menuID=".$row["menuID"]."'><img src='img/menu/{$row['menuname']}.jpg'width='400'></a></div><br><br><br>";
                    // echo "<div class='menu-image'><a href='{$row['menuname']}.php'><img src='img/menu/{$row['menuname']}.jpg' width='500'></a></div><br><br><br>";
                 }  
              ?>

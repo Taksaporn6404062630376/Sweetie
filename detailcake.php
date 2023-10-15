@@ -11,30 +11,6 @@
         <link href="css/home.css" rel="stylesheet">
         
     </head>
-    <style>
-        .cakecontent{
-            background-color:#f4f4f4;
-            margin: 20px 50px;
-            border-radius:15px;
-            -webkit-box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
-            -moz-box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
-            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
-            position: relative;
-        }
-        .cakecontent a{
-            text-decoration: none;
-            color:#d2d3d2;
-            background-color: #573822;
-            padding:10px;
-            border-radius:15px;
-        }
-        .cakecontent a:hover{
-            color:#d2d3d2;
-            background-color: saddlebrown;     
-        }
-
-        
-    </style>
     <body>
         <!-- !!!!!!! shop name not has been entered !!!!! -->
         
@@ -42,7 +18,7 @@
             <div class="topnav" id="top-nav">
                 <a href="Home_page.php">Home</a>
                 <a href="Cake.php" >Cake</a>
-                <a href="Cupcake.php" class="active">Cupcake</a>
+                <a href="Cupcake.php">Cupcake</a>
                 <a href="Other.php">Other</a>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
@@ -60,10 +36,10 @@
        
         <br><br>
         <hr><h1>รายละเอียด</h1> <hr>
-        <div class="cakecontent"><br><br>
+        <div><br><br>
         <?php
-        $stmt = $pdo->prepare("SELECT menuID, menuname, Size_Pound_or_Piece, detail, price FROM menu WHERE menuname = ?;");
-        $stmt->bindParam(1, $_GET["menuname"]);
+        $stmt = $pdo->prepare("SELECT * FROM menu WHERE menuID = ?;");
+        $stmt->bindParam(1, $_GET["menuID"]);
         $stmt->execute();
 
         while ($row = $stmt->fetch()) {
@@ -74,12 +50,8 @@
 
             include("detail_template.php");
         }
-        ?><br>
-        <!-- <tocart> -->
-        <a href="addtocart.php"><i class="fa-solid fa-plus"></i> หยิบใส่ตะกร้า</a><br><br>
+        ?>
         </div>
-        
-            <!-- <img src=""> -->
 
         <footer>
             <div class="footer-content">

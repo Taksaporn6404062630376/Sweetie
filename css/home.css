@@ -66,21 +66,24 @@ footer{
     padding-right: 9%; /* ระยะห่างขวาสุดของ icon-nav */
     
 }
-  
+
 @media screen and (max-width: 480px) {
     .topnav a:not(:first-child) {
         display: none;
     }
+
     .topnav a.icon {
         font-size: 25px;
         float: right;
         display: block;
     }
+
     .topnav.responsive .icon {
         position: absolute;
         right: 0;
         top: 0;
     }
+
     .topnav.responsive a {
         float: none;
         display: block;
@@ -94,9 +97,12 @@ footer{
         font-size: 1.2em;
         text-align: center;
     }
+
     .menu-image img{
         width: 350;
     }
+    
+
     .header img{
         width: 200%;
         margin: 0 -20%;
