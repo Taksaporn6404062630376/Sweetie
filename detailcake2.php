@@ -41,7 +41,7 @@
                 $stmt->execute();
 
                 while($row = $stmt->fetch()){
-                    echo "<br><br>{$row['Size_Pound_or_Piece']} Pound<br>";
+                    echo "<br>{$row['Size_Pound_or_Piece']} Pound<br>";
                     echo "<a href='detailcake.php?menuID=" . $row["menuID"] ."'><img src='img/menu/{$row['menuname']}.jpg'width='300'></a><br><br><br><br>";
                 }
             ?>
