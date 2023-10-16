@@ -22,21 +22,18 @@
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
                 </a>
-                
+                 <div class="icon-nav">
+                    <input type="text" id="search" size="30%" placeholder="search menu">
+                    <div class="button"></div>
+                    <div class="user-icon"></div>
+                    <div class="shop-bag"></div>
+                </div>
             </div>
-        <nav>
-           
-        <!-- <div class="icon-nav">
-            <input type="text" id="search" size="30%" placeholder="search menu">
-            <div class="button"></div>
-            <div class="user-icon"></div>
-            <div class="shop-bag"></div>
-        </div> -->
-        
+        <nav>        
         
         <div class="header">
+            <!-- <h1 class="store-name">ชื่อร้าน1</h1> -->
             <img src="img/home/cake_head.jpg" alt="cake_head" width="100%" >
-            <!-- <h1>SWEETIE</h1> -->
         </div>
 
        
@@ -51,13 +48,11 @@
                 $stmt->execute();
                 while($row = $stmt->fetch()){
                     echo"<span class='menu-name'>{$row['menuname']}</span><br>";
-                    echo "<div class='menu-image'><a href='#'><img src='img/menu/{$row['menuname']}.jpg' width='500'></a></div><br><br><br>";
+                    echo "<div class='menu-image'><a href='#'><img src='img/menu/{$row['menuname']}.jpg' width='450' ></a></div><br><br><br>";
 
                 }
                 
              ?>
-
-            <!-- <img src=""> -->
             
         </div>
 
