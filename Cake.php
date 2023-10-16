@@ -44,19 +44,15 @@
         <div class="menu-recommend">
             <hr><h1>CAKE</h1> <hr><br><br>
             <?php
-                $stmt = $pdo->prepare("SELECT * FROM `menu` WHERE menuname LIKE 'เค้ก%';");
+                $stmt = $pdo->prepare("SELECT DISTINCT menuname FROM `menu` WHERE menuname LIKE 'เค้ก%';");
 
                 $stmt->execute();
                 while($row = $stmt->fetch()){
                     echo"<span class='menu-name'>{$row['menuname']}</span><br>";
-                    // echo "<div class='menu-image'><a href='#'><img src='img/menu/{$row['menuname']}.jpg' width='500'></a></div><br><br><br>";
-
+                    echo"<div class='menu-image'><a href='selectsize_pound.php?menuname=".$row["menuname"]."'><img src='img/menu/{$row['menuname']}.jpg'width='400'></a></div><br><br><br>";
                 }
                 
-             ?>
-
-            <!-- <img src=""> -->
-            
+            ?>
         </div>
 
         <footer>

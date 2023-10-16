@@ -2,25 +2,20 @@
 include 'connect.php';
  
 if (isset($_POST['submit'])) {
-    // Check if the username already exists
-    $stmt = $pdo->prepare("SELECT username FROM members WHERE username LIKE ?");
+    $stmt = $pdo->prepare("SELECT * FROM members WHERE username LIKE ?");
     $stmt->bindParam(1, $_POST["username"]);
     $stmt->execute();
+   // Insert the new user into the database
+   $stmt = $pdo->prepare("INSERT INTO members (username, name, tel, email, password) VALUES (?, ?, ?, ?, ?)");
+   $stmt->bindParam(1, $_POST["username"]);
+   $stmt->bindParam(2, $_POST["name"]);
+   $stmt->bindParam(3, $_POST["tel"]);
+   $stmt->bindParam(4, $_POST["email"]);
+   $stmt->bindParam(5, $_POST["password"]);
+   $stmt->execute();
+   setcookie('username', $_POST['username'], time() + 3600 * 24 * 30); // Cookie expires in 30 days
+   header('location: login.php');
 
-    if ($stmt->fetch()) {
-      echo '<script>var Failed = true;</script>';
-    } else {
-        // Insert the new user into the database
-        $stmt = $pdo->prepare("INSERT INTO members (username, name, tel, email, password) VALUES (?, ?, ?, ?, ?)");
-        $stmt->bindParam(1, $_POST["username"]);
-        $stmt->bindParam(2, $_POST["name"]);
-        $stmt->bindParam(3, $_POST["tel"]);
-        $stmt->bindParam(4, $_POST["email"]);
-        $stmt->bindParam(5, $_POST["password"]);
-        $stmt->execute();
-        echo '<script>var Failed = false;</script>';
-        header('location: login.php');
-    }
 }
 ?>
 
@@ -36,24 +31,10 @@ if (isset($_POST['submit'])) {
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
    <!-- Custom CSS file link -->
-   <link rel="stylesheet" href="style.css">
+   <link rel="stylesheet" href="css/style.css">
    
    <script>
-  
-     // Check if the login failed and show an alert
-       if (typeof Failed !== 'undefined' && Failed) {
-            alert('Username is already taken!');
-        }else{
-         alert('Create account successfully!');
-        } 
-
-      //  // Check if the login failed and show an alert
-      //  if (typeof Failed !== 'undefined' && Failed) {
-      //       alert('Username is already have!');
-      //   }else{
-      //    alert('Create account successfully!');
-      //   }
-       // JavaScript to check the username
+       // Check the username Ajax
        var xmlHttp;
        function checkUsername() {
          document.getElementById("username").className = "thinking";
@@ -69,16 +50,27 @@ if (isset($_POST['submit'])) {
       }
       
       function showUsernameStatus() {
-      if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-         if (xmlHttp.responseText == "okay") {
-            document.getElementById("username").className = "approved";
-
-         } else {
-            document.getElementById("username").className = "denied";
-            document.getElementById("username").focus();
-            document.getElementById("username").select();
+         if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+            if (xmlHttp.responseText !== "okay") {
+               document.getElementById("username").className = "denied";
+               document.getElementById("errormsg").innerHTML = 'Username is already taken. Please choose another one.';
+               document.getElementById("username").focus();
+               // Disable other form fields
+               document.getElementById("name").disabled = true;
+               document.getElementById("tel").disabled = true;
+               document.getElementById("email").disabled = true;
+               document.getElementById("password").disabled = true;
+               document.getElementById("cpassword").disabled = true;
+            } else {
+               document.getElementById("username").className = "approved";
+               document.getElementById("errormsg").innerHTML = '';
+               document.getElementById("name").disabled = false;
+               document.getElementById("tel").disabled = false;
+               document.getElementById("email").disabled = false;
+               document.getElementById("password").disabled = false;
+               document.getElementById("cpassword").disabled = false;
+            }
          }
-      }
       }
 
       //check_password
@@ -105,36 +97,25 @@ if (isset($_POST['submit'])) {
       function togglePasswordVisibility(inputId, buttonId) {
          var input = document.getElementById(inputId);
          var button = document.getElementById(buttonId);
-
          if (input.type === "password") {
             input.type = "text";
-            button.textContent = "Hide";
+            button.innerHTML = '<i class="fa-solid fa-eye-slash"></i>';
          } else {
             input.type = "password";
-            button.textContent = "Show";
+            button.innerHTML = '<i class="fa-solid fa-eye"></i>';
          }
       }
    </script>
 </head>
 <body>
-   <?php
-      if(isset($message)){
-         foreach($message as $message){
-            echo '
-            <div class="message">
-               <span>'.$message.'</span>
-               <i class="fas fa-times" onclick="this.parentElement.remove();"></i>
-            </div>
-            ';
-         }
-      }
-   ?>
    <section class="form-container">
       <form method="post" onsubmit="return validateForm()">
          <h1>Register now</h1>
+         <p>Already have an account? <a href="login.php">Login now</a></p>
          <div class="form-group">
             <label for="username">Username:</label>
-            <input id="username" type="text" name="username" id="username" placeholder="Make your username" pattern="^[a-zA-Z0-9_]{3,20}$" title="Username must be 3-20 characters." required class="box" onkeyup="checkUsername()">
+            <input id="username" type="text" name="username" id="username" placeholder="Make your username" pattern="^[a-zA-Z0-9_]{2,20}$" title="Username in English must be 2-20 characters." required class="box" onblur="checkUsername()">
+            <div id="errormsg"></div>
          </div>
          <div class="form-group">
             <label for="name">Name:</label>
@@ -148,18 +129,21 @@ if (isset($_POST['submit'])) {
             <label for="email">Email:</label>
             <input type="email" name="email" id="email" placeholder="Enter your email" required class="box">
          </div>
+
          <div class="pass-group">
             <label for="password">Password:</label>
-            <input type="password" name="password" id="password" placeholder="Enter your password" required class="box">
-            <button type="button" id="togglePassword" onclick="togglePasswordVisibility('password', 'togglePassword')">Show</button>    
+            <input type="password" name="password" id="password" placeholder="Enter your password" pattern="^[a-zA-Z0-9_]{2,20}$" title="Password be in English, at least 8 characters." required class="box">
+            <button type="button" id="togglePassword" onclick="togglePasswordVisibility('password', 'togglePassword')"><i class="fa-solid fa-eye"></i></button>    
          </div>
          <div class="pass-group">
             <label for="cpassword">Confirm Password:</label>
             <input type="password" name="cpassword" id="cpassword" placeholder="Confirm your password" required class="box">
-            <button type="button" id="toggleCPassword" onclick="togglePasswordVisibility('cpassword', 'toggleCPassword')">Show</button>
+            <button type="button" id="toggleCPassword" onclick="togglePasswordVisibility('cpassword', 'toggleCPassword')"><i class="fa-solid fa-eye"></i></button>
          </div>
-         <input type="submit" name="submit" value="Creat Account" class="btn"><br>
-         <p>Already have an account? <a href="login.php">Login now</a></p>
+         <div class="btn-container">
+            <input type="submit" name="submit" value="Create Account" class="btn">
+         </div>
+         
       </form>
    </section>
 </body>

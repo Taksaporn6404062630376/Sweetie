@@ -1,7 +1,7 @@
 <?php include "connect.php";?>
 <html>
     <head>
-        <title>ชื่อร้านยังไม่คิด</title>
+        <title>Sweetie</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, intitial-scale=1.0, minimum-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,7 +12,14 @@
     </head>
     <body>
         <!-- !!!!!!! shop name not has been entered !!!!! -->
-        
+        <nav>
+            <div class="icon-nav">
+                <input type="text" id="search" size="30%" placeholder="Search menu">
+                <div class="button"></div>
+                <div class="user-icon"><a href="userhome.php">บัญชีผู้ใช้</a></div>
+                <div class="shop-bag"><a href="#">ตะกร้าสินค้า</a></div>
+            </div>
+        <nav>
         <nav>
             <div class="topnav" id="top-nav">
                 <a href="Home_page.php" class="active">Home</a>
@@ -22,14 +29,17 @@
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
                 </a>
-                 <div class="icon-nav">
-                    <input type="text" id="search" size="30%" placeholder="search menu">
-                    <div class="button"></div>
-                    <div class="user-icon"></div>
-                    <div class="shop-bag"></div>
-                </div>
+                
             </div>
-        <nav>        
+        <nav>
+           
+        <!-- <div class="icon-nav">
+            <input type="text" id="search" size="30%" placeholder="search menu">
+            <div class="button"></div>
+            <div class="user-icon"></div>
+            <div class="shop-bag"></div>
+        </div> -->
+        
         
         <div class="header">
             <!-- <h1 class="store-name">ชื่อร้าน1</h1> -->
@@ -41,14 +51,14 @@
         <div class="menu-recommend">
             <hr><h1>3 MENU RECOMMEND</h1> <hr><br><br>
             <?php
-                $stmt = $pdo->prepare("SELECT m.menuname, SUM(od.quantity) AS total_quantity FROM menu m 
+                $stmt = $pdo->prepare("SELECT m.menuID, m.menuname, SUM(od.quantity) AS total_quantity FROM menu m 
                 LEFT JOIN orderdetails od ON m.menuID = od.menuID GROUP BY m.menuname 
                 ORDER BY total_quantity DESC LIMIT 3;");
 
                 $stmt->execute();
                 while($row = $stmt->fetch()){
                     echo"<span class='menu-name'>{$row['menuname']}</span><br>";
-                    echo "<div class='menu-image'><a href='#'><img src='img/menu/{$row['menuname']}.jpg' width='450' ></a></div><br><br><br>";
+                    echo "<div class='menu-image'><a href='#'><img src='img/menu/{$row['menuname']}.jpg' width='500'></a></div><br><br><br>";
 
                 }
                 

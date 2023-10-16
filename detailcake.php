@@ -9,43 +9,17 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
         <link href="css/home.css" rel="stylesheet">
-
-        <style>
-            .menu-container {
-                max-width: 1200px;
-                height: auto; 
-                margin: 0 auto; 
-                padding: 20px; 
-                display: flex;
-                flex-wrap: wrap;
-                
-                
-            }
-
-            .menu-item {
-                width: calc(33.33% - 5px); 
-                margin-bottom: -7%;
-                position: relative;
-            }
-
-            .menu-image img {
-                width: 100%;  
-            }
-            .menu-image {
-                width: 100%;
-                margin-bottom:0;
-            }
-        </style>
+        
     </head>
     <body>
         <!-- !!!!!!! shop name not has been entered !!!!! -->
         
         <nav>
             <div class="topnav" id="top-nav">
-                <<a href="Home_page.php">Home</a>
+                <a href="Home_page.php">Home</a>
                 <a href="Cake.php" >Cake</a>
-                <a href="Cupcake.php" >Cupcake</a>
-                <a href="Other.php" class="active">Other</a>
+                <a href="Cupcake.php">Cupcake</a>
+                <a href="Other.php">Other</a>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
                 </a>
@@ -59,32 +33,24 @@
             <div class="user-icon"></div>
             <div class="shop-bag"></div>
         </div> -->
-        
-        
-        <div class="header">
-            <img src="img/home/cake_head.jpg" alt="cake_head" width="100%" >
-           
-        </div>
-
        
         <br><br>
-        <div class="menu-recommend">
-            <hr><h1>Other Bakery</h1> <hr><br><br>
-            <div class="menu-container">
-                <?php
-                $stmt = $pdo->prepare("SELECT * FROM `menu` WHERE menuname NOT LIKE 'เค้ก%' AND menuname NOT LIKE 'คัพเค้ก%';");
-                $stmt->execute();
-                while ($row = $stmt->fetch()) {
-                    echo "<div class='menu-item'>";
-                    // echo "<span class='menu-name'>{$row['menuname']}</span>";
-                    echo "<div class='menu-image'><a href='detailcake.php?menuID=".$row["menuID"]."'><img src='img/menu/{$row['menuname']}.jpg' width='300'></a></div>";
-                    echo "</div>";
-                }
-                ?>
-            </div>
+        <hr><h1>DETAILS</h1> <hr>
+        <div><br><br>
+        <?php
+        $stmt = $pdo->prepare("SELECT * FROM menu WHERE menuID = ?;");
+        $stmt->bindParam(1, $_GET["menuID"]);
+        $stmt->execute();
 
-            <!-- <img src=""> -->
-            
+        while ($row = $stmt->fetch()) {
+            $product_name = $row['menuname'];
+            $detail = $row['detail'];
+            $price = $row['price'];
+            $menu_image = "img/menu/" . $product_name . ".jpg";
+
+            include("detail_template.php");
+        }
+        ?>
         </div>
         <br><br><br>
         <footer>
