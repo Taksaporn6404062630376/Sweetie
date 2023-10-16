@@ -12,24 +12,43 @@
     </head>
     <body>
         <!-- !!!!!!! shop name not has been entered !!!!! -->
-        
         <nav>
+            <div class="icon-nav">
+                <input type="text" id="search" size="30%" placeholder="Search menu">
+                <div class="button"></div>
+                <div class="user-icon"><a href="userhome.php">บัญชีผู้ใช้</a></div>
+                <div class="shop-bag"><a href="#">ตะกร้าสินค้า</a></div>
+            </div>
+        <nav>
+        <nav>
+            <div class="topnav" id="top-nav">
+                <a href="Home_page.php" class="active">Home</a>
+                <a href="Cake.php">Cake</a>
+                <a href="Cupcake.php">Cupcake</a>
+                <a href="Other.php">Other</a>
+                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div>
+        <nav>
+
+        <!--<nav>
             <ul class="nav-container">
                 <li class="navlist"><a href="Home_page.php" class="active">Home</a></li>
                 <li class="navlist"><a href="Cake.php">Cake</a></li>
                 <li class="navlist"><a href="Cupcake.php">Cupcake</a></li>
                 <li class="navlist"><a href="Other.php">Other</a></li>
-                <!-- <li class="navlist"><a href="#">Other</a></li>
-                <li class="navlist"><a href="#">Other</a></li> -->
+                // <li class="navlist"><a href="#">Other</a></li>
+                // <li class="navlist"><a href="#">Other</a></li>
             </ul>
-            
+          
             <div class="icon-nav">
                 <input type="text" id="search" size="30%" placeholder="search menu">
                 <div class="button"></div>
                 <div class="user-icon"><a href="userhome.php"></a></div>
                 <div class="shop-bag"></div>
             </div>
-        <nav>
+        <nav> -->
            
         <!-- <div class="icon-nav">
             <input type="text" id="search" size="30%" placeholder="search menu">

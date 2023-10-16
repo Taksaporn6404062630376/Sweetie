@@ -52,7 +52,7 @@
                     echo"<div class='menu-image'><a href='selectsize_pound.php?menuname=".$row["menuname"]."'><img src='img/menu/{$row['menuname']}.jpg'width='400'></a></div><br><br><br>";
                 }
                 
-             ?>
+            ?>
         </div>
 
         <footer>
