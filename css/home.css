@@ -43,9 +43,44 @@ body {
 .menu-recommend h1{
     font-size: 1.25em;;
 }
+
 hr{
     width: 50%;
     margin: 0 auto;
+}
+
+.cakecontent {
+    background-color: #f4f4f4;
+    margin: 20px 50px;
+    border-radius: 15px;
+    -webkit-box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+    -moz-box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+    display: flex;
+}
+
+.cakecontent-left {
+    flex: 1;
+    padding: 20px;
+}
+
+.cakecontent-right {
+    flex: 1;
+    padding: 80px;
+    text-align: center;
+}
+
+.cakecontent a{
+    text-decoration: none;
+    color:#f4f4f4;
+    background-color: #573822;
+    padding:10px;
+    border-radius:15px;
+}
+
+.cakecontent a:hover{
+    color:#d2d3d2;
+    background-color: saddlebrown;
 }
 
 footer{
@@ -93,6 +128,7 @@ footer{
     .topnav a{
         font-size: 1em;;
     }
+    
     .menu-name{
         font-size: 1.2em;
         text-align: center;
