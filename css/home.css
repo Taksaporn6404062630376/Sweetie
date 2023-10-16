@@ -40,6 +40,32 @@ body {
     display: none;
 }
 
+.icon-nav{
+    display: flex;
+    align-items: center;  
+}
+#search {
+    font-size: 1em;
+    width: 20%;
+    margin-left: 50%; 
+}
+
+.user-icon,.shop-bag{
+    padding: 1%;
+}
+.user-icon::before{
+    font-family: FontAwesome;
+    content: "\f007";
+    color: #342214;
+    font-size: 2em;
+}
+.shop-bag::before{
+    font-family: FontAwesome;
+    content: "\f290"; 
+    color: #342214;
+    font-size: 2em;
+}
+
 .menu-recommend h1{
     font-size: 1.25em;;
 }
@@ -96,19 +122,6 @@ footer{
     font-size: 0.65em;
 }
 
-.icon-nav{
-    display: flex;
-    align-items: center;
-}
-#search {
-    font-size: 1em;
-    /* height: 100%; */
-    width: 40%; /* ปรับความกว้างของ input ตามต้องการ */
-    margin: 0 auto; /* ทำให้ input ตรงกลางในแนวนอน */
-}
-
-
-  
 
 @media screen and (max-width: 419px) {
     .topnav a:not(:first-child) {

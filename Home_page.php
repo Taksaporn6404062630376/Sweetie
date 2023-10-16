@@ -24,8 +24,8 @@
                 <div class="icon-nav">
                     <input type="text" id="search" size="30%" placeholder="Search menu">
                     <div class="button"></div>
-                    <div class="user-icon"><a href="userhome.php">บัญชีผู้ใช้</a></div>
-                    <div class="shop-bag"><a href="#">ตะกร้าสินค้า</a></div>
+                    <div class="user-icon"><a href="userhome.php"></a></div>
+                    <div class="shop-bag"><a href="#"></a></div>
                 </div>
             </div>   
        </nav>
