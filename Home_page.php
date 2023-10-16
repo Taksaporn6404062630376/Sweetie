@@ -12,15 +12,7 @@
     </head>
     <body>
         <!-- !!!!!!! shop name not has been entered !!!!! -->
-        <nav>
-            <div class="icon-nav">
-                <input type="text" id="search" size="30%" placeholder="Search menu">
-                <div class="button"></div>
-                <div class="user-icon"><a href="userhome.php">บัญชีผู้ใช้</a></div>
-                <div class="shop-bag"><a href="#">ตะกร้าสินค้า</a></div>
-            </div>
-        <nav>
-        <nav>
+       <nav>
             <div class="topnav" id="top-nav">
                 <a href="Home_page.php" class="active">Home</a>
                 <a href="Cake.php">Cake</a>
@@ -29,42 +21,44 @@
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
                 </a>
-                
-            </div>
-        <nav>
+                <div class="icon-nav">
+                    <input type="text" id="search" size="30%" placeholder="Search menu">
+                    <div class="button"></div>
+                    <div class="user-icon"><a href="userhome.php">บัญชีผู้ใช้</a></div>
+                    <div class="shop-bag"><a href="#">ตะกร้าสินค้า</a></div>
+                </div>
+            </div>   
+       </nav>
            
-        <!-- <div class="icon-nav">
-            <input type="text" id="search" size="30%" placeholder="search menu">
-            <div class="button"></div>
-            <div class="user-icon"></div>
-            <div class="shop-bag"></div>
-        </div> -->
         
-        
-        <div class="header">
-            <!-- <h1 class="store-name">ชื่อร้าน1</h1> -->
-            <img src="img/home/cake_head.jpg" alt="cake_head" width="100%" >
-        </div>
+        <header>
+            <div class="header">
+                <!-- <h1 class="store-name">ชื่อร้าน1</h1> -->
+                <img src="img/home/cake_head.jpg" alt="cake_head" width="100%" >
+            </div>
+        </header>
 
        
-        <br><br>
-        <div class="menu-recommend">
-            <hr><h1>3 MENU RECOMMEND</h1> <hr><br><br>
-            <?php
-                $stmt = $pdo->prepare("SELECT m.menuID, m.menuname, SUM(od.quantity) AS total_quantity FROM menu m 
-                LEFT JOIN orderdetails od ON m.menuID = od.menuID GROUP BY m.menuname 
-                ORDER BY total_quantity DESC LIMIT 3;");
+        <mian>
+            <br><br>
+            <div class="menu-recommend">
+                <hr><h1>3 MENU RECOMMEND</h1> <hr><br><br>
+                <?php
+                    $stmt = $pdo->prepare("SELECT m.menuID, m.menuname, SUM(od.quantity) AS total_quantity FROM menu m 
+                    LEFT JOIN orderdetails od ON m.menuID = od.menuID GROUP BY m.menuname 
+                    ORDER BY total_quantity DESC LIMIT 3;");
 
-                $stmt->execute();
-                while($row = $stmt->fetch()){
-                    echo"<span class='menu-name'>{$row['menuname']}</span><br>";
-                    echo "<div class='menu-image'><a href='#'><img src='img/menu/{$row['menuname']}.jpg' width='500'></a></div><br><br><br>";
+                    $stmt->execute();
+                    while($row = $stmt->fetch()){
+                        echo"<span class='menu-name'>{$row['menuname']}</span><br>";
+                        echo "<div class='menu-image'><a href='#'><img src='img/menu/{$row['menuname']}.jpg' width='500'></a></div><br><br><br>";
 
-                }
+                    }
+                    
+                ?>
                 
-             ?>
-            
-        </div>
+            </div>
+        </main>
 
         <footer>
             <div class="footer-content">

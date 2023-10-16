@@ -49,6 +49,8 @@ hr{
     margin: 0 auto;
 }
 
+/* แยกcssอีกไฟล์ */
+
 .cakecontent {
     background-color: #f4f4f4;
     margin: 20px 50px;
@@ -83,6 +85,8 @@ hr{
     background-color: saddlebrown;
 }
 
+/*จบแยกcssอีกไฟล์ */
+
 footer{
     text-align: left;
     background-color: #f8f8f8;
@@ -95,11 +99,6 @@ footer{
 .icon-nav{
     display: flex;
     align-items: center;
-    /* justify-content: center;
-    margin-left: auto;
-    margin-top:auto; */
-    padding: 14px 16px;
-    
 }
 #search {
     font-size: 1em;
@@ -111,7 +110,7 @@ footer{
 
   
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 419px) {
     .topnav a:not(:first-child) {
         display: none;
     }
