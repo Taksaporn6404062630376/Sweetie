@@ -24,16 +24,16 @@ if ($_GET["action"]=="add") {
 	else
 	    $_SESSION['cart'][$menuID] = $cart_item;
 
-} else if ($_GET["action"]=="update") {
-	$menuID = $_GET["menuID"];     
-	$qty = $_GET["qty"];
-	$_SESSION['cart'][$menuID]['qty'] = $qty;
+    } else if ($_GET["action"]=="update") {
+        $menuID = $_GET["menuID"];     
+        $qty = $_GET["qty"];
+        $_SESSION['cart'][$menuID]['qty'] = $qty;
 
-} else if ($_GET["action"]=="delete") {
-	
-	$menuID = $_GET['menuID'];
-	unset($_SESSION['cart'][$menuID]);
-}
+    } else if ($_GET["action"]=="delete") {
+        
+        $menuID = $_GET['menuID'];
+        unset($_SESSION['cart'][$menuID]);
+    }
 ?>
 <html>
     <head>
