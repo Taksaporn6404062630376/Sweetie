@@ -66,7 +66,13 @@
                         $stmt->execute();
                         while($row = $stmt->fetch()){
                             // echo "<div class='menu-item'>";
-                            echo "<div class='menu-image'><a href='#'><img src='img/menu-1/{$row['menuname']}.png' width='350'></a>";
+                            
+                            if($row["menuname"] == 'เค้ก%' ){
+                                echo "<div class='menu-image'><a href='selectsize_pound.php?menuname=".$row["menuname"]."'><img src='img/menu-1/{$row['menuname']}.png' width='350'></a>";
+                            } 
+                            else {
+                                echo "<div class='menu-image'><a href='selectsize_piece.php?menuname=".$row["menuname"]."'><img src='img/menu-1/{$row['menuname']}.png' width='350'></a>";
+                            }
                             echo "<div class='menu-details'>";
                             echo "<div class='menu-name'>{$row['menuname']}</div>";
                             echo "<div class='cart'>";
@@ -80,6 +86,30 @@
                 </div>
             </div>
         </section>
+       
+        <!-- <mian>
+            <br><br>
+            <div class="menu-recommend">
+                <hr><h1>3 MENU RECOMMEND</h1> <hr><br><br>
+                <?php
+                    $stmt = $pdo->prepare("SELECT m.menuID, m.menuname, SUM(od.quantity) AS total_quantity FROM menu m 
+                    LEFT JOIN orderdetails od ON m.menuID = od.menuID GROUP BY m.menuname 
+                    ORDER BY total_quantity DESC LIMIT 3;");
+                    $stmt->execute();
+
+                    while($row = $stmt->fetch()){
+                        echo"<span class='menu-name'>{$row['menuname']}</span><br>";
+                        if($row["menuname"] == 'เค้ก%' ){
+                            echo"<div class='menu-image'><a href='selectsize_pound.php?menuname=".$row["menuname"]."'><img src='img/menu/{$row['menuname']}.jpg'width='400'></a></div><br><br><br>";
+                        } else {
+                            echo"<div class='menu-image'><a href='selectsize_piece.php?menuname=".$row["menuname"]."'><img src='img/menu/{$row['menuname']}.jpg'width='400'></a></div><br><br><br>";
+                        }
+                        
+                    }
+                ?>
+            </div>
+            <div id="result"></div>
+        </main> -->
 
         <footer>
             <div class="footer-content">
@@ -97,6 +127,21 @@
        
 
         <script>
+            function send() {
+                request = new XMLHttpRequest();
+                request.onreadystatechange = showResult;
+                var keyword = document.getElementById("search").value;
+                    var url= "Searchmenu.php?keyword=" + keyword;
+                request.open("GET", url, true);
+                request.send(null);
+                }
+                function showResult() {
+                if (request.readyState == 4) {
+                if (request.status == 200)
+                    document.getElementById("result").innerHTML = request.responseText;
+                
+                }
+            }
             function myFunction() {
                 var x = document.getElementById("top-nav");
                 if (x.className === "topnav") {
@@ -105,6 +150,20 @@
                     x.className = "topnav";
                 }
             }
+
+            // sticky navbar
+            var navbar = document.getElementById("top-nav");
+            var sticky = navbar.offsetTop;
+
+            function handleScroll() {
+                if (window.pageYOffset >= sticky) {
+                    navbar.classList.add("sticky");
+                } else {
+                    navbar.classList.remove("sticky");
+                }
+            }
+            window.onscroll = handleScroll;
+
         </script>
     </body>
 </html>
