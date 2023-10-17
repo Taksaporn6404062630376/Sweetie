@@ -1,4 +1,5 @@
-<?php include "connect.php";?>
+<?php include "connect.php"?>
+
 <html>
     <head>
         <title>Sweetie</title>
@@ -8,57 +9,77 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
-        <link href="css/home.css" rel="stylesheet">
+        <link href="css/home2.css" rel="stylesheet">
     </head>
     <body>
         <!-- !!!!!!! shop name not has been entered !!!!! -->
-       <nav>
-            <div class="topnav" id="top-nav">
+        <header class="header">
+            <div class="logo">
+                <div class="logoBakery"></div>
+                <h1 class="logoName">Whisk & Roll Bakery</h1>
+            </div>
+
+            <nav class="navbar">
                 <a href="Home_page.php" class="active">Home</a>
                 <a href="Cake.php">Cake</a>
                 <a href="Cupcake.php">Cupcake</a>
                 <a href="Other.php">Other</a>
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            </nav>
+
+            <div class="icon">
+                <i id ="icon-search"class="fas fa-search" id="search"></i>
+                <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
-                </a>
-                <div class="icon-nav">
-                    <input type="text" id="search" size="30%" placeholder="Search menu">
-                    <div class="button"></div>
+                </a>    
+            </div>
+
+            <div class="search">
+                <input type="search" placeholder="search...">
+            </div>
+
+            <div class="icon-user-cart">
                     <div class="user-icon"><a href="userhome.php"></a></div>
                     <div class="shop-bag"><a href="#"></a></div>
-                </div>
             </div>
-       </nav>
-           
-        
-        <header>
-            <div class="header">
-                <!-- <h1 class="store-name">ชื่อร้าน1</h1> -->
-                <img src="img/home/cake_head.jpg" alt="cake_head" width="100%" >
-            </div>
+            
         </header>
 
-       
-        <mian>
-            <br><br>
-            <div class="menu-recommend">
-                <hr><h1>3 MENU RECOMMEND</h1> <hr><br><br>
-                <?php
-                    $stmt = $pdo->prepare("SELECT m.menuID, m.menuname, SUM(od.quantity) AS total_quantity FROM menu m 
-                    LEFT JOIN orderdetails od ON m.menuID = od.menuID GROUP BY m.menuname 
-                    ORDER BY total_quantity DESC LIMIT 3;");
+        <section class="home" id="home">
+            <div class="homeContent">
+                <h1>Sweetie<br> Pre - Ordering</h1>              
+            </div>            
+        </section>
 
-                    $stmt->execute();
-                    while($row = $stmt->fetch()){
-                        echo"<span class='menu-name'>{$row['menuname']}</span><br>";
-                        echo "<div class='menu-image'><a href='#'><img src='img/menu/{$row['menuname']}.jpg' width='500'></a></div><br><br><br>";
-
-                    }
-                    
-                ?>
-                
+        <section class="menu-recommand">
+            <div class="head-menu">
+                <h1>3 menu recommand</h1>
             </div>
-        </main>
+            
+            <div class="top-menu">
+                
+                <div class="imgTop">
+                    <?php
+                        $stmt = $pdo->prepare("SELECT m.menuID, m.menuname, SUM(od.quantity) AS total_quantity FROM menu m 
+                        LEFT JOIN orderdetails od ON m.menuID = od.menuID GROUP BY m.menuname 
+                        ORDER BY total_quantity DESC LIMIT 3;");
+
+                        $stmt->execute();
+                        while($row = $stmt->fetch()){
+                            // echo "<div class='menu-item'>";
+                            echo "<div class='menu-image'><a href='#'><img src='img/menu-1/{$row['menuname']}.png' width='350'></a>";
+                            echo "<div class='menu-details'>";
+                            echo "<div class='menu-name'>{$row['menuname']}</div>";
+                            echo "<div class='cart'>";
+                            echo "<div class='add-cart'><a href='#'>add cart</a></div>";
+                            echo "</div>";
+                            echo "</div>"; // menu-details
+                            echo "</div>"; // menu-item
+                        }
+                                        
+                    ?>
+                </div>
+            </div>
+        </section>
 
         <footer>
             <div class="footer-content">
@@ -72,6 +93,8 @@
                 
             </div>
         </footer>
+       
+       
 
         <script>
             function myFunction() {

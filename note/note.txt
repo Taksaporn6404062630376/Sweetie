@@ -1,0 +1,6 @@
+#have not put a price on main page!!!!!
+#do new response
+#do new footer
+#edit nav on all datail page
+#search box is still not searchable
+#payment....
