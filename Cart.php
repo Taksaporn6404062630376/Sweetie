@@ -3,7 +3,6 @@
 
 session_start();
 
-// เพิ่มสินค้า
 if ($_GET["action"]=="add") {
 
 	$menuID = $_GET['menuID'];
@@ -16,25 +15,20 @@ if ($_GET["action"]=="add") {
 		'qty' => $_POST['qty']
 	);
 
-	// ถ้ายังไม่มีสินค้าใดๆในรถเข็น
 	if(empty($_SESSION['cart']))
     	$_SESSION['cart'] = array();
  
-	// ถ้ามีสินค้านั้นอยู่แล้วให้บวกเพิ่ม
 	if(array_key_exists($menuID, $_SESSION['cart']))
 		$_SESSION['cart'][$menuID]['qty'] += $_POST['qty'];
  
-	// หากยังไม่เคยเลือกสินค้นนั้นจะ
 	else
 	    $_SESSION['cart'][$menuID] = $cart_item;
 
-// ปรับปรุงจำนวนสินค้า
 } else if ($_GET["action"]=="update") {
 	$menuID = $_GET["menuID"];     
 	$qty = $_GET["qty"];
 	$_SESSION['cart'][$menuID]['qty'] = $qty;
 
-// ลบสินค้า
 } else if ($_GET["action"]=="delete") {
 	
 	$menuID = $_GET['menuID'];
@@ -52,11 +46,9 @@ if ($_GET["action"]=="add") {
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
         <link href="css/home.css" rel="stylesheet">
         <script>
-            // ใช้สำหรับปรับปรุงจำนวนสินค้า
             function update(menuID) {
                 var qty = document.getElementById(menuID).value;
-                // ส่งรหัสสินค้า และจำนวนไปปรับปรุงใน session
-                document.location = "cart.php?action=update&menuID=" + menuID + "&qty=" + qty; 
+                document.location = "Cart.php?action=update&menuID=" + menuID + "&qty=" + qty; 
             }
         </script>
     </head>
