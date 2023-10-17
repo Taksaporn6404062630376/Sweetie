@@ -7,6 +7,41 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
     <link href="css/home.css" rel="stylesheet">
+    <style>
+        .cakecontent {
+            background-color: #f4f4f4;
+            margin: 20px 50px;
+            border-radius: 15px;
+            -webkit-box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+            -moz-box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+            display: flex;
+        }
+
+        .cakecontent-left {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .cakecontent-right {
+            flex: 1;
+            padding: 80px;
+            text-align: center;
+        }
+
+        .cakecontent a{
+            text-decoration: none;
+            color:#f4f4f4;
+            background-color: #573822;
+            padding:10px;
+            border-radius:15px;
+        }
+
+        .cakecontent a:hover{
+            color:#d2d3d2;
+            background-color: saddlebrown;
+        }
+    </style>
 </head>
 <body>
     <div class="cakecontent">
