@@ -89,9 +89,7 @@ input:focus::-webkit-input-placeholder
     background-color: #ffffff;
     padding: 2vh;
 }
-.col-8{
-    padding: 0 1vh;
-}
+
 .lower{
     line-height: 2;
 }
@@ -137,6 +135,29 @@ input[type=checkbox]{
 #cvv:hover{
 
 }
+.cakecontent {
+            background-color: #f4f4f4;
+            margin: 20px 50px;
+            border-radius: 15px;
+            -webkit-box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+            -moz-box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+            display: inline-block;
+            width:300px;
+            height: 320px;;
+}
+
+.cakecontent-left {
+    flex: 1;
+    padding-top: 20px;
+}
+
+.cakecontent-right {
+    flex: 1;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
     </style>
     <body>
         <!-- !!!!!!! shop name not has been entered !!!!! -->
@@ -152,8 +173,110 @@ input[type=checkbox]{
         <nav>
         <!--start-->
 
+       
             <div class="card-body"><br><br>
-                
+                 <!-- !!!!!!! order detail !!!!! -->
+                <div class="col-md-5">
+                        <div class="right border">
+                            <div class="header">รายการสั่งซื้อทั้งหมด</div>
+                            <p>/no of items</p>
+                           
+                            <div class="cakecontent">
+                                <div class="cakecontent-left">
+                                    <img src="img/menu/มาการองรสกาแฟ.jpg" alt="" width='120'height='120' >
+                                </div>
+                                <div class="cakecontent-right">
+                                    <h2>menuname</h2>
+                                    <p>details</p>
+                                    <p>price : </p>
+                             
+                                </div>
+                            </div>
+                            <!--try another one/delete later-->
+                            <div class="cakecontent">
+                                <div class="cakecontent-left">
+                                    <img src="img/menu/มาการองรสกาแฟ.jpg" alt="" width='120'height='120' >
+                                </div>
+                                <div class="cakecontent-right">
+                                    <h2>menuname</h2>
+                                    <p>details</p>
+                                    <p>price : </p>
+                             
+                                </div>
+                            </div>
+                            <!--end-->
+                            <!--try another one/delete later-->
+                            <div class="cakecontent">
+                                <div class="cakecontent-left">
+                                    <img src="img/menu/มาการองรสกาแฟ.jpg" alt="" width='120'height='120' >
+                                </div>
+                                <div class="cakecontent-right">
+                                    <h2>menuname</h2>
+                                    <p>details</p>
+                                    <p>price : </p>
+                             
+                                </div>
+                            </div>
+                            <!--end-->
+                            <!--try another one/delete later-->
+                            <div class="cakecontent">
+                                <div class="cakecontent-left">
+                                    <img src="img/menu/มาการองรสกาแฟ.jpg" alt="" width='120'height='120' >
+                                </div>
+                                <div class="cakecontent-right">
+                                    <h2>menuname</h2>
+                                    <p>details</p>
+                                    <p>price : </p>
+                             
+                                </div>
+                            </div>
+                            <!--end-->
+                            <!--try another one/delete later-->
+                            <div class="cakecontent">
+                                <div class="cakecontent-left">
+                                    <img src="img/menu/มาการองรสกาแฟ.jpg" alt="" width='120'height='120' >
+                                </div>
+                                <div class="cakecontent-right">
+                                    <h2>menuname</h2>
+                                    <p>details</p>
+                                    <p>price : </p>
+                             
+                                </div>
+                            </div>
+                            <!--end-->
+                            <!--try another one/delete later-->
+                            <div class="cakecontent">
+                                <div class="cakecontent-left">
+                                    <img src="img/menu/มาการองรสกาแฟ.jpg" alt="" width='120'height='120' >
+                                </div>
+                                <div class="cakecontent-right">
+                                    <h2>menuname</h2>
+                                    <p>details</p>
+                                    <p>price : </p>
+                             
+                                </div>
+                            </div>
+                            <!--end-->
+
+                            <hr>
+                            <div class="row lower">
+                                <div class="col text-left">Subtotal</div>
+                                <div class="col text-right">$ 46.98</div>
+                            </div>
+                            <div class="row lower">
+                                <div class="col text-left">Delivery</div>
+                                <div class="col text-right">Free</div>
+                            </div>
+                            <div class="row lower">
+                                <div class="col text-left"><b>Total to pay</b></div>
+                                <div class="col text-right"><b>$ 46.98</b></div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                <!-- !!!!!!! end order detail !!!!! -->
+
+                <!-- !!!!!!! payment !!!!! -->
                 <div class="row">
                     <div class="col-md-7">
                         <div class="left border">
@@ -181,50 +304,21 @@ input[type=checkbox]{
                                 <input type="checkbox" id="save_card" class="align-left">
                                 <label for="save_card">Save card details to wallet</label>  
                             </form>
-                        </div>                        
-                    </div>
-                    <div class="col-md-5">
-                        <div class="right border">
-                            <div class="header">Order Summary</div>
-                            <p>/no of items</p>
-                           
-                            <div class="row item">
-                                <div class="col-4 align-self-center"><img class="img-fluid" src="img/menu/มาการองรสกาแฟ.jpg"></div>
-                                <div class="col-8">
-                                    <div class="row"><b>/price</b></div>
-                                    <div class="row text-muted">/detail</div>
-                                    <div class="row">/qty</div>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row lower">
-                                <div class="col text-left">Subtotal</div>
-                                <div class="col text-right">$ 46.98</div>
-                            </div>
-                            <div class="row lower">
-                                <div class="col text-left">Delivery</div>
-                                <div class="col text-right">Free</div>
-                            </div>
-                            <div class="row lower">
-                                <div class="col text-left"><b>Total to pay</b></div>
-                                <div class="col text-right"><b>$ 46.98</b></div>
-                            </div>
-                            
                             <button class="btn">Place order</button>
                             <p class="text-muted text-center">Complimentary Shipping & Returns</p>
-                        </div>
+                        </div> 
+                                               
                     </div>
+                    
+                    
                 </div>
-            </div>
-            
+                 <!-- !!!!!!! end payment !!!!! -->
+            </div>         
          <div>
         </div>
         </div>
 
-        <!--end-->
-           
-   
-
+        <!--end-->         
         <footer>
             <div class="footer-content">
                 
