@@ -13,6 +13,7 @@ body {
     overflow: hidden;
     background-color: whitesmoke;
     align-items: center;
+    height: 65px;
 }
   
 .topnav a {
@@ -42,28 +43,33 @@ body {
 
 .icon-nav{
     display: flex;
-    align-items: center;  
+    align-items: center;
+    height: 65px;  
 }
+
 #search {
     font-size: 1em;
     width: 20%;
     margin-left: 50%; 
 }
 
-.user-icon,.shop-bag{
-    padding: 1%;
+.user-icon a,.shop-bag a{
+    width: 50%;
+    height: auto;
 }
-.user-icon::before{
+
+.user-icon a::before{
     font-family: FontAwesome;
     content: "\f007";
     color: #342214;
-    font-size: 2em;
+    font-size: 1.25em;
 }
-.shop-bag::before{
+
+.shop-bag a::before{
     font-family: FontAwesome;
     content: "\f290"; 
     color: #342214;
-    font-size: 2em;
+    font-size: 1.25em;
 }
 
 .menu-recommend h1{

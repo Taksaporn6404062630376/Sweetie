@@ -27,7 +27,7 @@
                     <div class="user-icon"><a href="userhome.php"></a></div>
                     <div class="shop-bag"><a href="#"></a></div>
                 </div>
-            </div>   
+            </div>
        </nav>
            
         
