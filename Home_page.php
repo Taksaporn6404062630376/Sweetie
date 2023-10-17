@@ -22,7 +22,7 @@
                     <i class="fa fa-bars"></i>
                 </a>
                 <div class="icon-nav">
-                    <input type="text" id="search" size="30%" placeholder="Search menu">
+                    <input type="text" id="search" size="30%" placeholder="Search menu" onkeyup="send()">
                     <div class="button"></div>
                     <div class="user-icon"><a href="userhome.php"></a></div>
                     <div class="shop-bag"><a href="#"></a></div>
@@ -47,17 +47,20 @@
                     $stmt = $pdo->prepare("SELECT m.menuID, m.menuname, SUM(od.quantity) AS total_quantity FROM menu m 
                     LEFT JOIN orderdetails od ON m.menuID = od.menuID GROUP BY m.menuname 
                     ORDER BY total_quantity DESC LIMIT 3;");
-
                     $stmt->execute();
+
                     while($row = $stmt->fetch()){
                         echo"<span class='menu-name'>{$row['menuname']}</span><br>";
-                        echo "<div class='menu-image'><a href='#'><img src='img/menu/{$row['menuname']}.jpg' width='500'></a></div><br><br><br>";
-
+                        if($row["menuname"] == 'เค้ก%' ){
+                            echo"<div class='menu-image'><a href='selectsize_pound.php?menuname=".$row["menuname"]."'><img src='img/menu/{$row['menuname']}.jpg'width='400'></a></div><br><br><br>";
+                        } else {
+                            echo"<div class='menu-image'><a href='selectsize_piece.php?menuname=".$row["menuname"]."'><img src='img/menu/{$row['menuname']}.jpg'width='400'></a></div><br><br><br>";
+                        }
+                        
                     }
-                    
                 ?>
-                
             </div>
+            <div id="result"></div>
         </main>
 
         <footer>
@@ -74,6 +77,21 @@
         </footer>
 
         <script>
+            function send() {
+                request = new XMLHttpRequest();
+                request.onreadystatechange = showResult;
+                var keyword = document.getElementById("search").value;
+                    var url= "Searchmenu.php?keyword=" + keyword;
+                request.open("GET", url, true);
+                request.send(null);
+                }
+                function showResult() {
+                if (request.readyState == 4) {
+                if (request.status == 200)
+                    document.getElementById("result").innerHTML = request.responseText;
+                
+                }
+            }
             function myFunction() {
                 var x = document.getElementById("top-nav");
                 if (x.className === "topnav") {
@@ -82,6 +100,20 @@
                     x.className = "topnav";
                 }
             }
+
+            // sticky navbar
+            var navbar = document.getElementById("top-nav");
+            var sticky = navbar.offsetTop;
+
+            function handleScroll() {
+                if (window.pageYOffset >= sticky) {
+                    navbar.classList.add("sticky");
+                } else {
+                    navbar.classList.remove("sticky");
+                }
+            }
+            window.onscroll = handleScroll;
+
         </script>
     </body>
 </html>
