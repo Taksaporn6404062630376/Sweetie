@@ -2,5 +2,5 @@
 #do new response
 #do new footer
 #edit nav on all datail page
-#search box is still not searchable
+#search box is still not searchable and แปลก...
 #payment....

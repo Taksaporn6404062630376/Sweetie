@@ -1,5 +1,5 @@
 * {
-    font-family: 'Prompt', sans-serif;    
+    font-family: 'Prompt', sans-serif;
     list-style-type: none;
 }
 /* Page content */
@@ -67,7 +67,7 @@ body {
 #search {
     font-size: 1em;
     width: 20%;
-    margin-left: 50%; 
+    margin-left: 50%;
 }
 
 .user-icon a,.shop-bag a{

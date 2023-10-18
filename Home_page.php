@@ -34,7 +34,8 @@
             </div>
 
             <div class="search">
-                <input type="search" placeholder="search...">
+                <!-- <input type="search" placeholder="search..." id="search" onkeyup="send()"> -->
+                <input type="text" id="search"  placeholder="search.." onkeyup="send()">
             </div>
 
             <div class="icon-user-cart">
@@ -68,7 +69,7 @@
                             // echo "<div class='menu-item'>";
                             
                             if($row["menuname"] == 'เค้ก%' ){
-                                echo "<div class='menu-image'><a href='selectsize_pound.php?menuname=".$row["menuname"]."'><img src='img/menu-1/{$row['menuname']}.png' width='350'></a>";
+                                echo "<div class='menu-image'><a href='selectsize_pound.php?menuname=".$row["menuname"]."'><img src='img/menu-1/{$row['menuname']}.png' width='350'></a>";                               
                             } 
                             else {
                                 echo "<div class='menu-image'><a href='selectsize_piece.php?menuname=".$row["menuname"]."'><img src='img/menu-1/{$row['menuname']}.png' width='350'></a>";
@@ -85,7 +86,9 @@
                     ?>
                 </div>
             </div>
+            <div id="result"></div>
         </section>
+        
        
         <!-- <mian>
             <br><br>
