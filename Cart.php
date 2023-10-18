@@ -10,7 +10,7 @@ if ($_GET["action"]=="add") {
 	$cart_item = array(
  		'menuID' => $menuID,
 		'menuname' => isset($_GET['menuname']) ? $_GET['menuname'] : "",
-        'detail' => isset($_GET['detail']) ? $_GET['detail'] : "",
+        'Size_Pound_or_Piece' => isset($_GET['Size_Pound_or_Piece']) ? $_GET['Size_Pound_or_Piece'] : "",
 		'price' => $_GET['price'],
 		'qty' => $_POST['qty']
 	);
@@ -88,7 +88,7 @@ if ($_GET["action"]=="add") {
                 ?>
                     <tr>
                         <td><?=$item["menuname"]?></td>
-                        <td><?=$item["detail"]?></td>
+                        <td><?=$item["Size_Pound_or_Piece"]?></td>
                         <td><?=$item["price"]?></td>
                         <td>
                             <input type="number" id="<?=$item["menuID"]?>" value="<?=$item["qty"]?>" min="1" max="9">

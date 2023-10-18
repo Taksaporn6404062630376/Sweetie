@@ -54,7 +54,7 @@
             <p><?php echo $detail; ?></p>
             <p>ราคา : <b><?php echo $price; ?></b> บาท </p><br><br>
             <!-- <tocart> -->
-            <form method="post" action="Cart.php?action=add&menuID=<?=$row["menuID"]?>&menuname=<?=$row["menuname"]?>&detail=<?=$row["detail"]?>&price=<?=$row["price"]?>">
+            <form method="post" action="Cart.php?action=add&menuID=<?=$row["menuID"]?>&menuname=<?=$row["menuname"]?>&Size_Pound_or_Piece=<?=$row["Size_Pound_or_Piece"]?>&price=<?=$row["price"]?>">
                 จำนวน  <input type="number" name="qty"size="5" value="1" min="1" max="9"><br><br>
             <button type="submit"><i class="fa-solid fa-plus"></i> หยิบใส่ตะกร้า</button>
             </form>
