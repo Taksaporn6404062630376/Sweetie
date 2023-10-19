@@ -70,7 +70,7 @@
                             
                             if($row["menuname"] == 'เค้ก%' ){
                                 echo "<div class='menu-image'><a href='selectsize_pound.php?menuname=".$row["menuname"]."'><img src='img/menu-1/{$row['menuname']}.png' width='350'></a>";                               
-                            } 
+                            }
                             else {
                                 echo "<div class='menu-image'><a href='selectsize_piece.php?menuname=".$row["menuname"]."'><img src='img/menu-1/{$row['menuname']}.png' width='350'></a>";
                             }
