@@ -1,0 +1,30 @@
+.qr-code{
+    display: flex;
+    justify-content: center;
+    /* margin-top: 6em; */
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 100vh;
+    background: url(../img/payment_bg2.jpg);
+}
+    
+
+.border-qr{
+    width: 30em;
+    height: 40em;
+    border-radius: 2em;
+    padding-top: 2em;
+    background-color: white;
+    margin-top: 6em;
+}
+
+.border-qr h2{
+    color: black;
+    text-align: center;
+    font-size: 2em;
+}
+.border-qr h3{
+    color: black;
+    text-align: center;
+    font-size: 1.7em;
+}

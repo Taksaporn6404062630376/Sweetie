@@ -1,14 +1,14 @@
 * {
-    font-family: 'Prompt', sans-serif;    
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    outline: none;
-    border: none;
-    text-decoration: none;
-    text-transform: uppercase;
-    /* transition: .2s linear; */
+    /* font-family: 'Prompt', sans-serif; */
+    /* list-style-type: none; */
+    /* margin: 0; */
+    /* padding: 0; */
+    /* box-sizing: border-box; */
+    /* outline: none; */
+    /* border: none; */
+    /* text-decoration: none; */
+    /* text-transform: uppercase; */
+    transition: .2s linear;
 }
 
 html{

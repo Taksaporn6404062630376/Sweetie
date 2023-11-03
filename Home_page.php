@@ -1,4 +1,5 @@
 <?php include "connect.php"?>
+<?php session_start(); ?>
 
 <html>
     <head>
@@ -40,7 +41,7 @@
 
             <div class="icon-user-cart">
                     <div class="user-icon"><a href="userhome.php"></a></div>
-                    <div class="shop-bag"><a href="#"></a></div>
+                    <div class="shop-bag"><a href="Cart.php"></a></div>
             </div>
             
         </header>
