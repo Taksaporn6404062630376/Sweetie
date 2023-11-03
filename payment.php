@@ -1,4 +1,7 @@
-<?php include "connect.php";?>
+<?php include "connect.php";
+      session_start();
+?>
+
 <html>
     <head>
         <title>ชื่อร้านยังไม่คิด</title>
@@ -7,11 +10,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">  
         <link href="css/home.css" rel="stylesheet">
     </head>
     <style>
-
+        
 .card{
     max-width: 1000px;
     margin: 2vh;
@@ -101,6 +104,7 @@ input:focus::-webkit-input-placeholder
     margin: 4vh 0 1.5vh 0;
     padding: 1.5vh;
     border-radius: 10px;
+    text-decoration: none;   
 }
 .btn:focus{
     box-shadow: none;
@@ -108,7 +112,6 @@ input:focus::-webkit-input-placeholder
     box-shadow: none;
     color: white;
     -webkit-box-shadow: none;
-    -webkit-user-select: none;
     transition: none; 
 }
 .btn:hover{
@@ -132,9 +135,7 @@ input[type=checkbox]{
     background-position-x: 95%;
     background-position-y: center;
 } 
-#cvv:hover{
 
-}
 .cakecontent {
             background-color: #f4f4f4;
             margin: 20px 50px;
@@ -179,89 +180,30 @@ input[type=checkbox]{
                 <div class="col-md-5">
                         <div class="right border">
                             <div class="header">รายการสั่งซื้อทั้งหมด</div>
-                            <p>/no of items</p>
-                           
+                
+                  <?php 
+                  $sum = 0;
+                  foreach ($_SESSION["cart"] as $item) { 
+                    $sum += $item["price"] * $item["qty"];?>                
                             <div class="cakecontent">
                                 <div class="cakecontent-left">
-                                    <img src="img/menu/มาการองรสกาแฟ.jpg" alt="" width='120'height='120' >
+                                    <img src="img/menu/<?=$item["menuname"]?>.jpg" alt="" width='120'height='120' >
                                 </div>
                                 <div class="cakecontent-right">
-                                    <h2>menuname</h2>
-                                    <p>details</p>
-                                    <p>price : </p>
+                                    <h2><?=$item["menuname"]?></h2>
+                                    <p>จำนวน : <?=$item["qty"]?> ชิ้น ( ขนาด <?=$item["Size_Pound_or_Piece"]?> ปอนด์)</p>
+                                    <p>ราคา : <?=$item["price"]?></p>
                              
                                 </div>
                             </div>
-                            <!--try another one/delete later-->
-                            <div class="cakecontent">
-                                <div class="cakecontent-left">
-                                    <img src="img/menu/มาการองรสกาแฟ.jpg" alt="" width='120'height='120' >
-                                </div>
-                                <div class="cakecontent-right">
-                                    <h2>menuname</h2>
-                                    <p>details</p>
-                                    <p>price : </p>
-                             
-                                </div>
-                            </div>
-                            <!--end-->
-                            <!--try another one/delete later-->
-                            <div class="cakecontent">
-                                <div class="cakecontent-left">
-                                    <img src="img/menu/มาการองรสกาแฟ.jpg" alt="" width='120'height='120' >
-                                </div>
-                                <div class="cakecontent-right">
-                                    <h2>menuname</h2>
-                                    <p>details</p>
-                                    <p>price : </p>
-                             
-                                </div>
-                            </div>
-                            <!--end-->
-                            <!--try another one/delete later-->
-                            <div class="cakecontent">
-                                <div class="cakecontent-left">
-                                    <img src="img/menu/มาการองรสกาแฟ.jpg" alt="" width='120'height='120' >
-                                </div>
-                                <div class="cakecontent-right">
-                                    <h2>menuname</h2>
-                                    <p>details</p>
-                                    <p>price : </p>
-                             
-                                </div>
-                            </div>
-                            <!--end-->
-                            <!--try another one/delete later-->
-                            <div class="cakecontent">
-                                <div class="cakecontent-left">
-                                    <img src="img/menu/มาการองรสกาแฟ.jpg" alt="" width='120'height='120' >
-                                </div>
-                                <div class="cakecontent-right">
-                                    <h2>menuname</h2>
-                                    <p>details</p>
-                                    <p>price : </p>
-                             
-                                </div>
-                            </div>
-                            <!--end-->
-                            <!--try another one/delete later-->
-                            <div class="cakecontent">
-                                <div class="cakecontent-left">
-                                    <img src="img/menu/มาการองรสกาแฟ.jpg" alt="" width='120'height='120' >
-                                </div>
-                                <div class="cakecontent-right">
-                                    <h2>menuname</h2>
-                                    <p>details</p>
-                                    <p>price : </p>
-                             
-                                </div>
-                            </div>
-                            <!--end-->
+                        <?php } ?>
+
+                            
 
                             <hr>
                             <div class="row lower">
                                 <div class="col text-left">Subtotal</div>
-                                <div class="col text-right">$ 46.98</div>
+                                <div class="col text-right"><?=$sum?></div>
                             </div>
                             <div class="row lower">
                                 <div class="col text-left">Delivery</div>
@@ -269,7 +211,7 @@ input[type=checkbox]{
                             </div>
                             <div class="row lower">
                                 <div class="col text-left"><b>Total to pay</b></div>
-                                <div class="col text-right"><b>$ 46.98</b></div>
+                                <div class="col text-right"><b><?=$sum?></b></div>
                             </div>
                             
                         </div>
@@ -283,29 +225,33 @@ input[type=checkbox]{
                             <div class="row">
                                 <span class="header">Payment</span>
                                 <div class="icons">
+                                    <!-- !!!!!!! เพิ่ม qr !!!!! -->
                                     <img src="https://img.icons8.com/color/48/000000/visa.png"/>
                                     <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png"/>
                                     <img src="https://img.icons8.com/color/48/000000/maestro.png"/>
                                 </div>
                             </div>
-                            <form>
-                                <span>Cardholder's name:</span>
+                           
+                            <form action="insert_order.php" method="post" >
+                                <input type="hidden" name="username" value="<?=$_SESSION["username"]?>">
+                                <input type="hidden" name="total_amount" value="<?=$sum?>">
+                                <span>ชื่อ-สกุล :</span>
                                 <input placeholder="Linda Williams">
-                                <span>Card Number:</span>
-                                <input placeholder="0125 6780 4567 9909">
+                                <span>เบอร์โทรศัพท์ :</span>
+                                <input placeholder="012 345 6789">
+                                <span>ที่อยู่ :</span><br>
+                                <textarea name="address" rows="5" cols="50"></textarea>
                                 <div class="row">
-                                    <div class="col-4"><span>Expiry date:</span>
-                                        <input placeholder="YY/MM">
-                                    </div>
-                                    <div class="col-4"><span>CVV:</span>
-                                        <input id="cvv">
+                                    <div class="col-4"><span>derivery date :</span>
+                                        <input type="date" name="deriverydate">
                                     </div>
                                 </div>
                                 <input type="checkbox" id="save_card" class="align-left">
                                 <label for="save_card">Save card details to wallet</label>  
+                                <input class="btn" type="submit"value="Place order" >
+                                <p class="text-muted text-center">Complimentary Shipping & Returns</p>
                             </form>
-                            <button class="btn">Place order</button>
-                            <p class="text-muted text-center">Complimentary Shipping & Returns</p>
+                            
                         </div> 
                                                
                     </div>

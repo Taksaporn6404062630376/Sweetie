@@ -79,7 +79,7 @@ if ($_GET["action"]=="add") {
        
         <br><br>
         <hr><h1>YOUR CART</h1> <hr><br><br>
-            <form>
+            <form action="payment.php" method="post">
                 <table border="1">
                 <?php
                     $sum = 0;
@@ -99,6 +99,7 @@ if ($_GET["action"]=="add") {
                 <?php } ?>
                 <tr><td colspan="4" align="right">รวม <?=$sum?> บาท</td></tr>
                 </table>
+                <input type="submit" value="ชำระเงิน" >
                 </form>
         <footer>
             <div class="footer-content">
