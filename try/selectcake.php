@@ -8,8 +8,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
-        <link href="css/home2.css" rel="stylesheet">
-        <link href="css/selectsize.css" rel="stylesheet">
+        <link href="../css/home2.css" rel="stylesheet">
+        <link href="../css/selectsize.css" rel="stylesheet">
     </head>
     <body>
         <!-- !!!!!!! shop name not has been entered !!!!! -->

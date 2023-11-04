@@ -72,19 +72,7 @@ $totalPages = ceil($totalProducts / $itemPerPage);
 
 
     <br><br>
-    <!-- <div class="menu-recommend">
-            <hr><h1>CAKE</h1> <hr><br><br>
-            <?php
-            $stmt = $pdo->prepare("SELECT DISTINCT menuname FROM `menu` WHERE menuname LIKE 'เค้ก%';");
 
-            $stmt->execute();
-            while ($row = $stmt->fetch()) {
-                echo "<span class='menu-name'>{$row['menuname']}</span><br>";
-                echo "<div class='menu-image'><a href='selectsize_pound.php?menuname=" . $row["menuname"] . "'><img src='img/menu-1/{$row['menuname']}.png'width='400'></a></div><br><br><br>";
-            }
-
-            ?>
-        </div> -->
 
     <section class="menu-recommand">
 
@@ -97,11 +85,11 @@ $totalPages = ceil($totalProducts / $itemPerPage);
                 $stmt->execute();
                 while ($row = $stmt->fetch()) {
                     // echo "<div class='menu-item'>";
-                    echo "<div class='menu-image' id='menu-image'><a href='selectsize_pound.php?menuname=" . $row["menuname"] . "'><img src='img/menu-1/{$row['menuname']}.png' width='350'></a>";
+                    echo "<div class='menu-image' id='menu-image'><img src='img/menu-1/{$row['menuname']}.png' width='350'>";
                     echo "<div class='menu-details'>";
                     echo "<div class='menu-name'>{$row['menuname']}</div>";
                     echo "<div class='cart'>";
-                    echo "<div class='add-cart'><a href='#'>add cart</a></div>";
+                    echo "<div class='add-cart'><a href='selectsize.php?menuname=" . $row["menuname"] . "'>view more</a></div>";
                     echo "</div>";
                     echo "</div>"; // menu-details
                     echo "</div>"; // menu-item

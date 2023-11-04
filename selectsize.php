@@ -1,7 +1,7 @@
 <?php include "connect.php";?>
 <html>
     <head>
-        <title>Whisk & Roll Bakery</title>
+    <title>Whisk & Roll Bakery</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, intitial-scale=1.0, minimum-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -9,7 +9,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
         <link href="css/home2.css" rel="stylesheet">
-        <link href="css/selectsize.css" rel="stylesheet">
+        <link href="css/select.css" rel="stylesheet">
     </head>
     <body>
         <!-- !!!!!!! shop name not has been entered !!!!! -->
@@ -21,7 +21,7 @@
             </div>
 
             <nav class="navbar">
-                <a href="Home_page.php" class="active">Home</a>
+                <a href="index.php" class="active">Home</a>
                 <a href="Cake.php">Cake</a>
                 <a href="Cupcake.php">Cupcake</a>
                 <a href="Other.php">Other</a>
@@ -45,28 +45,48 @@
             
         </header>
 
-       <section class="selectPound">
-            <div class="head">
-                <h1>SELECT SIZE</h1>
+        
+    
+       
+       
+       <section class="selectSize">
+            <div class="headSel">
+                <h1>SELECT SIZE<hr></h1>
             </div>
-            <?php
-                $stmt = $pdo->prepare("SELECT * FROM menu WHERE menuname = ?;");
-                $stmt->bindParam(1, $_GET["menuname"]);
-                $stmt->execute();
+            <div class="cakeDet">
+                <?php
+                    $stmt = $pdo->prepare("SELECT * FROM menu WHERE menuname = ?;");
+                    $stmt->bindParam(1, $_GET["menuname"]);
+                    $stmt->execute();
 
-                while($row = $stmt->fetch()){
-                    if ($row["menuname"] == 'เค้ก%') {
-                        echo "<br>{$row['Size_Pound_or_Piece']} Pounds<br>";
-                        echo "<a href='detailcake.php?menuID=" . $row["menuID"] ."'><img src='/img/menu/{$row['menuname']}.jpg'width='300'></a><br><br><br><br>";
-                    } else {
-                        echo "<br>{$row['Size_Pound_or_Piece']} Pieces<br>";
-                        echo "<a href='detailcake.php?menuID=" . $row["menuID"] ."'><img src='/img/menu/{$row['menuname']}.jpg'width='300'></a><br><br><br><br>";
+                    // while($row = $stmt->fetch()){
+                    //     echo "<br>{$row['Size_Pound_or_Piece']} Pieces<br>";
+                    //     echo "<a href='detailcake.php?menuID=" . $row["menuID"] ."'><img src='img/menu/{$row['menuname']}.jpg'width='300'></a><br><br><br><br>";
+                    // }
+                    $count = 0;
+                    while($row = $stmt->fetch()){
+                        if($count == 0){
+                            echo "<h2>".$row['menuname'] ."</h2><br>";
+                            echo "<div class='borderCake'><div class='imgCake'><img src='img/menu-1/{$row['menuname']}.png'width='450'>";
+                            $count++;
+                        }
+                        if (strpos($row['menuname'], 'เค้ก') === 0)
+                        {
+                            echo "<a href='detailcake.php?menuID=" . $row["menuID"] ."'>{$row['Size_Pound_or_Piece']} Pound".'</a>';
+                        }
+                        else if (strpos($row['menuname'], 'คัพเค้ก') === 0){
+                            echo "<a href='detailcake.php?menuID=" . $row["menuID"] ."'>{$row['Size_Pound_or_Piece']} piece".'</a>';
+                        }
+                        else{
+                            echo "<a href='detailcake.php?menuID=" . $row["menuID"] ."'>{$row['Size_Pound_or_Piece']} box".'</a>';
+
+                        }
+                        
+
                     }
-                    
-                    
-                }
-                
-            ?>
+                    echo "</div></div>";
+                ?>
+            </div>
         </section>
             
 
