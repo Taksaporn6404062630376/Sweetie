@@ -66,7 +66,8 @@
                     $count = 0;
                     while($row = $stmt->fetch()){
                         if($count == 0){
-                            echo "<h2>".$row['menuname'] ."</h2><br>";
+                            echo "<h2>".$row['menuname']. "&emsp;".$row['menunameen'] ."</h2><br>";
+                            // echo "<h2>".$row['menunameen'] ."</h2><br>";
                             echo "<div class='borderCake'><div class='imgCake'><img src='img/menu-1/{$row['menuname']}.png'width='450'>";
                             $count++;
                         }
