@@ -15,29 +15,28 @@ if ($_GET["action"]=="add") {
 		'qty' => $_POST['qty']
 	);
 
-	if(empty($_SESSION['cart']))
+	if(empty($_SESSION['cart'])){
     	$_SESSION['cart'] = array();
- 
-	if(array_key_exists($menuID, $_SESSION['cart']))
-		$_SESSION['cart'][$menuID]['qty'] += $_POST['qty'];
- 
-	else
-	    $_SESSION['cart'][$menuID] = $cart_item;
-
-    } else if ($_GET["action"]=="update") {
-        $menuID = $_GET["menuID"];     
-        $qty = $_GET["qty"];
-        $_SESSION['cart'][$menuID]['qty'] = $qty;
-
-    } else if ($_GET["action"]=="delete") {
-        
-        $menuID = $_GET['menuID'];
-        unset($_SESSION['cart'][$menuID]);
     }
+	if (array_key_exists($menuID, $_SESSION['cart'])) {
+        $_SESSION['cart'][$menuID]['qty'] += $cart_item['qty'];
+    } else {
+        $_SESSION['cart'][$menuID] = $cart_item;
+    }
+
+} else if ($_GET["action"]=="update") {
+    $menuID = $_GET["menuID"];
+    $qty = $_GET["qty"];
+    $_SESSION['cart'][$menuID]['qty'] = $qty;
+
+} else if ($_GET["action"]=="delete") {
+    $menuID = $_GET['menuID'];
+    unset($_SESSION['cart'][$menuID]);
+}
 ?>
 <html>
     <head>
-        <title>ชื่อร้านยังไม่คิด</title>
+        <title>Whisk & Roll Bakery</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, intitial-scale=1.0, minimum-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -54,7 +53,7 @@ if ($_GET["action"]=="add") {
 
             function redirectToPayment(sum){
                 // header("Location: Promptpay/payment.php)
-                window.location.assign("Promptpay/payment.php");
+                window.location.assign("paymentQR.php");
             }
         </script>
     </head>
@@ -68,7 +67,7 @@ if ($_GET["action"]=="add") {
             </div>
 
             <nav class="navbar">
-                <a href="Home_page.php" class="active">Home</a>
+                <a href="index.php" class="active">Home</a>
                 <a href="Cake.php">Cake</a>
                 <a href="Cupcake.php">Cupcake</a>
                 <a href="Other.php">Other</a>
@@ -78,7 +77,7 @@ if ($_GET["action"]=="add") {
                 <i id ="icon-search"class="fas fa-search" id="search"></i>
                 <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
-                </a>    
+                </a>
             </div>
 
             <div class="search">
@@ -103,7 +102,7 @@ if ($_GET["action"]=="add") {
                 <table border="1">
                     <tr>
                         <th>เมนู</th>
-                        <th>ขนาด(ปอนด์)</th>
+                        <th>ขนาด</th>
                         <th>ราคา</th>
                         <th>จำนวน</th>
                     </tr>
@@ -111,23 +110,23 @@ if ($_GET["action"]=="add") {
                     $sum = 0;
                     foreach ($_SESSION["cart"] as $item) {
                         $sum += $item["price"] * $item["qty"];
-                    $_SESSION['sum'] = $sum;
+                        $_SESSION['sum'] = $sum;
                 ?>
                     <tr>
                         <td><?=$item["menuname"]?></td>
                         <td><?=$item["Size_Pound_or_Piece"]?></td>
                         <td><?=$item["price"]?></td>
                         <td>
-                            <input type="number" id="<?=$item["menuID"]?>" value="<?=$item["qty"]?>" min="1" max="9" >
-                            <a href="#" onclick="update(<?=$item["menuID"]?>)">แก้ไข</a>
-                            <a href="?action=delete&menuID=<?=$item["menuID"]?>">ลบ</a>
+                            <input type="number" id="<?=$item["menuID"]?>" value="<?=$item["qty"]?>" min="1" max="9" size="10">
+                            <!--<a href="#" onclick="update(<?=$item["menuID"]?>)">แก้ไข</a>-->
+                            <a href="?action=delete&menuID=<?=$item["menuID"]?>"><i class="fa-solid fa-trash" style="color: #000000;"></i></a>
                         </td>
                     </tr>
                 <?php } ?>
                 <tr><td colspan="4" align="right">รวม <?=$sum?> บาท</td></tr>
                 </table>
             </form>
-            <button onclick="redirectToPayment(<?=$sum?>)">ชำระเงิน</button>
+            <button onclick="redirectToPayment(<?=$sum?>)">next</button>
         </section>
            
             
