@@ -71,7 +71,13 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
             </div>
         </form>
         <div class="icon-user-cart">
-            <div class="user-icon"><a href="userhome.php"></a></div>
+        <div class="user-icon">
+                <?php if (!empty($_SESSION["username"])) { ?>
+                    <a href="userhome.php"></a>
+                <?php } else { ?>
+                    <a href="login.php"></a>
+                <?php } ?>
+            </div>
             <div class="shop-bag"><a href="#"></a></div>
         </div>
 

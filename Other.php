@@ -9,7 +9,7 @@ $totalPages = ceil($totalProducts / $itemPerPage);
 <html>
 
 <head>
-    <title>ชื่อร้านยังไม่คิด</title>
+<title>Whisk & Roll Bakery</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, intitial-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -67,7 +67,13 @@ $totalPages = ceil($totalProducts / $itemPerPage);
 
 
         <div class="icon-user-cart">
-            <div class="user-icon"><a href="userhome.php"></a></div>
+        <div class="user-icon">
+                <?php if (!empty($_SESSION["username"])) { ?>
+                    <a href="userhome.php"></a>
+                <?php } else { ?>
+                    <a href="login.php"></a>
+                <?php } ?>
+            </div>
             <div class="shop-bag"><a href="#"></a></div>
         </div>
 

@@ -11,7 +11,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>รายการ Order ของลูกค้า</title>
+    <title>Admin</title>
     <link href="../css/admin.css" rel="stylesheet">
 </head>
 <body>

@@ -11,7 +11,7 @@ $sum = $_SESSION['sum'];?>
     <link href="../css/home2.css" rel="stylesheet">
     <link href="../css/payment.css" rel="stylesheet">
 
-    <title>Sweetie</title>
+    <title>Whisk & Roll Bakery</title>
 </head>
 <body>
     <header class="header">
