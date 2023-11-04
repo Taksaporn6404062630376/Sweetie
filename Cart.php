@@ -44,54 +44,86 @@ if ($_GET["action"]=="add") {
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
-        <link href="css/home.css" rel="stylesheet">
+        <link href="css/home2.css" rel="stylesheet">
+        <link href="css/cart.css" rel="stylesheet">
         <script>
             function update(menuID) {
                 var qty = document.getElementById(menuID).value;
                 document.location = "Cart.php?action=update&menuID=" + menuID + "&qty=" + qty; 
+            }
+
+            function redirectToPayment(sum){
+                // header("Location: Promptpay/payment.php)
+                window.location.assign("Promptpay/payment.php");
             }
         </script>
     </head>
     <body>
         <!-- !!!!!!! shop name not has been entered !!!!! -->
         
-        <nav>
-            <div class="topnav" id="top-nav">
-                <a href="Home_page.php">Home</a>
-                <a href="Cake.php" >Cake</a>
+        <header class="header">
+            <div class="logo">
+                <div class="logoBakery"></div>
+                <h1 class="logoName">Whisk & Roll Bakery</h1>
+            </div>
+
+            <nav class="navbar">
+                <a href="Home_page.php" class="active">Home</a>
+                <a href="Cake.php">Cake</a>
                 <a href="Cupcake.php">Cupcake</a>
                 <a href="Other.php">Other</a>
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-                    <i class="fa fa-bars"></i>
-                </a>
-                
-            </div>
-        <nav>
-           
-        <!-- ยังไม่ได้ใส่เดี๋ยวใส่เพิ่ม -->
-        <!-- <div class="icon-nav">
-            <input type="text" id="search" size="30%" placeholder="search menu">
-            <div class="button"></div>
-            <div class="user-icon"></div>
-            <div class="shop-bag"></div>
-        </div> -->
+            </nav>
 
+            <div class="icon">
+                <i id ="icon-search"class="fas fa-search" id="search"></i>
+                <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>    
+            </div>
+
+            <div class="search">
+                <!-- <input type="search" placeholder="search..." id="search" onkeyup="send()"> -->
+                <input type="text" id="search"  placeholder="search.." onkeyup="send()">
+            </div>
+
+            <div class="icon-user-cart">
+                    <div class="user-icon"><a href="userhome.php"></a></div>
+                    <div class="shop-bag"><a href="#"></a></div>
+            </div>
+            
+        </header>
        
         <br><br>
-        <hr><h1>YOUR CART</h1> <hr><br><br>
+<<<<<<< HEAD
+        <section class="cartPage">
+            <div class="order">
+                
+                <h1>YOUR CART</h1> 
+            </div>
             <form>
+=======
+        <hr><h1>YOUR CART</h1> <hr><br><br>
+            <form action="payment.php" method="post">
+>>>>>>> a2c2577a8d41a74d1173abfe38bb9b1c858678ef
                 <table border="1">
+                    <tr>
+                        <th>เมนู</th>
+                        <th>ขนาด(ปอนด์)</th>
+                        <th>ราคา</th>
+                        <th>จำนวน</th>
+                    </tr>
                 <?php
                     $sum = 0;
                     foreach ($_SESSION["cart"] as $item) {
                         $sum += $item["price"] * $item["qty"];
+                    $_SESSION['sum'] = $sum;
                 ?>
                     <tr>
                         <td><?=$item["menuname"]?></td>
                         <td><?=$item["Size_Pound_or_Piece"]?></td>
                         <td><?=$item["price"]?></td>
                         <td>
-                            <input type="number" id="<?=$item["menuID"]?>" value="<?=$item["qty"]?>" min="1" max="9">
+                            <input type="number" id="<?=$item["menuID"]?>" value="<?=$item["qty"]?>" min="1" max="9" >
                             <a href="#" onclick="update(<?=$item["menuID"]?>)">แก้ไข</a>
                             <a href="?action=delete&menuID=<?=$item["menuID"]?>">ลบ</a>
                         </td>
@@ -99,7 +131,17 @@ if ($_GET["action"]=="add") {
                 <?php } ?>
                 <tr><td colspan="4" align="right">รวม <?=$sum?> บาท</td></tr>
                 </table>
+<<<<<<< HEAD
+            </form>
+            <button onclick="redirectToPayment(<?=$sum?>)">ชำระเงิน</button>
+        </section>
+           
+            
+        
+=======
+                <input type="submit" value="ชำระเงิน" >
                 </form>
+>>>>>>> a2c2577a8d41a74d1173abfe38bb9b1c858678ef
         <footer>
             <div class="footer-content">
                 

@@ -17,8 +17,8 @@ if (isset($_POST['submit'])) {
       $_SESSION["fullname"] = $row["name"];
       $_SESSION["username"] = $row["username"];
       $_SESSION['useremail'] = $row['email'];
-      exit();
-      header('location: userhome.php');
+      //exit();
+      header('location: Home_page.php');
   }
 //    else {
 //       $loginFailed = true;
