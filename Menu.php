@@ -63,13 +63,13 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
             </form>
         </div> -->
 
-        <!-- จัดไอคอนค้นหาไม่ได้  -->
-        <form action="menu.php" method="get" class="search-form">
-            <div class="search">
-                <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
-                <input type="search" placeholder="Search..." name="search" id="search-input">
-            </div>
+        <!-- จัดไอคอนค้นหาไม่ได้ อุบาด -->
+        <form class="example" action="menu.php" method="get">
+                <input type="search" placeholder="Search..." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
         </form>
+
+
         <div class="icon-user-cart">
         <div class="user-icon">
                 <?php if (!empty($_SESSION["username"])) { ?>

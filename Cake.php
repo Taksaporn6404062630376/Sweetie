@@ -44,11 +44,9 @@ $totalPages = ceil($totalProducts / $itemPerPage);
         <div class="search">
             <input type="search" placeholder="search...">
         </div> -->
-        <form action="menu.php" method="get" class="search-form">
-            <div class="search">
-                <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
-                <input type="search" placeholder="Search..." name="search" id="search-input">
-            </div>
+        <form class="example" action="menu.php" method="get">
+                <input type="search" placeholder="Search..." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
         </form>
         
         <div class="icon-user-cart">

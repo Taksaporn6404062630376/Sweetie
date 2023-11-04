@@ -54,9 +54,9 @@ html{
     color: #342214;
 }
 
-.header .search input{
-    /* width: 100%;
-    height: 100%; */
+/* .header .search input{
+    width: 100%;
+    height: 100%;
     font-size: 1.25rem;
     margin-left: 7%;
     border-radius: 0.5em;
@@ -66,7 +66,36 @@ html{
 
 #menu-bar, #icon-search{
     display: inline;
-}
+} */
+/* -----------------------------css search */
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 10rem;
+    border: 1rem solid grey;
+    float: left;
+    width: 60%;
+    background: #f1f1f1;
+  }
+  form.example button {
+    float: left;
+    width: 0;
+    padding-right: 20px;
+    /* background: #342214; */
+    color:  #342214;
+    border: whitesmoke;
+    border-right: none;
+    cursor: pointer;
+    
+  }
+  form.example button:hover {
+    background: #342214;
+    color: whitesmoke;
+  }
+  form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
 
 .icon-user-cart{
     display: flex;
