@@ -11,14 +11,21 @@
     <title>Admin</title>
     <link href="../css/admin.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script>
+    function confirmDelete(menuname) { 
+        var ans = confirm("ต้องการลบผู้ใช้นี้ " + menuname); 
+        if (ans==true) 
+            document.location = "delete.php?menuname="+ menuname; 
+    }
+    </script>
 
 </head>
 <body>
 <ul class="nav">
       <li><a href="all-orders.php">ดูรายการ Order ของลูกค้า</a></li>
       <li><a href='income-day.php'>ดูยอดรวมเงินที่รับจากการชำระเงินในแต่ละวัน</a></li>
-    <li><a class="active" href='menu-allsale.php'>ดูรายการอาหารที่ขายได้และยอดรวมขายได้ในแต่ละเมนู</a></li>
-    <li><a  href='menu.php'>จัดการเมนู</a></li>
+    <li><a  href='menu-allsale.php'>ดูรายการอาหารที่ขายได้และยอดรวมขายได้ในแต่ละเมนู</a></li>
+    <li><a class="active" href='menu.php'>จัดการเมนู</a></li>
     <li style="float:right"><a class="redactive" href="../logout.php">Log out</a></li>
     </ul>
     <h2>รายการสินค้าทั้งหมด</h2>
@@ -37,8 +44,8 @@
                 <td><?= $row['menuname'] ?></td>
                 <td><?= $row['Size_Pound_or_Piece'] ?></td>
                 <td><?= $row['price'] ?></td>
-                <td><a href="">แก้ไข</a></td>
-                <td><a href="#">ลบ</a></td>
+                <td><a href="editform.php?menuname=<?= $row['menuname'] ?>">แก้ไข</a></td>
+                <td><a href="#" onclick="confirmDelete('<?= $row['menuID'] ?>')">ลบ</a></td>
             </tr>
         <?php endwhile; ?>
     </table>
