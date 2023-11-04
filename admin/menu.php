@@ -1,11 +1,8 @@
 <?php
     include "../connect.php";
     session_start();
-    $menuCountStmt = $pdo->prepare("SELECT m.menuname, COALESCE(SUM(COALESCE(od.quantity, 0)), 0) 
-    AS total_quantity, COALESCE(SUM(COALESCE(od.sub_total, 0)), 0) 
-    AS total_sales FROM menu m LEFT JOIN orderdetails od 
-    ON m.menuID = od.menuID GROUP BY m.menuname;");
-    $menuCountStmt->execute();
+    $menu = $pdo->prepare("SELECT * from menu");
+    $menu->execute();
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,6 +10,8 @@
     <meta charset="UTF-8">
     <title>Admin</title>
     <link href="../css/admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
 </head>
 <body>
 <ul class="nav">
@@ -22,20 +21,24 @@
     <li><a  href='menu.php'>จัดการเมนู</a></li>
     <li style="float:right"><a class="redactive" href="../logout.php">Log out</a></li>
     </ul>
-    <h2>รายการอาหารที่ขายได้และยอดรวมขายได้ในแต่ละเมนู</h2>
+    <h2>รายการสินค้าทั้งหมด</h2>
+    <button><a href="addmenu.php">เพิ่มรายการใหม่</a></button>
 
     <table>
         <tr>
             <th>Menuname</th>
-            <th>Total Quantity</th>
-            <th>Total Sales</th>
+            <th>Piece/Pound</th>
+            <th>Price</th>
+            <th></th><!--delete-->
+            <th></th><!--update-->
         </tr>
-        <?php while ($menuCountRow = $menuCountStmt->fetch()) : ?>
+        <?php while ($row = $menu->fetch()) : ?>
             <tr>
-                <td><?= $menuCountRow['menuname'] ?></td>
-                <td><?= $menuCountRow['total_quantity'] ?></td>
-                <td><?= $menuCountRow['total_sales'] ?></td>
-
+                <td><?= $row['menuname'] ?></td>
+                <td><?= $row['Size_Pound_or_Piece'] ?></td>
+                <td><?= $row['price'] ?></td>
+                <td><a href="">แก้ไข</a></td>
+                <td><a href="#">ลบ</a></td>
             </tr>
         <?php endwhile; ?>
     </table>

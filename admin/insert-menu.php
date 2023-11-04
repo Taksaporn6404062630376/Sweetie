@@ -63,11 +63,11 @@
       <li><a href="all-orders.php">ดูรายการ Order ของลูกค้า</a></li>
       <li><a href='income-day.php'>ดูยอดรวมเงินที่รับจากการชำระเงินในแต่ละวัน</a></li>
       <li><a href='menu-allsale.php'>ดูรายการอาหารที่ขายได้และยอดรวมขายได้ในแต่ละเมนู</a></li>
-      <li><a class="active" href='addmenu.php'>เพิ่มรายการสินค้า</a></li>
+      <li><a class="active" href='menu.php'>จัดการเมนู</a></li>
     <li style="float:right"><a class="redactive" href="../logout.php">Log out</a></li>
     </ul>
     <h2><?=$value?></h2>
-    <a href="addmenu.php">next</a>
+    <a href="menu.php">next</a>
 </body>
 </html>
 ้
