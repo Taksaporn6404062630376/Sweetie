@@ -19,6 +19,7 @@
       <li><a href="all-orders.php">ดูรายการ Order ของลูกค้า</a></li>
       <li><a href='income-day.php'>ดูยอดรวมเงินที่รับจากการชำระเงินในแต่ละวัน</a></li>
     <li><a class="active" href='menu-allsale.php'>ดูรายการอาหารที่ขายได้และยอดรวมขายได้ในแต่ละเมนู</a></li>
+    <li style="float:right"><a class="redactive" href="../logout.php">Log out</a></li>
     </ul>
     <h2>รายการอาหารที่ขายได้และยอดรวมขายได้ในแต่ละเมนู</h2>
 

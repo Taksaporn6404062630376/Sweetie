@@ -16,7 +16,7 @@ try {
     $adminRow = $adminStmt->fetch();
 
     if (!empty($adminRow)) {
-        header("Location: admin-home.php");
+        header("Location: all-orders.php");
     } else {
         $stmt = $pdo->prepare("SELECT * FROM members WHERE username = ? AND password = ?");
         $stmt->bindParam(1, $_POST["username"]);
