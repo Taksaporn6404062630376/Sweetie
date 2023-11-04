@@ -7,6 +7,8 @@
 );
 
     session_destroy();
+    header("location: index.php");
+?>
 ?>
 
 <!DOCTYPE html>
@@ -30,7 +32,7 @@
    </section>
    <footer>
     <p>If you want to log in again, please click <br><a href="login.php">Log in</a></p>
-    <div class="btn"><a href="Home_page.php">Home page</a></div>
+    <div class="btn"><a href="index.php">Home page</a></div>
    </footer>
 </body>
 </html>

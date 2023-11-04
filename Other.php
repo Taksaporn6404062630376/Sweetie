@@ -80,7 +80,7 @@ $totalPages = ceil($totalProducts / $itemPerPage);
     </section>
 
 
-    </div> -->
+    </div>
     <section class="menu-recommand">
 
         <div class="top-menu">

@@ -1,5 +1,7 @@
 <?php include "connect.php" ?>
-<?php session_start(); ?>
+<?php session_start();
+
+?>
 
 <html>
 
@@ -28,7 +30,7 @@
             <a href="Cupcake.php">Cupcake</a>
             <a href="Other.php">Other</a>
         </nav>
-<!-- 
+        <!-- 
         <div class="icon">
             <i id="icon-search" class="fas fa-search" id="search"></i>
             <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
@@ -50,9 +52,18 @@
         </form>
 
         <div class="icon-user-cart">
-            <div class="user-icon"><a href="userhome.php"></a></div>
-            <div class="shop-bag"><a href="Cart.php"></a></div>
+            <div class="user-icon">
+                <?php if (!empty($_SESSION["username"])) { ?>
+                    <a href="userhome.php"></a>
+                <?php } else { ?>
+                    <a href="login.php"></a>
+                <?php } ?>
+            </div>
+            <div class="shop-bag">
+                <a href="Cart.php"></a>
+            </div>
         </div>
+
 
     </header>
 

@@ -5,6 +5,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Whisk & Roll Bakery</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, intitial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" />
+    <script>
+     function confirmDelete(username) {
+            var ans = window.confirm("ต้องการลบผู้ใช้ " + username);
+            if (ans) {
+                document.location = "deleteaccount.php?username=" + username;
+            }
+        }
+   </script>
+</head>
+
+<body>
+    <!-- !!!!!!! shop name not has been entered !!!!! -->
+    <header class="header">
+        <div class="logo">
+            <div class="logoBakery"></div>
+            <h1 class="logoName">Whisk & Roll Bakery</h1>
+        </div>
+
+        <nav class="navbar">
+            <a href="index.php">Home</a>
+            <a href="Cake.php">Cake</a>
+            <a href="Cupcake.php">Cupcake</a>
+            <a href="Other.php">Other</a>
+        </nav>
+        <!-- 
+        <div class="icon">
+            <i id="icon-search" class="fas fa-search" id="search"></i>
+            <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
+
+        <form action="menu.php" method="get" class="search-form">
+            <div class="search">
+                <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
+                <input type="search" placeholder="Search..." name="search" id="search-input">
+            </div>
+        </form> -->
+        <form action="menu.php" method="get" class="search-form">
+            <div class="search">
+                <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
+                <input type="search" placeholder="Search..." name="search" id="search-input">
+            </div>
+        </form>
+
+        <div class="icon-user-cart">
+            <div class="user-icon">
+                <?php if (!empty($_SESSION["username"])) { ?>
+                    <a href="userhome.php"></a>
+                <?php } else { ?>
+                    <a href="login.php"></a>
+                <?php } ?>
+            </div>
+            <div class="shop-bag">
+                <a href="Cart.php"></a>
+            </div>
+        </div>
+
+
+    </header>
+
+    <section class="home" id="home">
+        <div class="homeContent">
+            <h1>Sweetie<br> Pre - Ordering</h1>
+        </div>
+    </section>
+
+<head>
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE" />
    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -18,14 +94,7 @@
    
    <!-- custom css file link  -->
    <link rel="stylesheet" href="css/style.css" />
-   <script>
-     function confirmDelete(username) {
-            var ans = window.confirm("ต้องการลบผู้ใช้ " + username);
-            if (ans) {
-                document.location = "deleteaccount.php?username=" + username;
-            }
-        }
-   </script>
+  
 </head>
 <body>
    <section class="form-container">
@@ -71,7 +140,6 @@
    </section>
    <footer>
       <p><a href="logout.php">Log out</a></p>
-      <div class="btn"><a href="Home_page.php">Home page</a></div>
    </footer>
 </body>
 </html>

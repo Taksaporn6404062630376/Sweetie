@@ -26,15 +26,14 @@
 }
 
 body {
-    background-color: #f9f5e3;
-    font-family: Arial, sans-serif;
+    background-color: chocolate;
     margin: 1em;
     padding: 0;
 }
 
 h1 {
 	text-align: center;
-    color: #f9f5e3;
+    color: #342214;
     font-size: 2em;
     margin: 1rem;
 }
@@ -47,7 +46,7 @@ h3 {
 p {
     font-size: 1rem;
     margin-top: 0.9 rem;
-    color: #555;
+    color: #342214;
 }
 
 hr {
@@ -63,17 +62,21 @@ ul {
 li {
     font-size: 0.9rem; /* Adjust font size as needed */
     margin: 5px 0;
-    color: white;
+    color: #342214;
     text-align: left;
 }
+
+form {
+    margin-bottom: 0px;
+}
 .form-container {
-    background-color: chocolate;
+    background-color: #f9f5e3;
     margin: 20px;
     padding: 20px;
     border-radius: 10px;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
     border-radius: 10px;
-    margin: 20px auto;
+    margin: 0px auto;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     max-width: 360px;
@@ -92,7 +95,7 @@ label {
     display: flex;
     margin-bottom: 5px;
     font-weight: bold;
-    color: #fff;
+    color: #342214;
 }
 
 .box {
@@ -104,8 +107,8 @@ label {
 
 #errormsg {
     padding-top: 10px;
-    color: white;
-    text-decoration: underline red 2px;
+    color: red;
+    /* text-decoration: underline red 2px; */
 }
 .btn-container {
     text-align: right;
@@ -134,7 +137,7 @@ p > a {
 
 }
 a {
-    color: white;
+    color: #342214;
     text-decoration: none;
 }
 
@@ -152,8 +155,10 @@ a:hover {
 }
 
 footer {
-    font-size: 0.9rem;
-    margin-top: 20px;
+    position: fixed; bottom: 0px; width:100%;
+    text-align: left;
+    background-color: #f8f8f8;
+    padding: 20px 10px;   
  }
 
 #togglePassword, #toggleCPassword {
