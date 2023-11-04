@@ -16,9 +16,7 @@ try {
     $adminRow = $adminStmt->fetch();
 
     if (!empty($adminRow)) {
-        //admin
-        echo "ยินดีต้อนรับ (Admin)<br>";
-        echo "<a href='admin-home.php'>ดูรายการ Order ของลูกค้า</a>";
+        header("Location: admin-home.php");
     } else {
         $stmt = $pdo->prepare("SELECT * FROM members WHERE username = ? AND password = ?");
         $stmt->bindParam(1, $_POST["username"]);

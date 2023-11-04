@@ -1,0 +1,42 @@
+<?php
+    include "../connect.php";
+    session_start();
+    $orderCountStmt = $pdo->prepare("SELECT deliverystatus,orderid, username, COUNT(*) AS order_count FROM orders GROUP BY orderid");
+    $orderCountStmt->execute();
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>รายการ Order ของลูกค้า</title>
+    <link href="../css/admin.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+<ul class="nav">
+      <li><a class="active" href="all-orders.php">ดูรายการ Order ของลูกค้า</a></li>
+      <li><a href='income-day.php'>ดูยอดรวมเงินที่รับจากการชำระเงินในแต่ละวัน</a></li>
+    <li><a href='menu-allsale.php'>ดูรายการอาหารที่ขายได้และยอดรวมขายได้ในแต่ละเมนู</a></li>
+    </ul>
+    <h2>รายการ Order ของลูกค้าทั้งหมด</h2>
+
+    <table>
+        <tr>
+            <th>Orderid</th>
+            <th>Username</th>
+            <th>Delivery Status</th>
+            <th>View Orders Details</th>
+        </tr>
+        <?php while ($orderCountRow = $orderCountStmt->fetch()) : ?>
+            <tr>
+                <td><?= $orderCountRow['orderid'] ?></td>
+                <td><?= $orderCountRow['username'] ?></td>
+                <td><?= $orderCountRow['deliverystatus'] ?></td>
+                <td><a href='view-orders.php?username=<?= $orderCountRow['username'] ?>'>ดู <?= $orderCountRow['order_count'] ?> คำสั่งซื้อ</a></td>
+            </tr>
+        <?php endwhile; ?>
+    </table>
+
+</body>
+</html>
