@@ -8,31 +8,60 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
-        <link href="css/home.css" rel="stylesheet">
+        <link href="css/home2.css" rel="stylesheet">
         
     </head>
     <body>
         <!-- !!!!!!! shop name not has been entered !!!!! -->
         
-        <nav>
-            <div class="topnav" id="top-nav">
-                <a href="Home_page.php">Home</a>
-                <a href="Cake.php" >Cake</a>
+        <header class="header">
+            <div class="logo">
+                <div class="logoBakery"></div>
+                <h1 class="logoName">Whisk & Roll Bakery</h1>
+            </div>
+
+            <nav class="navbar">
+                <a href="index.php">Home</a>
+                <a href="Cake.php">Cake</a>
                 <a href="Cupcake.php">Cupcake</a>
                 <a href="Other.php">Other</a>
-                <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            </nav>
+            <!-- 
+            <div class="icon">
+                <i id="icon-search" class="fas fa-search" id="search"></i>
+                <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
                 </a>
-                
             </div>
-        <nav>
-           
-        <!-- <div class="icon-nav">
-            <input type="text" id="search" size="30%" placeholder="search menu">
-            <div class="button"></div>
-            <div class="user-icon"></div>
-            <div class="shop-bag"></div>
-        </div> -->
+
+            <form action="menu.php" method="get" class="search-form">
+                <div class="search">
+                    <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
+                    <input type="search" placeholder="Search..." name="search" id="search-input">
+                </div>
+            </form> -->
+            <form action="menu.php" method="get" class="search-form">
+                <div class="search">
+                    <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
+                    <input type="search" placeholder="Search..." name="search" id="search-input">
+                </div>
+            </form>
+
+            <div class="icon-user-cart">
+                <div class="user-icon">
+                    <?php if (!empty($_SESSION["username"])) { ?>
+                        <a href="userhome.php"></a>
+                    <?php } else { ?>
+                        <a href="login.php"></a>
+                    <?php } ?>
+                </div>
+                <div class="shop-bag">
+                    <a href="Cart.php"></a>
+                </div>
+            </div>
+
+
+        </header>
        
         <br><br>
         <hr><h1>DETAILS</h1> <hr>

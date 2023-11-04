@@ -8,8 +8,8 @@ $sum = $_SESSION['sum'];?>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
-    <link href="../css/home2.css" rel="stylesheet">
-    <link href="../css/payment.css" rel="stylesheet">
+    <link href="css/home2.css" rel="stylesheet">
+    <link href="css/payment.css" rel="stylesheet">
 
     <title>Whisk & Roll Bakery</title>
 </head>
@@ -21,10 +21,10 @@ $sum = $_SESSION['sum'];?>
             </div>
 
             <nav class="navbar">
-                <a href="../Home_page.php" class="active">Home</a>
-                <a href="../Cake.php">Cake</a>
-                <a href="../Cupcake.php">Cupcake</a>
-                <a href="../Other.php">Other</a>
+                <a href="index.php" class="active">Home</a>
+                <a href="Cake.php">Cake</a>
+                <a href="Cupcake.php">Cupcake</a>
+                <a href="Other.php">Other</a>
             </nav>
 
             <div class="icon">

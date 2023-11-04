@@ -75,17 +75,18 @@ $totalPages = ceil($totalProducts / $itemPerPage);
 
             <div class="imgTop">
                 <?php
-                $stmt = $pdo->prepare("SELECT DISTINCT menuname FROM `menu` WHERE menuname LIKE 'คัพเค้ก%';");
+                $stmt = $pdo->prepare("SELECT DISTINCT menuname,menunameen FROM `menu` WHERE menuname LIKE 'คัพเค้ก%';");
 
 
                 $stmt->execute();
                 while ($row = $stmt->fetch()) {
                     // echo "<div class='menu-item'>";
-                    echo "<div class='menu-image'><a href='#'><img src='img/menu-1/{$row['menuname']}.png' width='350'></a>";
+                    echo "<div class='menu-image'><img src='img/menu-1/{$row['menuname']}.png' width='350'>";
                     echo "<div class='menu-details'>";
                     echo "<div class='menu-name'>{$row['menuname']}</div>";
+                    echo "<div class='menu-name'>{$row['menunameen']}</div>";
                     echo "<div class='cart'>";
-                    echo "<div class='add-cart'><a href='#'>add cart</a></div>";
+                    echo "<div class='add-cart'><a href='selectsize.php?menuname=" . $row["menuname"] . "'>view more</a></div>";
                     echo "</div>";
                     echo "</div>"; // menu-details
                     echo "</div>"; // menu-item
