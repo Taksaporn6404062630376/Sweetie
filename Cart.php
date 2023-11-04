@@ -94,17 +94,12 @@ if ($_GET["action"]=="add") {
         </header>
        
         <br><br>
-<<<<<<< HEAD
         <section class="cartPage">
             <div class="order">
                 
                 <h1>YOUR CART</h1> 
             </div>
             <form>
-=======
-        <hr><h1>YOUR CART</h1> <hr><br><br>
-            <form action="payment.php" method="post">
->>>>>>> a2c2577a8d41a74d1173abfe38bb9b1c858678ef
                 <table border="1">
                     <tr>
                         <th>เมนู</th>
@@ -131,17 +126,12 @@ if ($_GET["action"]=="add") {
                 <?php } ?>
                 <tr><td colspan="4" align="right">รวม <?=$sum?> บาท</td></tr>
                 </table>
-<<<<<<< HEAD
             </form>
             <button onclick="redirectToPayment(<?=$sum?>)">ชำระเงิน</button>
         </section>
            
             
         
-=======
-                <input type="submit" value="ชำระเงิน" >
-                </form>
->>>>>>> a2c2577a8d41a74d1173abfe38bb9b1c858678ef
         <footer>
             <div class="footer-content">
                 
