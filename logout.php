@@ -6,10 +6,11 @@
         $params["secure"], $params["httponly"]
 );
 
+
     session_destroy();
     header("location: index.php");
 ?>
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">

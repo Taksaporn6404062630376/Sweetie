@@ -1,5 +1,5 @@
 <?php
-include "connect.php";
+include "../connect.php";
 session_start();
 
 $orderCountStmt = $pdo->prepare("SELECT username, COUNT(*) AS order_count FROM orders GROUP BY username");
@@ -26,13 +26,13 @@ echo "</ol>";
 $stockQuery = $pdo->prepare("SELECT * FROM menu");
 $stockQuery->execute();
 
-echo "<h2>สินค้าคงเหลือ</h2>";
+// echo "<h2>สินค้าคงเหลือ</h2>";
 
-while ($stockRow = $stockQuery->fetch()) {
-    $productid = $stockRow['menuID'];
-    $productName = $stockRow['menuname'];
-    // $stock = $stockRow['stock'];
-    // echo "ID{$stockRow['menuID']}: {$stockRow['pname']} {$stockRow['stock']} ชิ้น<br>";
-}
+// while ($stockRow = $stockQuery->fetch()) {
+//     // $productid = $stockRow['menuID'];
+//     // $productName = $stockRow['menuname'];
+//     // $stock = $stockRow['stock'];
+//     // echo "ID{$stockRow['menuID']}: {$stockRow['pname']} {$stockRow['stock']} ชิ้น<br>";
+// }
 
 ?>

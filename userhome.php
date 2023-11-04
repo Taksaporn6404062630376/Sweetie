@@ -13,16 +13,9 @@ session_start();
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
    <link rel="stylesheet" href="css/style.css" />
    <link rel="stylesheet" href="css/home2.css" />
-   <script>
-      function confirmDelete(username) {
-         var ans = window.confirm("ต้องการลบผู้ใช้ " + username);
-         if (ans) {
-            document.location = "deleteaccount.php?username=" + username;
-         }
-      }
-   </script>
 </head>
 
 <body style="margin: 0;">
@@ -85,7 +78,7 @@ session_start();
    <section class="form-container">
 
       <h1>username: <?= $_SESSION["username"] ?></h1>
-      <p style="display: inline;">Login by </p>
+      <p style="display: inline;">email: </p>
       <h3 style="display: inline;"><?= $_SESSION["useremail"] ?></h3>
       <?php
 
@@ -126,7 +119,30 @@ session_start();
       ?>
 
    </section>
-   <h3 style="float: right; padding: 3rem"><a href="logout.php" style="font-size: 2rem;">Log out</a></h3>
+   <h3 style="float: right; padding: 3rem">
+    <a href="#" style="font-size: 2rem;" onclick="confirmLogout()">Log out</a>
+</h3>
+<script>
+    function confirmLogout() {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You will be logged out.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, log out'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Redirect to the logout script or page
+                window.location.href = 'logout.php'; // Change 'logout.php' to your actual logout script or page
+            }
+        });
+    }
+</script>
+
+
+   
    <footer ">
       <div class="footer-content">
          <h3>Our Store Locations</h3>
