@@ -1,3 +1,8 @@
-# Sweetie
-Mini project Web development
-![](https://komarev.com/ghpvc/?username=Taksaporn6101062630376)
+# Sweetie Pre-Ordering 
+## Mini project Web development
+---
+### รายชื่อสมาชิก ตอนเรียนที่ 1
+1. นางสาวดีน่า รื่นสุข 6404062630341
+2. นางสาวตาฟา นิยมเดชา 6404062630368
+3. นางสาวทักษพร ญาณสังวร 6404062630376
+4. นางสาวนภัสสร แผ้วพันธ์ชู 6404062630376
