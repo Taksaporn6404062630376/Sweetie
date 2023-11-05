@@ -69,6 +69,7 @@ li {
 form {
     margin-bottom: 0px;
 }
+
 .form-container {
     background-color: #f9f5e3;
     margin: 20px;
@@ -91,6 +92,7 @@ form {
     margin-bottom: 20px;
 	width: 70%;
 }
+
 label {
     display: flex;
     margin-bottom: 5px;
@@ -110,9 +112,10 @@ label {
     color: red;
     /* text-decoration: underline red 2px; */
 }
+
 .btn-container {
     text-align: right;
-  }
+}
   
 .btn {
 	display: inline;
@@ -133,9 +136,9 @@ label {
 
 p > a {
 	margin-top: 10px;
-     color: #000;
-
+    color: #000;
 }
+
 a {
     color: #342214;
     text-decoration: none;
@@ -159,7 +162,7 @@ footer {
     text-align: left;
     background-color: #f8f8f8;
     padding: 20px 10px;   
- }
+}
 
 #togglePassword, #toggleCPassword {
     background-color: saddlebrown;
@@ -183,6 +186,7 @@ footer {
         padding: 30px;
         max-width: 500px;
     }
+
     .form-group {
         margin: 20px;
         position: relative; 
@@ -192,10 +196,12 @@ footer {
         margin: 20px;
         width: 70%;
     }
+
 	form p {
 		text-align: right;
 		margin: 10px;
 	}
+
     input {
         max-width: 500px;
     }
@@ -204,7 +210,6 @@ footer {
 /* labtop */
 /* Media query for screens with 821px */
 @media screen and (min-width: 821px) {
-
 	.btn {
 		display: inline;
 		background-color: saddlebrown;
@@ -217,10 +222,12 @@ footer {
         align-items: center;
         align-self: center;
 	}
+
 	form p {
 		text-align: left;
 		margin-top: 10px;
 	}
+    
     input {
         max-width: 500px;
     }

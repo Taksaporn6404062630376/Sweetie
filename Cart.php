@@ -2,39 +2,43 @@
 <?php
 
 session_start();
+if (isset($_GET["action"])) {
+    $action = $_GET["action"];
 
-if ($_GET["action"]=="add") {
+    if ($action == "add") {
+        $menuID = $_GET['menuID'];
 
-	$menuID = $_GET['menuID'];
+        $cart_item = array(
+            'menuID' => $menuID,
+            'menuname' => isset($_GET['menuname']) ? $_GET['menuname'] : "",
+            'Size_Pound_or_Piece' => isset($_GET['Size_Pound_or_Piece']) ? $_GET['Size_Pound_or_Piece'] : "",
+            'price' => $_GET['price'],
+            'qty' => $_POST['qty']
+        );
 
-	$cart_item = array(
- 		'menuID' => $menuID,
-		'menuname' => isset($_GET['menuname']) ? $_GET['menuname'] : "",
-        'Size_Pound_or_Piece' => isset($_GET['Size_Pound_or_Piece']) ? $_GET['Size_Pound_or_Piece'] : "",
-		'price' => $_GET['price'],
-		'qty' => $_POST['qty']
-	);
-
-	if(empty($_SESSION['cart'])){
-    	$_SESSION['cart'] = array();
+        if(empty($_SESSION['cart'])){
+            $_SESSION['cart'] = array();
+        }
+        if (array_key_exists($menuID, $_SESSION['cart'])) {
+            $_SESSION['cart'][$menuID]['qty'] += $cart_item['qty'];
+        } else {
+            $_SESSION['cart'][$menuID] = $cart_item;
+        }
+    } elseif ($action == "update") {
+        if (isset($_GET["menuID"]) && isset($_GET["qty"])) {
+            $menuID = $_GET["menuID"];
+            $qty = $_GET["qty"];
+            $_SESSION['cart'][$menuID]['qty'] = $qty;
+        }
+    } elseif ($action == "delete") {
+        if (isset($_GET["menuID"])) {
+            $menuID = $_GET['menuID'];
+            unset($_SESSION['cart'][$menuID]);
+        }
     }
-	if (array_key_exists($menuID, $_SESSION['cart'])) {
-        $_SESSION['cart'][$menuID]['qty'] += $cart_item['qty'];
-    } else {
-        $_SESSION['cart'][$menuID] = $cart_item;
-    }
-
-} else if ($_GET["action"]=="update") {
-    $menuID = $_GET["menuID"];
-    $qty = $_GET["qty"];
-    $_SESSION['cart'][$menuID]['qty'] = $qty;
-
-} else if ($_GET["action"]=="delete") {
-    $menuID = $_GET['menuID'];
-    unset($_SESSION['cart'][$menuID]);
 }
 ?>
-<html>
+<html lang="en">
     <head>
         <title>Whisk & Roll Bakery</title>
         <meta charset="utf-8">
@@ -95,7 +99,7 @@ if ($_GET["action"]=="add") {
         <br><br>
         <section class="cartPage">
             <div class="order">
-                <h1>YOUR CART</h1> 
+                <h1>YOUR CART <hr></h1> 
             </div>
             <form>
                 <table border="1">

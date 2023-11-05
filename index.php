@@ -3,7 +3,7 @@
 
 ?>
 
-<html>
+<html lang="en">
 
 <head>
     <title>Whisk & Roll Bakery</title>
@@ -17,7 +17,6 @@
 </head>
 
 <body>
-    <!-- !!!!!!! shop name not has been entered !!!!! -->
     <header class="header">
         <div class="logo">
             <div class="logoBakery"></div>

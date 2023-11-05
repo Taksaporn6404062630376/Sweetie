@@ -27,7 +27,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
 }
 
 ?>
-<html>
+<html lang="en">
 
 <head>
     <title>Whisk & Roll Bakery</title>
@@ -78,7 +78,9 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
                     <a href="login.php"></a>
                 <?php } ?>
             </div>
-            <div class="shop-bag"><a href="#"></a></div>
+            <div class="shop-bag">
+                <a href="Cart.php"></a>
+            </div>
         </div>
 
     </header>

@@ -1,5 +1,5 @@
 <?php include "connect.php";?>
-<html>
+<html lang="en">
     <head>
     <title>Whisk & Roll Bakery</title>
         <meta charset="utf-8">
