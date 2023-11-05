@@ -19,7 +19,8 @@
         </div>
         <div class="cakecontent-right">
             <div class="cakeDet">
-                <h2><?php echo $product_name; ?> <?php echo $product_nameen; ?></h2><br>
+                <h2><?php echo $product_name; ?> </h2>
+                <h2><?php echo $product_nameen; ?></h2><br>
                 <p><?php echo $detail; ?></p>
                 <p>ราคา : <b><?php echo $price; ?></b> บาท </p><br><br>
                 <!-- <tocart> -->
