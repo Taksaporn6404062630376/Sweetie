@@ -9,11 +9,10 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
         <link href="css/home2.css" rel="stylesheet">
-        
+        <link href="css/details.css" rel="stylesheet">
     </head>
     <body>
-        <!-- !!!!!!! shop name not has been entered !!!!! -->
-        
+
         <header class="header">
             <div class="logo">
                 <div class="logoBakery"></div>
@@ -63,24 +62,25 @@
 
         </header>
        
-        <br><br>
-        <hr><h1>DETAILS</h1> <hr>
-        <div><br><br>
+        <section class="detail">
+            <div class="headDe">
+                <h1>DETAILS<hr></h1>
+            </div>
         <?php
-        $stmt = $pdo->prepare("SELECT * FROM menu WHERE menuID = ?;");
-        $stmt->bindParam(1, $_GET["menuID"]);
-        $stmt->execute();
+            $stmt = $pdo->prepare("SELECT * FROM menu WHERE menuID = ?;");
+            $stmt->bindParam(1, $_GET["menuID"]);
+            $stmt->execute();
 
-        while ($row = $stmt->fetch()) {
-            $product_name = $row['menuname'];
-            $detail = $row['detail'];
-            $price = $row['price'];
-            $menu_image = "img/menu/" . $product_name . ".jpg";
+            while ($row = $stmt->fetch()) {
+                $product_name = $row['menuname'];
+                $product_nameen = $row['menunameen'];
+                $detail = $row['detail'];
+                $price = $row['price'];
+                $menu_image = "img/menu-1/" . $product_name . ".png";
 
-            include("detail_template.php");
-        }
+                include("detail_template.php");
+            }
         ?>
-        </div>
         <br><br><br>
         <footer>
             <div class="footer-content">

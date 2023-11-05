@@ -12,7 +12,6 @@
         <link href="css/select.css" rel="stylesheet">
     </head>
     <body>
-        <!-- !!!!!!! shop name not has been entered !!!!! -->
         
         <header class="header">
             <div class="logo">
@@ -31,7 +30,7 @@
                 <i id ="icon-search"class="fas fa-search" id="search"></i>
                 <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
-                </a>    
+                </a>
             </div>
 
             <div class="search">
@@ -45,9 +44,6 @@
             
         </header>
 
-        
-    
-       
        
        <section class="selectSize">
             <div class="headSel">

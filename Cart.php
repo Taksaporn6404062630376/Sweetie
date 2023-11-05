@@ -95,7 +95,6 @@ if ($_GET["action"]=="add") {
         <br><br>
         <section class="cartPage">
             <div class="order">
-                
                 <h1>YOUR CART</h1> 
             </div>
             <form>
@@ -114,7 +113,17 @@ if ($_GET["action"]=="add") {
                 ?>
                     <tr>
                         <td><?=$item["menuname"]?></td>
-                        <td><?=$item["Size_Pound_or_Piece"]?></td>
+                        <td>
+                            <?php
+                                if (strpos($item['menuname'], 'เค้ก') === 0) {
+                                    echo $item["Size_Pound_or_Piece"] . " ปอนด์";
+                                } elseif (strpos($item['menuname'], 'คัพเค้ก') === 0) {
+                                    echo $item["Size_Pound_or_Piece"] . " ชิ้น";
+                                } else {
+                                    echo $item["Size_Pound_or_Piece"] . " กล่อง";
+                                }
+                            ?>
+                        </td>
                         <td><?=$item["price"]?></td>
                         <td>
                             <input type="number" id="<?=$item["menuID"]?>" value="<?=$item["qty"]?>" min="1" max="9" size="10">
