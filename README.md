@@ -1,6 +1,7 @@
-# Sweetie Pre-Ordering 
 Mini project Web development
+### Sweetie Pre-Ordering 
 
+# Whisk & Roll Bakery
 **รายชื่อสมาชิก ตอนเรียนที่ 1**
 1. นางสาวดีน่า รื่นสุข 6404062630341
 2. นางสาวตาฟา นิยมเดชา 6404062630368
