@@ -30,22 +30,18 @@
     if (!$image_type) {
         die('Uploaded file is not an image.');
     }
-    
-    // Move the temp image file to the images/ directory
-    move_uploaded_file(
-        // Temp image location
-        $image_file["tmp_name"],
-        
-        // New image location
-        __DIR__ . "/../img/menu/" . $image_file["name"]
-    );
 
-    //รูปขึ้นหน้า detail แล้วแต่ไม่ขึ้นหน้า menu
+    // Convert uploaded image to PNG format
+    $png_file_path = __DIR__ . "/../img/menu-1/" . pathinfo($image_file["name"], PATHINFO_FILENAME) . ".png";
+    $success = imagepng(imagecreatefromstring(file_get_contents($image_file["tmp_name"])), $png_file_path);
+
+    if (!$success) {
+        die('Error converting image to PNG format.');
+    }
+
+    // Move the temp PNG image file to the images/ directory
     move_uploaded_file(
-        // Temp image location
-        $image_file["tmp_name"],
-        
-        // New image location
+        $png_file_path,
         __DIR__ . "/../img/menu-1/" . $image_file["name"]
     );
 

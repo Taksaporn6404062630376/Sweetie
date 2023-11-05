@@ -1,8 +1,8 @@
 <?php
     include "../connect.php";
     session_start();
-    $stmt = $pdo->prepare("SELECT * FROM menu WHERE menuname = ?");
-    $stmt->bindParam(1, $_GET["menuname"]);
+    $stmt = $pdo->prepare("SELECT * FROM menu WHERE menuID = ?");
+    $stmt->bindParam(1, $_GET["menuID"]);
     $stmt->execute(); 
     $row = $stmt->fetch(); 
 ?>

@@ -12,10 +12,10 @@
     <link href="../css/admin.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>
-    function confirmDelete(menuname) { 
-        var ans = confirm("ต้องการลบผู้ใช้นี้ " + menuname); 
+    function confirmDelete(menuID) { 
+        var ans = confirm("ต้องการลบเมนูนี้ "); 
         if (ans==true) 
-            document.location = "delete.php?menuname="+ menuname; 
+            document.location = "delete.php?menuID="+ menuID; 
     }
     </script>
 
@@ -44,7 +44,7 @@
                 <td><?= $row['menuname'] ?></td>
                 <td><?= $row['Size_Pound_or_Piece'] ?></td>
                 <td><?= $row['price'] ?></td>
-                <td><a href="editform.php?menuname=<?= $row['menuname'] ?>">แก้ไข</a></td>
+                <td><a href="editform.php?menuID=<?= $row['menuID'] ?>">แก้ไข</a></td>
                 <td><a href="#" onclick="confirmDelete('<?= $row['menuID'] ?>')">ลบ</a></td>
             </tr>
         <?php endwhile; ?>
