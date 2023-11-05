@@ -50,9 +50,19 @@ if (isset($_GET["action"])) {
         <link href="css/home2.css" rel="stylesheet">
         <link href="css/cart.css" rel="stylesheet">
         <script>
-            function update(menuID) {
+            function updateQuantity(menuID) {
                 var qty = document.getElementById(menuID).value;
-                document.location = "Cart.php?action=update&menuID=" + menuID + "&qty=" + qty; 
+                
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "updateQty.php?menuID=" + menuID + "&qty=" + qty, true);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        document.getElementById("total-price").innerText = "รวม " + xhr.responseText + " บาท";
+                    }
+                };
+
+                xhr.send();
             }
 
             function redirectToPayment(sum){
@@ -60,10 +70,9 @@ if (isset($_GET["action"])) {
                 window.location.assign("paymentQR.php");
             }
         </script>
+
     </head>
     <body>
-        <!-- !!!!!!! shop name not has been entered !!!!! -->
-        
         <header class="header">
             <div class="logo">
                 <div class="logoBakery"></div>
@@ -130,13 +139,13 @@ if (isset($_GET["action"])) {
                         </td>
                         <td><?=$item["price"]?></td>
                         <td>
-                            <input type="number" id="<?=$item["menuID"]?>" value="<?=$item["qty"]?>" min="1" max="9" size="10">
+                            <input type="number" id="<?=$item["menuID"]?>" value="<?=$item["qty"]?>" min="1" max="9" size="10" onchange="updateQuantity(<?=$item["menuID"]?>)">
                             <!--<a href="#" onclick="update(<?=$item["menuID"]?>)">แก้ไข</a>-->
                             <a href="?action=delete&menuID=<?=$item["menuID"]?>"><i class="fa-solid fa-trash" style="color: #000000;"></i></a>
                         </td>
                     </tr>
                 <?php } ?>
-                <tr><td colspan="4" align="right">รวม <?=$sum?> บาท</td></tr>
+                <tr><td colspan="4" align="right" id="total-price">รวม <?=$sum?> บาท</td></tr>
                 </table>
             </form>
             <button onclick="redirectToPayment(<?=$sum?>)">next</button>
