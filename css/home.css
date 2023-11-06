@@ -73,7 +73,7 @@ body {
 .user-icon a,.shop-bag a{
     width: 50%;
     height: auto;
-    padding: 18px;
+    /* padding: 18px; */
 }
 
 .user-icon a::before{
