@@ -212,6 +212,7 @@ section{
     background-color: #342214;
     border-radius: 1em;
     padding: 0.5em 2%;
+    margin: auto;
 }
 .add-cart a{
     color: white;
