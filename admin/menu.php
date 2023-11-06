@@ -18,7 +18,7 @@
             document.location = "delete.php?menuID="+ menuID; 
     }
     </script>
-
+    
 </head>
 <body>
 <ul class="nav">
@@ -28,8 +28,8 @@
     <li><a class="active" href='menu.php'>จัดการเมนู</a></li>
     <li style="float:right"><a class="redactive" href="../logout.php">Log out</a></li>
     </ul>
-    <h2>รายการสินค้าทั้งหมด</h2>
-    <button><a href="addmenu.php">เพิ่มรายการใหม่</a></button>
+    <h2>รายการสินค้าทั้งหมด <button><a href="addmenu.php">เพิ่มรายการใหม่</a></button></h2>
+    
 
     <table>
         <tr>
@@ -44,8 +44,8 @@
                 <td><?= $row['menuname'] ?></td>
                 <td><?= $row['Size_Pound_or_Piece'] ?></td>
                 <td><?= $row['price'] ?></td>
-                <td><a href="editform.php?menuID=<?= $row['menuID'] ?>">แก้ไข</a></td>
-                <td><a href="#" onclick="confirmDelete('<?= $row['menuID'] ?>')">ลบ</a></td>
+                <td ><a href="editform.php?menuID=<?= $row['menuID'] ?>">แก้ไข</a></td>
+                <td ><a href="#" onclick="confirmDelete('<?= $row['menuID'] ?>')"> ลบ</a></td>
             </tr>
         <?php endwhile; ?>
     </table>
