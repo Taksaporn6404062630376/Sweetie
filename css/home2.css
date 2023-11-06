@@ -261,6 +261,8 @@ footer{
 .icon{
     display: none;
 }
+
+/* mobile */
 @media(max-width: 430px){
     .icon{
         display: flex;
@@ -337,5 +339,8 @@ footer{
     } */
 
 
-}   
+}
+
+
+/* ipad  */
    

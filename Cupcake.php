@@ -21,29 +21,21 @@ $totalPages = ceil($totalProducts / $itemPerPage);
 
 <body>
     <!-- !!!!!!! shop name not has been entered !!!!! -->
-    <header class="header">
+    <header class="header" id="head">
         <div class="logo">
             <div class="logoBakery"></div>
             <h1 class="logoName">Whisk & Roll Bakery</h1>
         </div>
 
-        <nav class="navbar">
-            <a href="index.php">Home</a>
-            <a href="Cake.php">Cake</a>
-            <a href="Cupcake.php">Cupcake</a>
-            <a href="Other.php">Other</a>
-        </nav>
-
-        <!-- <div class="icon">
-            <i id="icon-search" class="fas fa-search" id="search"></i>
-            <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
+        <div id="mytopnav" class="nav">
+            <nav>
+                <a href="index.php">Home</a>
+                <a href="Cake.php">Cake</a>
+                <a href="Cupcake.php">Cupcake</a>
+                <a href="Other.php">Other</a>
+            </nav>
         </div>
 
-        <div class="search">
-            <input type="search" placeholder="search...">
-        </div> -->
         <form class="example" action="menu.php" method="get">
                 <input type="search" placeholder="Search..." name="search">
                 <button type="submit"><i class="fa fa-search"></i></button>
@@ -60,6 +52,11 @@ $totalPages = ceil($totalProducts / $itemPerPage);
             <div class="shop-bag">
                 <a href="Cart.php"></a>
             </div>
+        </div>
+        <div class="icon">
+            <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
         </div>
 
     </header>
@@ -134,11 +131,14 @@ $totalPages = ceil($totalProducts / $itemPerPage);
 
     <script>
         function myFunction() {
-            var x = document.getElementById("top-nav");
-            if (x.className === "topnav") {
+            var x = document.getElementById("mytopnav");
+            var y = document.getElementById("head");
+            if (x.className === "nav" && y.className === "header") {
                 x.className += " responsive";
+                y.className += " responsive";
             } else {
-                x.className = "topnav";
+                x.className = "nav";
+                y.className = "header";
             }
         }
   

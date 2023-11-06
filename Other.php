@@ -17,47 +17,24 @@ $totalPages = ceil($totalProducts / $itemPerPage);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
     <link href="css/home2.css" rel="stylesheet">
-    <!-- <style>
-            .menu-container {
-                max-width: 1200px;
-                height: auto; 
-                margin: 0 auto; 
-                padding: 20px; 
-                display: flex;
-                flex-wrap: wrap;
-                
-                
-            }
-
-            .menu-item {
-                width: calc(33.33% - 5px); 
-                margin-bottom: -7%;
-                position: relative;
-            }
-
-            .menu-image img {
-                width: 100%;  
-            }
-            .menu-image {
-                width: 100%;
-                margin-bottom:0;
-            }
-        </style> -->
+   
 </head>
 
 <body>
-    <header class="header">
+    <header class="header" id="head">
         <div class="logo">
             <div class="logoBakery"></div>
             <h1 class="logoName">Whisk & Roll Bakery</h1>
         </div>
 
-        <nav class="navbar">
-            <a href="index.php">Home</a>
-            <a href="Cake.php">Cake</a>
-            <a href="Cupcake.php">Cupcake</a>
-            <a href="Other.php">Other</a>
-        </nav>
+        <div id="mytopnav" class="nav">
+            <nav>
+                <a href="index.php">Home</a>
+                <a href="Cake.php">Cake</a>
+                <a href="Cupcake.php">Cupcake</a>
+                <a href="Other.php">Other</a>
+            </nav>
+        </div>
         
         <form class="example" action="menu.php" method="get">
                 <input type="search" placeholder="Search..." name="search">
@@ -75,6 +52,11 @@ $totalPages = ceil($totalProducts / $itemPerPage);
             <div class="shop-bag">
                 <a href="Cart.php"></a>
             </div>
+        </div>
+        <div class="icon">
+            <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
         </div>
 
     </header>
@@ -150,11 +132,14 @@ $totalPages = ceil($totalProducts / $itemPerPage);
 
     <script>
         function myFunction() {
-            var x = document.getElementById("top-nav");
-            if (x.className === "topnav") {
+            var x = document.getElementById("mytopnav");
+            var y = document.getElementById("head");
+            if (x.className === "nav" && y.className === "header") {
                 x.className += " responsive";
+                y.className += " responsive";
             } else {
-                x.className = "topnav";
+                x.className = "nav";
+                y.className = "header";
             }
         }
     </script>
