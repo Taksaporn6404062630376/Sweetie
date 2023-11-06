@@ -334,18 +334,4 @@ footer{
     } */
 
 
-}   
-   
-p > a {
-	margin-top: 10px;
-    color: #000;
-}
-
-a {
-    color: #342214;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
 }
