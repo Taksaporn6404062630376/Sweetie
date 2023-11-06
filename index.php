@@ -18,36 +18,43 @@
 
 <body>
     <!-- !!!!!!! shop name not has been entered !!!!! -->
-    <header class="header">
+    <header class="header" id="head">
         <div class="logo">
             <div class="logoBakery"></div>
             <h1 class="logoName">Whisk & Roll Bakery</h1>
         </div>
 
-        <nav class="navbar">
+        <div id="mytopnav" class="nav">
+            <nav>
+                <a href="index.php">Home</a>
+                <a href="Cake.php">Cake</a>
+                <a href="Cupcake.php">Cupcake</a>
+                <a href="Other.php">Other</a>
+            </nav>
+            <!-- <div class="icon">
+                <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
+                    <i class="fa fa-bars"></i>
+                </a>
+            </div> -->
+        </div>
+        <!-- <nav class="navbar" id="mytopnav">
             <a href="index.php">Home</a>
             <a href="Cake.php">Cake</a>
             <a href="Cupcake.php">Cupcake</a>
             <a href="Other.php">Other</a>
-        </nav>
-        <!-- 
-        <div class="icon">
-            <i id="icon-search" class="fas fa-search" id="search"></i>
-            <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
-        </div>
-
-        <form action="menu.php" method="get" class="search-form">
-            <div class="search">
-                <button class="search-button" type="submit"><i class="fas fa-search"></i></button>
-                <input type="search" placeholder="Search..." name="search" id="search-input">
-            </div>
-        </form> -->
+        </nav> -->
+        
+        
         <form class="example" action="menu.php" method="get">
                 <input type="search" placeholder="Search..." name="search">
                 <button type="submit"><i class="fa fa-search"></i></button>
         </form>
+
+        <div class="icon">
+            <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
 
 
         <div class="icon-user-cart">
@@ -163,11 +170,14 @@
         }
 
         function myFunction() {
-            var x = document.getElementById("top-nav");
-            if (x.className === "topnav") {
+            var x = document.getElementById("mytopnav");
+            var y = document.getElementById("head");
+            if (x.className === "nav" && y.className === "header") {
                 x.className += " responsive";
+                y.className += " responsive";
             } else {
-                x.className = "topnav";
+                x.className = "nav";
+                y.className = "header";
             }
         }
     </script>
