@@ -11,7 +11,6 @@
     <title>Admin</title>
     <link href="../css/adminn.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
     <script>
     function confirmDelete(menuID) { 
         var ans = confirm("ต้องการลบเมนูนี้ "); 
@@ -28,7 +27,7 @@
       <li><a href='income-day.php'>ดูยอดรวมเงินที่รับจากการชำระเงินในแต่ละวัน</a></li>
     <li><a  href='menu-allsale.php'>ดูรายการอาหารที่ขายได้และยอดรวมขายได้ในแต่ละเมนู</a></li>
     <li><a class="active" href='menu.php'>จัดการเมนู</a></li>
-    <li style="float:right"><a class="redactive" href="../logout.php">Log out</a></li>
+    <li class="logout"><a class="redactive" href="../logout.php">Log out</a></li>
     </ul>
     <h2>รายการสินค้าทั้งหมด <button><a href="addmenu.php">เพิ่มรายการใหม่</a></button></h2>
     

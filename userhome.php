@@ -62,7 +62,7 @@ session_start();
     </header>
 
    <div class="homeContent2" style="justify-content:flex-start; height: 10%; padding-top:10rem;">
-      <h1> Hello! <?= $_SESSION["fullname"] ?></h1>
+      <h1> สวัสดี คุณ <?= $_SESSION["fullname"] ?></h1>
    </div>
 
 
@@ -113,29 +113,29 @@ session_start();
    </section>
    <h3 style="float: right; ">
     <a href="#" style="font-size: 2rem;" onclick="confirmLogout()">Log out</a>
-</h3>
-<script>
-    function confirmLogout() {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You will be logged out.",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, log out'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // Redirect to the logout script or page
-                window.location.href = 'logout.php'; // Change 'logout.php' to your actual logout script or page
-            }
-        });
-    }
-</script>
-
+   </h3>
+   <script>
+      function confirmLogout() {
+         Swal.fire({
+               title: 'Are you sure?',
+               text: "You will be logged out.",
+               icon: 'warning',
+               showCancelButton: true,
+               confirmButtonColor: '#3085d6',
+               cancelButtonColor: '#d33',
+               confirmButtonText: 'Yes, log out'
+         }).then((result) => {
+               if (result.isConfirmed) {
+                  // Redirect to the logout script or page
+                  window.location.href = 'logout.php'; // Change 'logout.php' to your actual logout script or page
+               }
+         });
+      }
+   </script>
+   </section>
 
    
-   <footer >
+   <footer>
       <div class="footer-content">
          <h3>Our Store Locations</h3>
          <ul>

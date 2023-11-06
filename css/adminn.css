@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" ');
 body {
     font-family: 'Prompt', sans-serif;
     margin: 30px; 
@@ -66,36 +66,8 @@ li a:hover {
 .redactive:hover{
     background-color: red;
 }
-
-/*phone*/
-@media screen and (max-width: 600px) {
-    body {
-        margin: 10px; 
-    }
-    .nav {
-        margin: 0;
-    }
-    ul {
-        text-align: center;
-    }
-    li {
-        float: none;
-        display: inline-block;
-    }  
-    li a {
-        display: block;
-        padding: 10px 0;
-    }
-    table {
-        width: 100%;
-        overflow-x: auto;
-    }
-}
-/*ipad*/
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-    body {
-        margin: 20px; 
-    }
+.logout{
+    float: right;
 }
 
 h2.alert {
@@ -110,9 +82,14 @@ a.backtopage {
     color: white; 
     padding: 10px 20px;
     border-radius: 5px;
-    display: inline-block;
-    margin: 10px auto; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
     text-align: center;
+    margin: 10px auto; 
+}
+a.backtopage:hover{
+    background-color:#333;
 }
 
 form {
@@ -142,4 +119,43 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #45a049;
+}
+
+
+/*phone*/
+@media screen and (max-width: 600px) {
+    body {
+        margin: 10px; 
+    }
+    .nav {
+        margin: -10;
+    }
+    ul {
+        text-align: center;
+    }
+    li {
+        float: none;
+        display: block;
+    }  
+    li a {
+        display: block;
+        padding: 10px 0;
+    }
+    table {
+        width: 100%;
+        overflow-x: auto;
+    }
+    .logout{
+        float: none;
+    }
+}
+/*ipad*/
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    body {
+        margin: 20px; 
+    }
+    .nav{
+        margin: -20px;
+    }
+ 
 }

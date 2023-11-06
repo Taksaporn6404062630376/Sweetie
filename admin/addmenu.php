@@ -8,8 +8,7 @@
     <meta charset="UTF-8">
     <title>Admin</title>
     <link href="../css/adminn.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
-</head>
+    </head>
 
 <body>
 <ul class="nav">
@@ -18,17 +17,21 @@
       <li><a href='income-day.php'>ดูยอดรวมเงินที่รับจากการชำระเงินในแต่ละวัน</a></li>
       <li><a href='menu-allsale.php'>ดูรายการอาหารที่ขายได้และยอดรวมขายได้ในแต่ละเมนู</a></li>
       <li><a class="active" href='menu.php'>จัดการเมนู</a></li>
-    <li style="float:right"><a class="redactive" href="../logout.php">Log out</a></li>
+    <li class="logout"><a class="redactive" href="../logout.php">Log out</a></li>
     </ul>
-    <h2>เพิ่มเมนูใหม่</h2>
+    <h2 align="center">เพิ่มเมนูใหม่</h2>
     
 <form action="insert-menu.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="menuID"><br>
-    ชื่อเมนู : <input class="iptext" type="text" name="menuname" required><br>
-    menuname : <input class="iptext" type="text" name="menunameen" required><br>
-    ขนาดสินค้า ( ชิ้น/ปอนด์ ): <input class="iptext" type="number" name="Size_Pound_or_Piece" required><br>
+    ชื่อเมนู : <input class="iptext" type="text" name="menuname"
+    pattern="^[ก-๏\s]+$" required><br>
+    menuname : <input class="iptext" type="text" name="menunameen" 
+    pattern="^[a-zA-Z\s]+$" placeholder="กรอกเป็นภาษาอังกฤษ" required><br>
+    ขนาดสินค้า ( ชิ้น/ปอนด์ ): <input class="iptext" type="number" name="Size_Pound_or_Piece"
+    min='1' required><br>
     รายละเอียด: <br><textarea class="iptext" name="detail" rows="5" cols="50" required></textarea><br>
-    ราคา: <input class="iptext" type="number" name="price" required><br>
+    ราคา: <input class="iptext" type="number" name="price"
+    min='1' required><br>
     รูปภาพ: <input type="file" name="image" id="image" required><br><br>
     <input type="submit" value="เพิ่มเมนู">
 </form>
