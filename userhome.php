@@ -111,7 +111,7 @@ session_start();
       ?>
 
    </section>
-   <h3 style="float: right; padding: 3rem">
+   <h3 style="float: right; ">
     <a href="#" style="font-size: 2rem;" onclick="confirmLogout()">Log out</a>
 </h3>
 <script>
@@ -135,7 +135,7 @@ session_start();
 
 
    
-   <footer ">
+   <footer >
       <div class="footer-content">
          <h3>Our Store Locations</h3>
          <ul>

@@ -238,3 +238,23 @@ footer {
         max-width: 500px;
     }
 }
+
+h3{
+    padding: 0;
+}
+
+/* ipad  */
+@media(min-width: 768px) and (max-width: 1024px){
+    .homeContent2 h1{
+        font-size: 3em;
+        margin-top: -0.4em;
+    }
+    .form-container{
+        margin-top: 3.4em;
+    }
+    h3 a{
+        padding: 3rem;
+        float: right;
+    }
+   
+}

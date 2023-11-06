@@ -15,7 +15,7 @@ $sum = $_SESSION['sum'];?>
     <title>Whisk & Roll Bakery</title>
 </head>
 <body>
-    <!-- <?php
+    <?php
 
         $date = new DateTime();
         $date ->setTimezone(new DateTimeZone('Asia/Bangkok'));
@@ -34,7 +34,7 @@ $sum = $_SESSION['sum'];?>
         $value = '' . $_POST["username"] . '';
         $orderID = $pdo->lastInsertId();   
 
-    ?> -->
+    ?>
     <header class="header" id="head">
         <div class="logo">
             <div class="logoBakery"></div>
