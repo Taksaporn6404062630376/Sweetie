@@ -42,10 +42,6 @@ $totalPages = ceil($totalProducts / $itemPerPage);
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
 
-<<<<<<< HEAD
-=======
-        
->>>>>>> d2393991a1830f386b7f93cfdfe9713038541460
         <div class="icon-user-cart">
             <div class="user-icon">
                 <?php if (!empty($_SESSION["username"])) { ?>
