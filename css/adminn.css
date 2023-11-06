@@ -1,11 +1,19 @@
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Prompt', sans-serif;
+    margin: 30px; 
 }
+.nav{
+    margin: -30px;;
+    margin-bottom: 15px;
+}
+
 table {
     border-collapse: collapse;
-    width: 80%;
+    width: 100%; 
     margin: 20px auto;
     text-align: center;
+    overflow-x: auto; 
 }
 
 th, td {
@@ -18,9 +26,11 @@ th {
     background-color: #f2f2f2;
     text-align: center;
 }
+
 a {
     text-decoration: none;
 }
+
 /* Style the navigation bar */
 ul {
     list-style-type: none;
@@ -28,34 +38,66 @@ ul {
     padding: 0;
     overflow: hidden;
     background-color: #333;
-    position: -webkit-sticky; /* Safari */
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
 }
   
 li {
-  float: left;
+    float: left;
 }
   
 li a { 
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
   
 li a:hover {
-  background-color: #111;
+    background-color: #111;
 }
   
 .active {
-  background-color: #4CAF50;
+    background-color: #4CAF50;
 }
+
 .redactive:hover{
-  background-color: red;
+    background-color: red;
 }
-/*admin.css not show so i make new one */
+
+/*phone*/
+@media screen and (max-width: 600px) {
+    body {
+        margin: 10px; 
+    }
+    .nav {
+        margin: 0;
+    }
+    ul {
+        text-align: center;
+    }
+    li {
+        float: none;
+        display: inline-block;
+    }  
+    li a {
+        display: block;
+        padding: 10px 0;
+    }
+    table {
+        width: 100%;
+        overflow-x: auto;
+    }
+}
+/*ipad*/
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    body {
+        margin: 20px; 
+    }
+}
+
 h2.alert {
     font-size: 60px;
     text-align: center;
@@ -72,6 +114,7 @@ a.backtopage {
     margin: 10px auto; 
     text-align: center;
 }
+
 form {
     max-width: 500px;
     margin: auto;
@@ -99,6 +142,4 @@ input[type="submit"] {
 
 input[type="submit"]:hover {
     background-color: #45a049;
-} 
-  
-  
+}

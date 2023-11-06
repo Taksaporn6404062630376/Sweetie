@@ -8,6 +8,7 @@
     <meta charset="UTF-8">
     <title>Admin</title>
     <link href="../css/adminn.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
 </head>
 
 <body>
