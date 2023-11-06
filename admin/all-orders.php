@@ -12,6 +12,13 @@
     <link href="../css/admin.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
+<script>
+    function confirmUpdate(orderid) { 
+    var ans = confirm("ยืนยันสถานะการส่ง "); 
+    if (ans == true) 
+        document.location = "updatestatus.php?orderID=" + orderid; 
+    }
+</script>
 <body>
 
 <ul class="nav">
@@ -28,6 +35,7 @@
             <th>Orderid</th>
             <th>Username</th>
             <th>Delivery Status</th>
+            <th>Update Delivery Status</th>
             <th>View Orders Details</th>
         </tr>
         <?php while ($orderCountRow = $orderCountStmt->fetch()) : ?>
@@ -35,6 +43,7 @@
                 <td><?= $orderCountRow['orderid'] ?></td>
                 <td><?= $orderCountRow['username'] ?></td>
                 <td><?= $orderCountRow['deliverystatus'] ?></td>
+                <td ><a href="#" onclick="confirmUpdate('<?= $orderCountRow['orderid'] ?>')">อัปเดต </a></td>
                 <td><a href='view-orders.php?username=<?= $orderCountRow['username'] ?>'>ดู <?= $orderCountRow['order_count'] ?> คำสั่งซื้อ</a></td>
             </tr>
         <?php endwhile; ?>
