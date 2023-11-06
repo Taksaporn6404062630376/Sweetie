@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
-    <link href="../css/admin.css" rel="stylesheet">
+    <link href="../css/adminn.css" rel="stylesheet">
 </head>
 <body>
 <ul class="nav">
