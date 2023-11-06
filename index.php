@@ -31,31 +31,13 @@
                 <a href="Cupcake.php">Cupcake</a>
                 <a href="Other.php">Other</a>
             </nav>
-            <!-- <div class="icon">
-                <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
-                    <i class="fa fa-bars"></i>
-                </a>
-            </div> -->
         </div>
-        <!-- <nav class="navbar" id="mytopnav">
-            <a href="index.php">Home</a>
-            <a href="Cake.php">Cake</a>
-            <a href="Cupcake.php">Cupcake</a>
-            <a href="Other.php">Other</a>
-        </nav> -->
         
         
         <form class="example" action="menu.php" method="get">
                 <input type="search" placeholder="Search..." name="search">
                 <button type="submit"><i class="fa fa-search"></i></button>
         </form>
-
-        <div class="icon">
-            <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
-        </div>
-
 
         <div class="icon-user-cart">
             <div class="user-icon">
@@ -70,6 +52,11 @@
             </div>
         </div>
 
+        <div class="icon">
+            <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
 
     </header>
 
