@@ -12,160 +12,15 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">  
         <link href="css/home.css" rel="stylesheet">
+        <link href="css/pay_delivery.css" rel="stylesheet">
     </head>
-    <style>
-        
-.card{
-    max-width: 1000px;
-    margin: 2vh;
-}
-
-.card-top{
-    padding: 0.7rem 5rem;
-}
-.card-top a{
-    float: left;
-    margin-top: 0.7rem;
-}
-#logo{
-    font-family: 'Dancing Script';
-    font-weight: bold;
-    font-size: 1.6rem;
-}
-.card-body{
-    padding: 0 5rem 5rem 5rem;
-    background-image: url("img/home/cake_head.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
     
-}
-@media(max-width:600px){
-    .card-body{
-        padding: 0 1rem 1rem 1rem;
-        background-image: url("img/home/cake_head.jpg");   
-        background-size: cover;
-        background-repeat: no-repeat;
-    }  
-    .card-top{
-        padding: 0.7rem 1rem;
-    }
-}
-
-.icons{
-    margin-left: auto;
-}
-form span{
-    color: rgb(179, 179, 179);
-}
-form{
-    padding: 2vh 0;
-}
-input{
-    border: 1px solid rgba(0, 0, 0, 0.137);
-    padding: 1vh;
-    margin-bottom: 4vh;
-    outline: none;
-    width: 100%;
-    background-color: rgb(247, 247, 247);
-}
-input:focus::-webkit-input-placeholder
-{
-      color:transparent;
-}
-.header{
-    font-size: 1.5rem;
-}
-.left{
-    background-color: #ffffff;
-    padding: 2vh;   
-}
-.left img{
-    width: 2rem;
-}
-.left .col-4{
-    padding-left: 0;
-}
-.right .item{
-    padding: 0.3rem 0;
-}
-.right{
-    background-color: #ffffff;
-    padding: 2vh;
-}
-
-.lower{
-    line-height: 2;
-}
-.btn{
-    background-color: saddlebrown;
-    color: white;
-    width: 100%;
-    font-size: 0.7rem;
-    margin: 4vh 0 1.5vh 0;
-    padding: 1.5vh;
-    border-radius: 10px;
-    text-decoration: none;   
-}
-.btn:focus{
-    box-shadow: none;
-    outline: none;
-    box-shadow: none;
-    color: white;
-    -webkit-box-shadow: none;
-    transition: none; 
-}
-.btn:hover{
-    color: white;
-    background-color: #563c15;
-}
-a{
-    color: black;
-}
-a:hover{
-    color: black;
-    text-decoration: none;
-}
-input[type=checkbox]{
-    width: unset;
-    margin-bottom: unset;
-}
-#cvv{
-    background-image: linear-gradient(to left, rgba(255, 255, 255, 0.575) , rgba(255, 255, 255, 0.541)), url("https://img.icons8.com/material-outlined/24/000000/help.png");
-    background-repeat: no-repeat;
-    background-position-x: 95%;
-    background-position-y: center;
-} 
-
-.cakecontent {
-            background-color: #f4f4f4;
-            margin: 20px 50px;
-            border-radius: 15px;
-            -webkit-box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
-            -moz-box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
-            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
-            display: inline-block;
-            width:300px;
-            height: 320px;;
-}
-
-.cakecontent-left {
-    flex: 1;
-    padding-top: 20px;
-}
-
-.cakecontent-right {
-    flex: 1;
-    padding-bottom: 5px;
-    text-align: center;
-}
-
-    </style>
     <body>
         <!-- !!!!!!! shop name not has been entered !!!!! -->
         
         <nav>
             <div class="topnav" id="top-nav">
-                <a href="Home_page.php"><i class="fa-solid fa-house"></i></a>
+                <a href="index.php"><i class="fa-solid fa-house"></i></a>
                 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
                 </a>
@@ -226,30 +81,29 @@ input[type=checkbox]{
                                 <span class="header">Payment</span>
                                 <div class="icons">
                                     <!-- !!!!!!! เพิ่ม qr !!!!! -->
-                                    <img src="https://img.icons8.com/color/48/000000/visa.png"/>
-                                    <img src="https://img.icons8.com/color/48/000000/mastercard-logo.png"/>
-                                    <img src="https://img.icons8.com/color/48/000000/maestro.png"/>
+                                    <img src="img/PromptPay.png" width='250'/>
+                                   
                                 </div>
                             </div>
                            
-                            <form action="insert_order.php" method="post" >
+                            <form action="paymentQR.php" method="post" >
                                 <input type="hidden" name="username" value="<?=$_SESSION["username"]?>">
                                 <input type="hidden" name="total_amount" value="<?=$sum?>">
                                 <span>ชื่อ-สกุล :</span>
                                 <input placeholder="Linda Williams">
                                 <span>เบอร์โทรศัพท์ :</span>
                                 <input placeholder="012 345 6789">
-                                <span>ที่อยู่ :</span><br>
-                                <textarea name="address" rows="5" cols="50"></textarea>
+                                <div class="area">
+                                    <span>ที่อยู่ :</span><br>
+                                    <textarea name="address" rows="5" cols="50"></textarea>
+                                </div>
+                                
                                 <div class="row">
                                     <div class="col-4"><span>derivery date :</span>
                                         <input type="date" name="deriverydate">
                                     </div>
                                 </div>
-                                <input type="checkbox" id="save_card" class="align-left">
-                                <label for="save_card">Save card details to wallet</label>  
-                                <input class="btn" type="submit"value="Place order" >
-                                <p class="text-muted text-center">Complimentary Shipping & Returns</p>
+                                <input class="btn" type="submit"value="pay for your order" >
                             </form>
                             
                         </div> 

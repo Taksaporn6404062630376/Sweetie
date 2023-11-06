@@ -1,0 +1,179 @@
+.card{
+    max-width: 1000px;
+    margin: 2vh;
+}
+
+.card-top{
+    padding: 0.7rem 5rem;
+}
+.card-top a{
+    float: left;
+    margin-top: 0.7rem;
+}
+#logo{
+    font-family: 'Dancing Script';
+    font-weight: bold;
+    font-size: 1.6rem;
+}
+.card-body{
+    padding: 0 5rem 5rem 5rem;
+    background-image: url("img/home/cake_head.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+}
+/* @media(max-width:600px){
+    .card-body{
+        padding: 0 1rem 1rem 1rem;
+        background-image: url("../img/home/cake_head.jpg");   
+        background-size: cover;
+        background-repeat: no-repeat;
+    }  
+    .card-top{
+        padding: 0.7rem 1rem;
+    }
+} */
+.icons{
+    margin-left: auto;
+}
+form span{
+    color: rgb(179, 179, 179);
+}
+form{
+    padding: 2vh 0;
+    display: inline-block;
+}
+input{
+    border: 1px solid rgba(0, 0, 0, 0.137);
+    padding: 1vh;
+    margin-bottom: 4vh;
+    outline: none;
+    width: 30%;
+    background-color: rgb(247, 247, 247);
+}
+input:focus::-webkit-input-placeholder
+{
+    color:transparent;
+}
+.header{
+    font-size: 1.5rem;
+}
+.left{
+    background-color: #ffffff;
+    padding: 2vh;   
+}
+.left img{
+    width: 2rem;
+}
+.left .col-4{
+    padding-left: 0;
+}
+.right .item{
+    padding: 0.3rem 0;
+}
+.right{
+    background-color: #ffffff;
+    padding: 2vh;
+}
+
+.lower{
+    line-height: 2;
+}
+.btn{
+    background-color: saddlebrown;
+    color: white;
+    width: 35%;
+    font-size: 1.1rem;
+    margin: 4vh 0 1.5vh 0;
+    padding: 1.5vh;
+    border-radius: 10px;
+    text-decoration: none;   
+}
+.btn:focus{
+    box-shadow: none;
+    outline: none;
+    box-shadow: none;
+    color: white;
+    -webkit-box-shadow: none;
+    transition: none; 
+}
+.btn:hover{
+    color: white;
+    background-color: #563c15;
+}
+a{
+    color: black;
+}
+a:hover{
+    color: black;
+    text-decoration: none;
+}
+input[type=checkbox]{
+    width: unset;
+    margin-bottom: unset;
+}
+#cvv{
+    background-image: linear-gradient(to left, rgba(255, 255, 255, 0.575) , rgba(255, 255, 255, 0.541)), url("https://img.icons8.com/material-outlined/24/000000/help.png");
+    background-repeat: no-repeat;
+    background-position-x: 95%;
+    background-position-y: center;
+} 
+
+.cakecontent {
+            background-color: #f4f4f4;
+            margin: 20px 50px;
+            border-radius: 15px;
+            -webkit-box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+            -moz-box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+            box-shadow: 0 12px 34px rgba(0, 0, 0, 0.12);
+            display: inline-block;
+            width:300px;
+            height: 320px;
+}
+
+.cakecontent-left {
+    flex: 1;
+    padding-top: 20px;
+}
+
+.cakecontent-right {
+    flex: 1;
+    padding-bottom: 5px;
+    text-align: center;
+}
+.row .col-4{
+    margin-top: 2em;
+}
+.left img{
+    width: 230;
+} 
+@media(max-width: 430px){
+    .card-body{
+        padding: 0 1rem 1rem 1rem;
+        background-image: url("../img/home/cake_head.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+       
+    }  
+    .card-top{
+        padding: 0.7rem 1rem;
+    }
+    .cakecontent{
+        margin: auto;
+    }
+    .left img{
+        width: 120;
+    } 
+
+    textarea{
+        width: 25em;
+    }
+    input{
+        width: 100%;
+    }
+    .btn{
+        font-size: 1.1em;
+        width: 100%;
+    }
+}
+
