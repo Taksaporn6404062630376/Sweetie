@@ -18,6 +18,7 @@ $totalPages = ceil($totalProducts / $itemPerPage);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
     <link href="css/home2.css" rel="stylesheet">
+    <script src="JSON/location.js"></script>
 
 </head>
 
@@ -42,10 +43,6 @@ $totalPages = ceil($totalProducts / $itemPerPage);
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
 
-<<<<<<< HEAD
-=======
-        
->>>>>>> d2393991a1830f386b7f93cfdfe9713038541460
         <div class="icon-user-cart">
             <div class="user-icon">
                 <?php if (!empty($_SESSION["username"])) { ?>
@@ -82,49 +79,23 @@ $totalPages = ceil($totalProducts / $itemPerPage);
         <div class="top-menu">
             <div class="imgTop">
                 <?php
-                // $stmt = $pdo->prepare("SELECT DISTINCT menuname,menunameen FROM `menu` WHERE menuname LIKE 'เค้ก%';");
-                // $stmt->execute();
-                // while ($row = $stmt->fetch()) {
-                //     // echo "<div class='menu-item'>";
-                //     echo "<div class='menu-image' id='menu-image'><img src='img/menu-1/{$row['menuname']}.png' width='350'>";
-                //     echo "<div class='menu-details'>";
-                //     echo "<div class='menu-name'>{$row['menuname']}</div>";
-                //     echo "<div class='menu-name'>{$row['menunameen']}</div>";
-                //     echo "<div class='cart'>";
-                //     echo "<div class='add-cart'><a href='selectsize.php?menuname=" . $row["menuname"] . "'>view more</a></div>";
-                //     echo "</div>";
-                //     echo "</div>"; // menu-details
-                //     echo "</div>"; // menu-item
-                // }
-
-                ?>
-                <?php
-
-                // โหลดข้อมูล JSON จาก URL
-                $json_data = file_get_contents('http://localhost/gitcake/json/menu.json');
-                $data = json_decode($json_data, true);
-
-                // สร้างอาร์เรย์เพื่อเก็บข้อมูลที่ไม่ซ้ำ
-                $uniqueItems = array();
-
-                // ใช้ foreach เพื่อวนลูปผ่านข้อมูลเมนูและกรองข้อมูลที่ไม่ซ้ำและขึ้นต้นด้วย "เค้ก" โดยใช้ strpos
-                foreach ($data as $menuItem) {
-                    $menuName = $menuItem['menuname'];
-
-                    if (strpos($menuName, 'เค้ก') === 0 && !in_array($menuName, $uniqueItems)) {
-                        $uniqueItems[] = $menuName;
-
-                        echo "<div class='menu-image' id='menu-image'><img src='img/menu-1/{$menuName}.png' width='350'>";
-                        echo "<div class='menu-details'>";
-                        echo '<div class="menu-name">' . $menuName . '</div>';
-                        echo '<div class="menu-name">' . $menuItem['menunameen'] . '</div>';
-                        // echo '<div class="menu-price">ราคา: ' . $menuItem['price'] . ' บาท</div>';
-                        echo "<div class='add-cart'><a href='selectsize.php?menuname=" . $menuItem['menuname'] ."'>view more</a></div>";
-                        echo '</div></div>';
-                    }
+                $stmt = $pdo->prepare("SELECT DISTINCT menuname,menunameen FROM `menu` WHERE menuname LIKE 'เค้ก%';");
+                $stmt->execute();
+                while ($row = $stmt->fetch()) {
+                    // echo "<div class='menu-item'>";
+                    echo "<div class='menu-image' id='menu-image'><img src='img/menu-1/{$row['menuname']}.png' width='350'>";
+                    echo "<div class='menu-details'>";
+                    echo "<div class='menu-name'>{$row['menuname']}</div>";
+                    echo "<div class='menu-name'>{$row['menunameen']}</div>";
+                    echo "<div class='cart'>";
+                    echo "<div class='add-cart'><a href='selectsize.php?menuname=" . $row["menuname"] . "'>view more</a></div>";
+                    echo "</div>";
+                    echo "</div>"; // menu-details
+                    echo "</div>"; // menu-item
                 }
 
                 ?>
+                
             </div>
 
         </div>
@@ -152,11 +123,7 @@ $totalPages = ceil($totalProducts / $itemPerPage);
         <div class="footer-content">
 
             <h3>Our Store Locations</h3>
-            <ul>
-                <li>1.CentralPlaza Lardprao Store: 1697 Central Plaza Ladprao, 1st Floor, Room No. 126-129 Phaholyothin Road, Chatuchak, ChatuChak, Bangkok 10900</li>
-                <li>2.ICONSIAM: 299 ICONSIAM Shopping Center, 2nd Floor, Room No.201-202, Charoennakorn Rd., Klongtonsai, Klongsan, Bangkok 10600</li>
-                <li>3.Siam Paragon Store: 991 Siam Paragon, 1st Floor, Rama I Rd., Pathumwan, Pathumwan, Bangkok 10330</li>
-            </ul>
+            <ul id="footer-result"></ul>
 
         </div>
     </footer>

@@ -4,6 +4,7 @@ session_start();
 ?>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <?php
+
 $username = $_POST['username'];
 $password = $_POST['password'];
 
@@ -37,7 +38,7 @@ try {
             Swal.fire({
                 icon: 'error',
                 title: 'Please try again',
-                text: 'Incorrect email or password!',
+                text: 'Incorrect username or password!',
                 confirmButtonColor: '#3085d6',
                 confirmButtonText: 'Okay'
                 }).then((result) => {

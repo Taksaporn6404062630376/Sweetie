@@ -14,8 +14,9 @@ session_start();
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-   <link rel="stylesheet" href="css/style.css" />
+   <link rel="stylesheet" href="css/register.css" />
    <link rel="stylesheet" href="css/home2.css" />
+   <script src="JSON/location.js"></script>
 </head>
 
 <body style="margin: 0;">
@@ -144,11 +145,7 @@ session_start();
    <footer ">
       <div class="footer-content">
          <h3>Our Store Locations</h3>
-         <ul>
-            <li>1.CentralPlaza Lardprao Store: 1697 Central Plaza Ladprao, 1st Floor, Room No. 126-129 Phaholyothin Road, Chatuchak, ChatuChak, Bangkok 10900</li>
-            <li>2.ICONSIAM: 299 ICONSIAM Shopping Center, 2nd Floor, Room No.201-202, Charoennakorn Rd., Klongtonsai, Klongsan, Bangkok 10600</li>
-            <li>3.Siam Paragon Store: 991 Siam Paragon, 1st Floor, Rama I Rd., Pathumwan, Pathumwan, Bangkok 10330</li>
-         </ul>
+         <ul id="footer-result"></ul>
 
       </div>
    </footer>

@@ -14,6 +14,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
     <link href="css/home2.css" rel="stylesheet">
+    <script src="JSON/location.js"></script>
 </head>
 
 <body>
@@ -99,39 +100,11 @@
         <div id="result"></div>
     </section>
 
-
-    <!-- <mian>
-            <br><br>
-            <div class="menu-recommend">
-                <hr><h1>3 MENU RECOMMEND</h1> <hr><br><br>
-                <?php
-                $stmt = $pdo->prepare("SELECT m.menuID, m.menuname, SUM(od.quantity) AS total_quantity FROM menu m 
-                    LEFT JOIN orderdetails od ON m.menuID = od.menuID GROUP BY m.menuname 
-                    ORDER BY total_quantity DESC LIMIT 3;");
-                $stmt->execute();
-
-                while ($row = $stmt->fetch()) {
-                    echo "<span class='menu-name'>{$row['menuname']}</span><br>";
-                    if ($row["menuname"] == 'เค้ก%') {
-                        echo "<div class='menu-image'><a href='selectsize_pound.php?menuname=" . $row["menuname"] . "'><img src='img/menu/{$row['menuname']}.jpg'width='400'></a></div><br><br><br>";
-                    } else {
-                        echo "<div class='menu-image'><a href='selectsize_piece.php?menuname=" . $row["menuname"] . "'><img src='img/menu/{$row['menuname']}.jpg'width='400'></a></div><br><br><br>";
-                    }
-                }
-                ?>
-            </div>
-            <div id="result"></div>
-        </main> -->
-
     <footer>
         <div class="footer-content">
 
             <h3>Our Store Locations</h3>
-            <ul>
-                <li>1.CentralPlaza Lardprao Store: 1697 Central Plaza Ladprao, 1st Floor, Room No. 126-129 Phaholyothin Road, Chatuchak, ChatuChak, Bangkok 10900</li>
-                <li>2.ICONSIAM: 299 ICONSIAM Shopping Center, 2nd Floor, Room No.201-202, Charoennakorn Rd., Klongtonsai, Klongsan, Bangkok 10600</li>
-                <li>3.Siam Paragon Store: 991 Siam Paragon, 1st Floor, Rama I Rd., Pathumwan, Pathumwan, Bangkok 10330</li>
-            </ul>
+            <ul id="footer-result"></ul>
 
         </div>
     </footer>
@@ -139,23 +112,6 @@
 
 
     <script>
-        function send() {
-            request = new XMLHttpRequest();
-            request.onreadystatechange = showResult;
-            var keyword = document.getElementById("search").value;
-            var url = "Searchmenu.php?keyword=" + keyword;
-            request.open("GET", url, true);
-            request.send(null);
-        }
-
-        function showResult() {
-            if (request.readyState == 4) {
-                if (request.status == 200)
-                    document.getElementById("result").innerHTML = request.responseText;
-
-            }
-        }
-
         function myFunction() {
             var x = document.getElementById("mytopnav");
             var y = document.getElementById("head");

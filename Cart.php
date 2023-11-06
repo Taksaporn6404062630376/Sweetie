@@ -49,6 +49,7 @@ if (isset($_GET["action"])) {
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
         <link href="css/home2.css" rel="stylesheet">
         <link href="css/cart.css" rel="stylesheet">
+        <script src="JSON/location.js"></script>
         <script>
             function updateQuantity(menuID) {
                 var qty = document.getElementById(menuID).value;
@@ -165,11 +166,7 @@ if (isset($_GET["action"])) {
             <div class="footer-content">
                 
                 <h3>Our Store Locations</h3>
-                <ul>
-                    <li>1.CentralPlaza Lardprao Store: 1697 Central Plaza Ladprao, 1st Floor, Room No. 126-129 Phaholyothin Road, Chatuchak, ChatuChak, Bangkok 10900</li>
-                    <li>2.ICONSIAM: 299 ICONSIAM Shopping Center, 2nd Floor, Room No.201-202, Charoennakorn Rd., Klongtonsai, Klongsan, Bangkok 10600</li>
-                    <li>3.Siam Paragon Store: 991 Siam Paragon, 1st Floor, Rama I Rd., Pathumwan, Pathumwan, Bangkok 10330</li>
-                </ul>
+                <ul id="footer-result"></ul>
                 
             </div>
         </footer>
@@ -186,18 +183,6 @@ if (isset($_GET["action"])) {
                     y.className = "header";
                 }
             }
-            // sticky navbar
-            var navbar = document.getElementById("top-nav");
-            var sticky = navbar.offsetTop;
-
-            function handleScroll() {
-                if (window.pageYOffset >= sticky) {
-                    navbar.classList.add("sticky");
-                } else {
-                    navbar.classList.remove("sticky");
-                }
-            }
-            window.onscroll = handleScroll;
         </script>
     </body>
 </html>

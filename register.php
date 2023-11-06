@@ -1,19 +1,20 @@
 <?php
 include 'connect.php';
- 
+
 if (isset($_POST['submit'])) {
     $stmt = $pdo->prepare("SELECT * FROM members WHERE username LIKE ?");
     $stmt->bindParam(1, $_POST["username"]);
     $stmt->execute();
+      // $hashed_password = password_hash($user_password, PASSWORD_DEFAULT);
    // Insert the new user into the database
    $stmt = $pdo->prepare("INSERT INTO members (username, name, tel, email, password) VALUES (?, ?, ?, ?, ?)");
    $stmt->bindParam(1, $_POST["username"]);
    $stmt->bindParam(2, $_POST["name"]);
    $stmt->bindParam(3, $_POST["tel"]);
    $stmt->bindParam(4, $_POST["email"]);
-   $stmt->bindParam(5, $_POST["password"]);
+   $stmt->bindParam(5, $_POST["password"]); // บันทึกรหัสผ่านที่ถูกแฮช
    $stmt->execute();
-   setcookie('username', $_POST['username'], time() + 3600 * 24 * 30); // Cookie expires in 30 days
+   setcookie('username', $_POST['username'], time() + 3600 * 24 * 7); // Cookie expires in 7 days
    header('location: login.php');
 
 }
@@ -31,7 +32,7 @@ if (isset($_POST['submit'])) {
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
    <!-- Custom CSS file link -->
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/register.css">
    
    <script>
        // Check the username Ajax
@@ -53,7 +54,7 @@ if (isset($_POST['submit'])) {
          if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
             if (xmlHttp.responseText !== "okay") {
                document.getElementById("username").className = "denied";
-               document.getElementById("errormsg").innerHTML = 'Username is already taken. Please choose another one.';
+               document.getElementById("errormsg").innerHTML = 'Username is already taken. Please choose another one or Login.';
                document.getElementById("username").focus();
                // Disable other form fields
                document.getElementById("name").disabled = true;

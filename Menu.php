@@ -39,6 +39,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
     <link href="css/home2.css" rel="stylesheet">
+    <script src="JSON/location.js"></script>
 </head>
 
 <body>
@@ -107,7 +108,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
                 echo "<div class='menu-name'>{$row['menuname']}</div>";
                 echo "<div class='menu-name'>{$row['menunameen']}</div>";
                 echo "<div class='cart'>";
-                echo "<div class='add-cart'><a href='#'>add cart</a></div>";
+                echo "<div class='add-cart'><a href='selectsize.php?menuname=" . $row["menuname"] . "'>view more</a></div>";
                 echo "</div>";
                 echo "</div>"; // menu-details
                 echo "</div>"; // menu-image
@@ -181,11 +182,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
         <div class="footer-content">
 
             <h3>Our Store Locations</h3>
-            <ul>
-                <li>1.CentralPlaza Lardprao Store: 1697 Central Plaza Ladprao, 1st Floor, Room No. 126-129 Phaholyothin Road, Chatuchak, ChatuChak, Bangkok 10900</li>
-                <li>2.ICONSIAM: 299 ICONSIAM Shopping Center, 2nd Floor, Room No.201-202, Charoennakorn Rd., Klongtonsai, Klongsan, Bangkok 10600</li>
-                <li>3.Siam Paragon Store: 991 Siam Paragon, 1st Floor, Rama I Rd., Pathumwan, Pathumwan, Bangkok 10330</li>
-            </ul>
+            <ul id="footer-result"></ul>
 
         </div>
     </footer>
