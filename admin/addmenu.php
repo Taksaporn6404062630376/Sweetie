@@ -23,11 +23,15 @@
     
 <form action="insert-menu.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="menuID"><br>
-    ชื่อเมนู : <input class="iptext" type="text" name="menuname" required><br>
-    menuname : <input class="iptext" type="text" name="menunameen" required><br>
-    ขนาดสินค้า ( ชิ้น/ปอนด์ ): <input class="iptext" type="number" name="Size_Pound_or_Piece" required><br>
+    ชื่อเมนู : <input class="iptext" type="text" name="menuname"
+    pattern="^[ก-๏\s]+$" required><br>
+    menuname : <input class="iptext" type="text" name="menunameen" 
+    pattern="^[a-zA-Z\s]+$" placeholder="กรอกเป็นภาษาอังกฤษ" required><br>
+    ขนาดสินค้า ( ชิ้น/ปอนด์ ): <input class="iptext" type="number" name="Size_Pound_or_Piece"
+    min='1' required><br>
     รายละเอียด: <br><textarea class="iptext" name="detail" rows="5" cols="50" required></textarea><br>
-    ราคา: <input class="iptext" type="number" name="price" required><br>
+    ราคา: <input class="iptext" type="number" name="price"
+    min='1' required><br>
     รูปภาพ: <input type="file" name="image" id="image" required><br><br>
     <input type="submit" value="เพิ่มเมนู">
 </form>

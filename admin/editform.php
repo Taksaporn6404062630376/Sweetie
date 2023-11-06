@@ -26,11 +26,15 @@
     
 <form action="edit.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="menuID" value="<?=$row["menuID"]?>"><br>
-    ชื่อเมนู : <input class="iptext" type="text" name="menuname" value="<?=$row["menuname"]?>" required><br>
-    menuname : <input class="iptext" type="text" name="menunameen" value="<?=$row["menunameen"]?>" required><br>
-    ขนาดสินค้า: <input class="iptext" type="number" name="Size_Pound_or_Piece" value="<?=$row["Size_Pound_or_Piece"]?>" required> ชิ้น/ปอนด์<br>
+    ชื่อเมนู : <input class="iptext" type="text" name="menuname" 
+    pattern="^[ก-๏\s]+$" value="<?=$row["menuname"]?>" required><br>
+    menuname : <input class="iptext" type="text" name="menunameen"
+    pattern="^[a-zA-Z\s]+$"  value="<?=$row["menunameen"]?>" required><br>
+    ขนาดสินค้า: <input class="iptext" type="number" name="Size_Pound_or_Piece"
+    min='1' value="<?=$row["Size_Pound_or_Piece"]?>" required> ชิ้น/ปอนด์<br>
     รายละเอียด: <br><textarea class="iptext" name="detail" rows="5" cols="50"  required><?= $row["detail"] ?></textarea><br>
-    ราคา: <input type="number" name="price" value="<?=$row["price"]?>" required><br><br>
+    ราคา: <input type="number" name="price"
+    min='1' value="<?=$row["price"]?>" required><br><br>
     <input type="submit" value="แก้ไขเมนู">
 </form>
 </body>

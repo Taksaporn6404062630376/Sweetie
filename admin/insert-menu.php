@@ -30,9 +30,11 @@
     if (!$image_type) {
         die('Uploaded file is not an image.');
     }
+    //use menuname to name the file
+    $filename = $_POST["menuname"];
 
     // Convert uploaded image to PNG format
-    $png_file_path = __DIR__ . "/../img/menu-1/" . pathinfo($image_file["name"], PATHINFO_FILENAME) . ".png";
+    $png_file_path = __DIR__ . "/../img/menu-1/" . pathinfo($filename, PATHINFO_FILENAME) . ".png";
     $success = imagepng(imagecreatefromstring(file_get_contents($image_file["tmp_name"])), $png_file_path);
 
     if (!$success) {
@@ -42,7 +44,7 @@
     // Move the temp PNG image file to the images/ directory
     move_uploaded_file(
         $png_file_path,
-        __DIR__ . "/../img/menu-1/" . $image_file["name"]
+        __DIR__ . "/../img/menu-1/" . $filename
     );
 
 
