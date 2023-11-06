@@ -7,7 +7,7 @@ $totalPages = ceil($totalProducts / $itemPerPage);
 
 
 ?>
-<html>
+<html lang="en">
 
 <head>
     <title>Whisk & Roll Bakery</title>
@@ -22,35 +22,30 @@ $totalPages = ceil($totalProducts / $itemPerPage);
 </head>
 
 <body>
-    <!-- !!!!!!! shop name not has been entered !!!!! -->
-    <header class="header">
+    <header class="header" id="head">
         <div class="logo">
             <div class="logoBakery"></div>
             <h1 class="logoName">Whisk & Roll Bakery</h1>
         </div>
 
-        <nav class="navbar">
-            <a href="index.php">Home</a>
-            <a href="Cake.php">Cake</a>
-            <a href="Cupcake.php">Cupcake</a>
-            <a href="Other.php">Other</a>
-        </nav>
-
-        <!-- <div class="icon">
-            <i id="icon-search" class="fas fa-search" id="search"></i>
-            <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
+        <div id="mytopnav" class="nav">
+            <nav>
+                <a href="index.php">Home</a>
+                <a href="Cake.php">Cake</a>
+                <a href="Cupcake.php">Cupcake</a>
+                <a href="Other.php">Other</a>
+            </nav>
         </div>
 
-        <div class="search">
-            <input type="search" placeholder="search...">
-        </div> -->
         <form class="example" action="menu.php" method="get">
             <input type="search" placeholder="Search..." name="search">
             <button type="submit"><i class="fa fa-search"></i></button>
         </form>
 
+<<<<<<< HEAD
+=======
+        
+>>>>>>> d2393991a1830f386b7f93cfdfe9713038541460
         <div class="icon-user-cart">
             <div class="user-icon">
                 <?php if (!empty($_SESSION["username"])) { ?>
@@ -59,14 +54,22 @@ $totalPages = ceil($totalProducts / $itemPerPage);
                     <a href="login.php"></a>
                 <?php } ?>
             </div>
-            <div class="shop-bag"><a href="#"></a></div>
+            <div class="shop-bag">
+                <a href="Cart.php"></a>
+            </div>
+        </div>
+
+        <div class="icon">
+            <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
         </div>
 
     </header>
 
     <section class="home" id="home">
         <div class="homeContent">
-            <h1>cake<br> menu</h1>
+            <h1>Cake<br> Menu</h1>
         </div>
     </section>
 
@@ -159,12 +162,15 @@ $totalPages = ceil($totalProducts / $itemPerPage);
     </footer>
 
     <script>
-        function myFunction() {
-            var x = document.getElementById("top-nav");
-            if (x.className === "topnav") {
+       function myFunction() {
+            var x = document.getElementById("mytopnav");
+            var y = document.getElementById("head");
+            if (x.className === "nav" && y.className === "header") {
                 x.className += " responsive";
+                y.className += " responsive";
             } else {
-                x.className = "topnav";
+                x.className = "nav";
+                y.className = "header";
             }
         }
     </script>

@@ -19,7 +19,6 @@ session_start();
 </head>
 
 <body style="margin: 0;">
-   <!-- !!!!!!! shop name not has been entered !!!!! -->
    <header class="header">
       <div class="logo">
          <div class="logoBakery"></div>
