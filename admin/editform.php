@@ -11,38 +11,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
-    <link href="../css/admin.css" rel="stylesheet">
-<style>
-    form {
-    max-width: 500px;
-    margin: auto;
-}
+    <link href="../css/adminn.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
 
-.iptext {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-}
-
-input[type="file"] {
-    margin-bottom: 10px;
-}
-
-input[type="submit"] {
-    padding: 10px 20px;
-    background-color: #4caf50;
-    color: #ffffff;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-input[type="submit"]:hover {
-    background-color: #45a049;
-} 
-
-</style>
 </head>
 <body>
 <ul class="nav">
@@ -56,11 +27,11 @@ input[type="submit"]:hover {
     
 <form action="edit.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="menuID" value="<?=$row["menuID"]?>"><br>
-    ชื่อเมนู : <input class="iptext" type="text" name="menuname" value="<?=$row["menuname"]?>"><br>
-    menuname : <input class="iptext" type="text" name="menunameen" value="<?=$row["menunameen"]?>"><br>
-    ขนาดสินค้า: <input class="iptext" type="number" name="Size_Pound_or_Piece" value="<?=$row["Size_Pound_or_Piece"]?>"> ชิ้น/ปอนด์<br>
-    รายละเอียด: <br><textarea class="iptext" name="detail" rows="5" cols="50" ><?= $row["detail"] ?></textarea><br>
-    ราคา: <input type="number" name="price" value="<?=$row["price"]?>"><br><br>
+    ชื่อเมนู : <input class="iptext" type="text" name="menuname" value="<?=$row["menuname"]?>" required><br>
+    menuname : <input class="iptext" type="text" name="menunameen" value="<?=$row["menunameen"]?>" required><br>
+    ขนาดสินค้า: <input class="iptext" type="number" name="Size_Pound_or_Piece" value="<?=$row["Size_Pound_or_Piece"]?>" required> ชิ้น/ปอนด์<br>
+    รายละเอียด: <br><textarea class="iptext" name="detail" rows="5" cols="50"  required><?= $row["detail"] ?></textarea><br>
+    ราคา: <input type="number" name="price" value="<?=$row["price"]?>" required><br><br>
     <input type="submit" value="แก้ไขเมนู">
 </form>
 </body>

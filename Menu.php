@@ -1,7 +1,8 @@
 <?php include "connect.php";
-$itemPerPage = 9; // จำนวนรายการที่ต้องการแสดงในหนึ่งหน้า
-$page = isset($_GET['page']) ? $_GET['page'] : 1;
-$offset = ($page - 1) * $itemPerPage;
+
+$page = isset($_GET['page']) ? $_GET['page'] : 1; // หน้าปัจจุบัน
+$itemPerPage = 9; // จำนวนรายการต่อหน้า
+$offset = ($page - 1) * $itemPerPage; // ค่า offset สำหรับ SQL LIMIT
 
 // ตรวจสอบว่ามีคำค้นหาที่ส่งมาผ่าน URL
 if (isset($_GET['search']) && !empty($_GET['search'])) {
@@ -62,7 +63,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
         </form>
 
         <div class="icon-user-cart">
-        <div class="user-icon">
+            <div class="user-icon">
                 <?php if (!empty($_SESSION["username"])) { ?>
                     <a href="userhome.php"></a>
                 <?php } else { ?>
@@ -82,90 +83,95 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
     </header>
     <br><br><br>
 
-    <?php if (isset($_GET['search'])) : ?>
-        <section class="menu-recommand">
-            <div class="head-menu">
-                <h1>Result Search</h1>
-            </div>
+    <?php
+    if (isset($_GET['search'])) {
+        // คำขอ method GET มีค่าค้นหา
+        $search = $_GET['search'];
+        echo '<section class="menu-recommand">';
+        echo '<div class="head-menu">';
+        echo '<h1>Result Search</h1>';
+        echo '</div>';
+        $rowCount = $stmt->rowCount(); // นับจำนวนแถวที่ค้นหาได้
+        if ($rowCount > 0) {
+            // เพิ่มการแสดงผลลัพธ์ของการค้นหาข้อมูลตามที่คุณต้องการ
+            echo '<div class="top-menu">';
+            echo '<div class="imgTop">';
 
-            <?php
-            $rowCount = $stmt->rowCount(); // นับจำนวนแถวที่ค้นหาได้
-            if ($rowCount > 0) {
-            ?>
-
-                <div class="top-menu">
-                    <div class="imgTop">
-                        <?php
-                        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                            echo "<div class='menu-image'><a href='selectsize_pound.php?menuname=" . $row["menuname"] . "'><img src='img/menu-1/{$row['menuname']}.png' width='350'></a>";
-                            echo "<div class='menu-details'>";
-                            echo "<div class='menu-name'>{$row['menuname']}</div>";
-                            echo "<div class='menu-name'>{$row['menunameen']}</div>";
-                            echo "<div class='cart'>";
-                            echo "<div class='add-cart'><a href='#'>add cart</a></div>";
-                            echo "</div>";
-                            echo "</div>"; // menu-details
-                            echo "</div>"; // menu-image
-                        }
-                        ?>
-                    </div>
-                </div>
-            <?php
-            } else {
-                echo "<p>No results found.</p>";
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                echo "<div class='menu-image'><a href='selectsize_pound.php?menuname=" . $row["menuname"] . "'><img src='img/menu-1/{$row['menuname']}.png' width='350'></a>";
+                echo "<div class='menu-details'>";
+                echo "<div class='menu-name'>{$row['menuname']}</div>";
+                echo "<div class='menu-name'>{$row['menunameen']}</div>";
+                echo "<div class='cart'>";
+                echo "<div class='add-cart'><a href='#'>add cart</a></div>";
+                echo "</div>";
+                echo "</div>"; // menu-details
+                echo "</div>"; // menu-image
             }
-            ?>
-        </section>
+
+            echo '</div>';
+            echo '</div>';
+        } else {
+            echo "<p>No results found.</p>";
+        }
+        echo '</section>';
+    } else {
 
 
-    <!-- แสดงเมนูทั้งหมดถ้าไม่มี search แต่ยังจัดการหน้าไม่ได้ -->
-    <?php elseif (!isset($__GET['search'])) : ?>
-        <section class="menu-recommand">
-            <div class="head-menu">
-                <h1>Menu</h1>
-            </div>
-            <div class="top-menu">
-                <div class="imgTop">
-                    <?php
-                    $stmt = $pdo->prepare("SELECT DISTINCT menuname FROM menu LIMIT :limit OFFSET :offset");
-                    $stmt->bindParam(':limit', $itemPerPage, PDO::PARAM_INT);
-                    $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
-                    $stmt->execute();
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        // echo "<div class='menu-item'>";
-                        echo "<div class='menu-image'><a href='selectsize_pound.php?menuname=" . $row["menuname"] . "'><img src='img/menu-1/{$row['menuname']}.png' width='350'></a>";
-                        echo "<div class='menu-details'>";
-                        echo "<div class='menu-name'>{$row['menuname']}</div>";
-                        echo "<div class='menu-name'>{$row['menunameen']}</div>";
-                        echo "<div class='cart'>";
-                        echo "<div class='add-cart'><a href='#'>add cart</a></div>";
-                        echo "</div>";
-                        echo "</div>"; // menu-details
-                        echo "</div>"; // menu-item
-                    }
-                    ?>
-                </div>
-            </div>
-        </section>
 
-        <div class="pagecustom">
-            <?php
-            if ($page > 1) {
-                echo '<a href="menu.php?page=' . ($page - 1) . '" class="page-link">Previous</a>';
+        echo '<section class="menu-recommand">';
+        echo '<div class="head-menu">';
+        echo '<h1>Menu</h1>';
+        echo '</div>'; ?>
+
+        <?php
+        $stmt = $pdo->prepare("SELECT DISTINCT menuname FROM menu LIMIT :limit OFFSET :offset");
+        $stmt->bindParam(':limit', $itemPerPage, PDO::PARAM_INT);
+        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // echo "<div class='menu-item'>";
+            echo "<div class='menu-image'><a href='selectsize_pound.php?menuname=" . $row["menuname"] . "'><img src='img/menu-1/{$row['menuname']}.png' width='350'></a>";
+            echo "<div class 'menu-details'>";
+            echo "<div class='menu-name'>{$row['menuname']}</div>";
+            echo "<div class='menu-name'>{$row['menunameen']}</div>";
+            echo "<div class='cart'>";
+            echo "<div class='add-cart'><a href='#'>add cart</a></div>";
+            echo "</div>";
+            echo "</div>"; // menu-details
+            echo "</div>"; // menu-item
+        }
+        ?>
+
+    <?php
+        // เปิดคำสั่ง PHP อีกครั้ง
+        echo '</div>';
+        echo '</div>';
+        echo '</section>';
+        // header("Location: menu.php?search=&page=1");
+    }
+    ?>
+
+
+    <div class="pagecustom">
+        <?php
+        if ($page > 1) {
+            echo '<a href="menu.php?search=&page=' . ($page - 1) . '" class="page-link">Previous</a>';
+        }
+        for ($i = 1; $i <= $totalPages; $i++) {
+            echo '<a href="menu.php?search=&page=' . $i . '" class="page-link';
+            if ($i == $page) {
+                echo ' active';
             }
-            for ($i = 1; $i <= $totalPages; $i++) {
-                echo '<a href="menu.php?page=' . $i . '" class="page-link';
-                if ($i == $page) {
-                    echo ' active';
-                }
-                echo '">' . $i . '</a>';
-            }
-            if ($page < $totalPages) {
-                echo '<a href="menu.php?page=' . ($page + 1) . '" class="page-link">Next</a>';
-            }
-            ?>
-        </div>
-    <?php endif; ?>
+            echo '">' . $i . '</a>';
+        }
+        if ($page < $totalPages) {
+            echo '<a href="menu.php?search=&page=' . ($page + 1) . '" class="page-link">Next</a>';
+        }
+        ?>
+    </div>
+    
     <br><br><br>
     <footer>
         <div class="footer-content">

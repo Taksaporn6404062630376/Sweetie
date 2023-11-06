@@ -1,15 +1,16 @@
-<?php include "connect.php"; 
+<?php include "connect.php";
 $itemPerPage = 9; // จำนวนรายการที่ต้องการแสดงในหนึ่งหน้า
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($page - 1) * $itemPerPage;
-
 $totalProducts = $pdo->query("SELECT DISTINCT COUNT(menuname) FROM menu WHERE menuname LIKE 'เค้ก%'")->fetchColumn();
 $totalPages = ceil($totalProducts / $itemPerPage);
+
+
 ?>
 <html lang="en">
 
 <head>
-<title>Whisk & Roll Bakery</title>
+    <title>Whisk & Roll Bakery</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, intitial-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -17,6 +18,7 @@ $totalPages = ceil($totalProducts / $itemPerPage);
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
     <link href="css/home2.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -36,13 +38,16 @@ $totalPages = ceil($totalProducts / $itemPerPage);
         </div>
 
         <form class="example" action="menu.php" method="get">
-                <input type="search" placeholder="Search..." name="search">
-                <button type="submit"><i class="fa fa-search"></i></button>
+            <input type="search" placeholder="Search..." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
         </form>
 
+<<<<<<< HEAD
+=======
         
+>>>>>>> d2393991a1830f386b7f93cfdfe9713038541460
         <div class="icon-user-cart">
-        <div class="user-icon">
+            <div class="user-icon">
                 <?php if (!empty($_SESSION["username"])) { ?>
                     <a href="userhome.php"></a>
                 <?php } else { ?>
@@ -77,21 +82,46 @@ $totalPages = ceil($totalProducts / $itemPerPage);
         <div class="top-menu">
             <div class="imgTop">
                 <?php
-                $stmt = $pdo->prepare("SELECT DISTINCT menuname,menunameen FROM `menu` WHERE menuname LIKE 'เค้ก%';");
+                // $stmt = $pdo->prepare("SELECT DISTINCT menuname,menunameen FROM `menu` WHERE menuname LIKE 'เค้ก%';");
+                // $stmt->execute();
+                // while ($row = $stmt->fetch()) {
+                //     // echo "<div class='menu-item'>";
+                //     echo "<div class='menu-image' id='menu-image'><img src='img/menu-1/{$row['menuname']}.png' width='350'>";
+                //     echo "<div class='menu-details'>";
+                //     echo "<div class='menu-name'>{$row['menuname']}</div>";
+                //     echo "<div class='menu-name'>{$row['menunameen']}</div>";
+                //     echo "<div class='cart'>";
+                //     echo "<div class='add-cart'><a href='selectsize.php?menuname=" . $row["menuname"] . "'>view more</a></div>";
+                //     echo "</div>";
+                //     echo "</div>"; // menu-details
+                //     echo "</div>"; // menu-item
+                // }
 
+                ?>
+                <?php
 
-                $stmt->execute();
-                while ($row = $stmt->fetch()) {
-                    // echo "<div class='menu-item'>";
-                    echo "<div class='menu-image' id='menu-image'><img src='img/menu-1/{$row['menuname']}.png' width='350'>";
-                    echo "<div class='menu-details'>";
-                    echo "<div class='menu-name'>{$row['menuname']}</div>";
-                    echo "<div class='menu-name'>{$row['menunameen']}</div>";
-                    echo "<div class='cart'>";
-                    echo "<div class='add-cart'><a href='selectsize.php?menuname=" . $row["menuname"] . "'>view more</a></div>";
-                    echo "</div>";
-                    echo "</div>"; // menu-details
-                    echo "</div>"; // menu-item
+                // โหลดข้อมูล JSON จาก URL
+                $json_data = file_get_contents('http://localhost/gitcake/json/menu.json');
+                $data = json_decode($json_data, true);
+
+                // สร้างอาร์เรย์เพื่อเก็บข้อมูลที่ไม่ซ้ำ
+                $uniqueItems = array();
+
+                // ใช้ foreach เพื่อวนลูปผ่านข้อมูลเมนูและกรองข้อมูลที่ไม่ซ้ำและขึ้นต้นด้วย "เค้ก" โดยใช้ strpos
+                foreach ($data as $menuItem) {
+                    $menuName = $menuItem['menuname'];
+
+                    if (strpos($menuName, 'เค้ก') === 0 && !in_array($menuName, $uniqueItems)) {
+                        $uniqueItems[] = $menuName;
+
+                        echo "<div class='menu-image' id='menu-image'><img src='img/menu-1/{$menuName}.png' width='350'>";
+                        echo "<div class='menu-details'>";
+                        echo '<div class="menu-name">' . $menuName . '</div>';
+                        echo '<div class="menu-name">' . $menuItem['menunameen'] . '</div>';
+                        // echo '<div class="menu-price">ราคา: ' . $menuItem['price'] . ' บาท</div>';
+                        echo "<div class='add-cart'><a href='selectsize.php?menuname=" . $menuItem['menuname'] ."'>view more</a></div>";
+                        echo '</div></div>';
+                    }
                 }
 
                 ?>
@@ -100,24 +130,24 @@ $totalPages = ceil($totalProducts / $itemPerPage);
         </div>
     </section>
     <div class="pagecustom">
-            <?php
-            if ($page > 1) {
-                echo '<a href="cake.php?page=' . ($page - 1) . '" class="page-link">Previous</a>';
-            }
+        <?php
+        if ($page > 1) {
+            echo '<a href="cake.php?page=' . ($page - 1) . '" class="page-link">Previous</a>';
+        }
 
-            for ($i = 1; $i <= $totalPages; $i++) {
-                echo '<a href="cake.php?page=' . $i . '" class="page-link';
-                if ($i == $page) {
-                    echo ' active';
-                }
-                echo '">' . $i . '</a>';
+        for ($i = 1; $i <= $totalPages; $i++) {
+            echo '<a href="cake.php?page=' . $i . '" class="page-link';
+            if ($i == $page) {
+                echo ' active';
             }
+            echo '">' . $i . '</a>';
+        }
 
-            if ($page < $totalPages) {
-                echo '<a href="cake.php?page=' . ($page + 1) . '" class="page-link">Next</a>';
-            }
-            ?>
-        </div>
+        if ($page < $totalPages) {
+            echo '<a href="cake.php?page=' . ($page + 1) . '" class="page-link">Next</a>';
+        }
+        ?>
+    </div>
     <footer>
         <div class="footer-content">
 

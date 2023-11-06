@@ -1,0 +1,218 @@
+[
+    {
+        "menuID": "1",
+        "menuname": "เค้กฮอกไกโดมิลค์",
+        "menunameen": "Hokkaido Milk Cake",
+        "Size_Pound_or_Piece": "1",
+        "detail": "เค้กรสนมฮอกไกโดหอมหวานละมุน พร้อมรสชาติอร่อยสุดๆ พร้อมแป้งเค้กสุดนุ่มฟู น้ำหนัก 1 ปอนด์ สำหรับ 3-4 คน",
+        "price": "250"
+    },
+    {
+        "menuID": "2",
+        "menuname": "เค้กฮอกไกโดมิลค์",
+        "menunameen": "Hokkaido Milk Cake",
+        "Size_Pound_or_Piece": "2",
+        "detail": "เค้กรสชาตินมฮอกไกโดหอมหวานละมุน พร้อมรสชาติอร่อยสุดๆ พร้อมแป้งเค้กสุดนุ่มฟู น้ำหนัก 2 ปอนด์ สำหรับ 5-6 คน",
+        "price": "500"
+    },
+    {
+        "menuID": "3",
+        "menuname": "เค้กช็อกโกแลตตฟัจด์",
+        "menunameen": "Chocolate fudge Cake",
+        "Size_Pound_or_Piece": "1",
+        "detail": "เค้กรสชาติช็อกโกแลตเข็มข้น เนื้อเนียน ละเอียด ชุ่มฉ่ำ และมีกลิ่นหอมของช็อกโกแลตเข้มข้นเต็มคำ น้ำหนัก 1 ปอนด์ สำหรับ 3-4 คน",
+        "price": "250"
+    },
+    {
+        "menuID": "4",
+        "menuname": "เค้กช็อกโกแลตตฟัจด์",
+        "menunameen": "Chocolate fudge Cake",
+        "Size_Pound_or_Piece": "2",
+        "detail": "เค้กรสชาติช็อกโกแลตเข็มข้น เนื้อเนียน ละเอียด ชุ่มฉ่ำ และมีกลิ่นหอมของช็อกโกแลตเข้มข้นเต็มคำ  น้ำหนัก 2 ปอนด์ สำหรับ 5-6 คน",
+        "price": "500"
+    },
+    {
+        "menuID": "5",
+        "menuname": "เค้กมะพร้าว",
+        "menunameen": "Coconut Cake",
+        "Size_Pound_or_Piece": "1",
+        "detail": "เค้กรสชาติมะพร้าว เนื้อสัมผัสเนียนนุ่ม หวานหอม ชุ่มฉ่ำ สอดไส้ด้วยครีมสด มาพร้อมเนื้อมะพร้าวอ่อนและซอสกะทิอร่อยลงตัว น้ำหนัก 1 ปอนด์ สำหรับ 3-4 คน",
+        "price": "250"
+    },
+    {
+        "menuID": "6",
+        "menuname": "เค้กมะพร้าว",
+        "menunameen": "Coconut Cake",
+        "Size_Pound_or_Piece": "2",
+        "detail": "เค้กรสชาติมะพร้าว เนื้อสัมผัสเนียนนุ่ม หวานหอม ชุ่มฉ่ำ สอดไส้ด้วยครีมสด มาพร้อมเนื้อมะพร้าวอ่อนและซอสกะทิอร่อยลงตัว น้ำหนัก 2 ปอนด์ สำหรับ 5-6 คน",
+        "price": "500"
+    },
+    {
+        "menuID": "7",
+        "menuname": "เค้กสตรอว์เบอร์รี",
+        "menunameen": "Strawberry Cake",
+        "Size_Pound_or_Piece": "1",
+        "detail": "เค้กรสชาติสตรอว์เบอร์รีกับครีมสด รสชาติที่เปรี้ยวหวานของสตรอว์เบอร์รี และเนื้อเค้กที่นุ่มฟู บางเบา พร้อมรสชาติของครีมสดเข้มข้น น้ำหนัก 1 ปอนด์ สำหรับ 3-4 คน",
+        "price": "250"
+    },
+    {
+        "menuID": "8",
+        "menuname": "เค้กสตรอว์เบอร์รี",
+        "menunameen": "Strawberry Cake",
+        "Size_Pound_or_Piece": "2",
+        "detail": "เค้กรสชาติสตรอว์เบอร์รีกับครีมสด เค้กรสชาติสตรอว์เบอร์รีกับครีมสด รสชาติที่เปรี้ยวหวานของสตรอว์เบอร์รี และเนื้อเค้กที่นุ่มฟู บางเบา พร้อมรสชาติของครีมสดเข้มข้น น้ำหนัก 2 ปอนด์ สำหรับ 5-6 คน",
+        "price": "500"
+    },
+    {
+        "menuID": "9",
+        "menuname": "คัพเค้กกาแฟ",
+        "menunameen": "Coffee Cupcake",
+        "Size_Pound_or_Piece": "4",
+        "detail": "คัพเค้กรสกาแฟ 4 ชิ้น น้ำหนัก 240 กรัม (60 กรัม * 4 ชิ้น)",
+        "price": "170"
+    },
+    {
+        "menuID": "10",
+        "menuname": "คัพเค้กกาแฟ",
+        "menunameen": "Coffee Cupcake",
+        "Size_Pound_or_Piece": "6",
+        "detail": "คัพเค้กรสกาแฟ 6 ชิ้น น้ำหนัก 360 กรัม (60 กรัม * 6 ชิ้น)",
+        "price": "240"
+    },
+    {
+        "menuID": "11",
+        "menuname": "คัพเค้กใบเตย",
+        "menunameen": "Pandan Cupcake",
+        "Size_Pound_or_Piece": "4",
+        "detail": "คัพเค้กรสใบเตย 4 ชิ้น น้ำหนัก 240 กรัม (60 กรัม * 4 ชิ้น)",
+        "price": "170"
+    },
+    {
+        "menuID": "12",
+        "menuname": "คัพเค้กใบเตย",
+        "menunameen": "Pandan Cupcake",
+        "Size_Pound_or_Piece": "6",
+        "detail": "คัพเค้กรสใบเตย 6 ชิ้น น้ำหนัก 360 กรัม (60 กรัม * 6 ชิ้น)",
+        "price": "240"
+    },
+    {
+        "menuID": "13",
+        "menuname": "คัพเค้กนมสด",
+        "menunameen": "Fresh milk Cupcake",
+        "Size_Pound_or_Piece": "4",
+        "detail": "คัพเค้กรสนมสด 4 ชิ้น น้ำหนัก 240 กรัม (60 กรัม * 4 ชิ้น)",
+        "price": "170"
+    },
+    {
+        "menuID": "14",
+        "menuname": "คัพเค้กนมสด",
+        "menunameen": "Fresh milk Cupcake",
+        "Size_Pound_or_Piece": "6",
+        "detail": "คัพเค้กรสนมสด 6 ชิ้น น้ำหนัก 360 กรัม (60 กรัม * 6 ชิ้น)",
+        "price": "240"
+    },
+    {
+        "menuID": "15",
+        "menuname": "ชีสเค้กนิวยอร์ค",
+        "menunameen": "New York Cheesecake",
+        "Size_Pound_or_Piece": "1",
+        "detail": "ชีสเค้กนิวยอร์ค น้ำหนัก 1 ปอนด์ ขนาด 14 ซม.* 5 ซม. สำหรับ 1-2 คน",
+        "price": "250"
+    },
+    {
+        "menuID": "16",
+        "menuname": "ชีสเค้กหน้าไหม้",
+        "menunameen": "Burnt Cheesecake",
+        "Size_Pound_or_Piece": "1",
+        "detail": "ชีสเค้กหน้าไหม้ น้ำหนัก 1 ปอนด์ ขนาด 14 ซม.* 5 ซม. สำหรับ 1-2 คน",
+        "price": "290"
+    },
+    {
+        "menuID": "17",
+        "menuname": "โรลรสบลูเบอร์รี่",
+        "menunameen": "Blueberry Cake Roll",
+        "Size_Pound_or_Piece": "1",
+        "detail": "แยมโรลรสบลูเบอร์รี่ น้ำหนัก 20 กรัม",
+        "price": "40"
+    },
+    {
+        "menuID": "18",
+        "menuname": "โรลรสช็อกโกแลต",
+        "menunameen": "Chocolate Cake Roll",
+        "Size_Pound_or_Piece": "1",
+        "detail": "แยมโรลรสช็อกโกแลต น้ำหนัก 20 กรัม",
+        "price": "40"
+    },
+    {
+        "menuID": "19",
+        "menuname": "โรลรสชาเขียว",
+        "menunameen": "Matcha Cake Roll",
+        "Size_Pound_or_Piece": "1",
+        "detail": "แยมโรลรสชาเขียว น้ำหนัก 20 กรัม",
+        "price": "40"
+    },
+    {
+        "menuID": "20",
+        "menuname": "โรลรสสตรอเบอร์รี่\r\n",
+        "menunameen": "Strawberry Cake Roll",
+        "Size_Pound_or_Piece": "1",
+        "detail": "แยมโรลรสสตรอเบอร์รี่น้ำหนัก 20 กรัม",
+        "price": "40"
+    },
+    {
+        "menuID": "21",
+        "menuname": "โรลรสวนิลา",
+        "menunameen": "Vanilla Cake Roll",
+        "Size_Pound_or_Piece": "1",
+        "detail": "แยมโรลรสวนิลา  น้ำหนัก 20 กรัม",
+        "price": "40"
+    },
+    {
+        "menuID": "22",
+        "menuname": "มาการองรสเลมอน",
+        "menunameen": "Lemon Macaron",
+        "Size_Pound_or_Piece": "1",
+        "detail": "มาการองรสเลมอน น้ำหนัก 13 กรัม",
+        "price": "50"
+    },
+    {
+        "menuID": "23",
+        "menuname": "มาการองรสช็อกโกแลต",
+        "menunameen": "Chocolate Macaron",
+        "Size_Pound_or_Piece": "1",
+        "detail": "มาการองรสช็อกโกแลต น้ำหนัก 13 กรัม",
+        "price": "50"
+    },
+    {
+        "menuID": "24",
+        "menuname": "มาการองรสชาเขียว",
+        "menunameen": "Matcha Macaron",
+        "Size_Pound_or_Piece": "1",
+        "detail": "มาการองรสชาเขียว น้ำหนัก 13 กรัม",
+        "price": "50"
+    },
+    {
+        "menuID": "25",
+        "menuname": "มาการองรสสตรอเบอร์รี่",
+        "menunameen": "Strawberry Macaron",
+        "Size_Pound_or_Piece": "1",
+        "detail": "มาการองรสสตรอเบอร์รี่น้ำหนัก 13 กรัม",
+        "price": "50"
+    },
+    {
+        "menuID": "26",
+        "menuname": "มาการองรสวนิลา",
+        "menunameen": "Vanilla Macaron",
+        "Size_Pound_or_Piece": "1",
+        "detail": "มาการองรสวนิลา  น้ำหนัก 13 กรัม",
+        "price": "50"
+    },
+    {
+        "menuID": "27",
+        "menuname": "มาการองรสกาแฟ",
+        "menunameen": "Coffee Macaron",
+        "Size_Pound_or_Piece": "1",
+        "detail": "มาการองรสกาแฟ  น้ำหนัก 13 กรัม",
+        "price": "50"
+    }
+]

@@ -9,8 +9,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
-    <link href="../css/admin.css" rel="stylesheet">
+    <link href="../css/adminn.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
     <script>
     function confirmDelete(menuID) { 
         var ans = confirm("ต้องการลบเมนูนี้ "); 

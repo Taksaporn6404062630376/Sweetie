@@ -13,7 +13,7 @@ if (!isset($_GET["username"])) {
     $orderQuery->bindParam(1, $username);
     $orderQuery->execute();
 
-    echo "<a href='all-orders.php'>กลับสู่หน้า ALL Orders</a>";
+    echo "<a class='alert' href='all-orders.php' >กลับสู่หน้า ALL Orders</a>";
     echo "<h3>รายการคำสั่งซื้อของลูกค้า: {$username}</h3>";
     echo "<ul>";
 
