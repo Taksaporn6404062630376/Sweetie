@@ -73,34 +73,42 @@ if (isset($_GET["action"])) {
 
     </head>
     <body>
-        <header class="header">
+        <header class="header" id="head">
             <div class="logo">
                 <div class="logoBakery"></div>
                 <h1 class="logoName">Whisk & Roll Bakery</h1>
             </div>
 
-            <nav class="navbar">
-                <a href="index.php" class="active">Home</a>
-                <a href="Cake.php">Cake</a>
-                <a href="Cupcake.php">Cupcake</a>
-                <a href="Other.php">Other</a>
-            </nav>
+            <div id="mytopnav" class="nav">
+                <nav>
+                    <a href="index.php">Home</a>
+                    <a href="Cake.php">Cake</a>
+                    <a href="Cupcake.php">Cupcake</a>
+                    <a href="Other.php">Other</a>
+                </nav>
+            </div>
 
+            <form class="example" action="menu.php" method="get">
+                <input type="search" placeholder="Search..." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+
+            <div class="icon-user-cart">
+            <div class="user-icon">
+                    <?php if (!empty($_SESSION["username"])) { ?>
+                        <a href="userhome.php"></a>
+                    <?php } else { ?>
+                        <a href="login.php"></a>
+                    <?php } ?>
+                </div>
+                <div class="shop-bag">
+                    <a href="Cart.php"></a>
+                </div>
+            </div>
             <div class="icon">
-                <i id ="icon-search"class="fas fa-search" id="search"></i>
                 <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
                 </a>
-            </div>
-
-            <div class="search">
-                <!-- <input type="search" placeholder="search..." id="search" onkeyup="send()"> -->
-                <input type="text" id="search"  placeholder="search.." onkeyup="send()">
-            </div>
-
-            <div class="icon-user-cart">
-                    <div class="user-icon"><a href="userhome.php"></a></div>
-                    <div class="shop-bag"><a href="#"></a></div>
             </div>
             
         </header>
@@ -168,11 +176,14 @@ if (isset($_GET["action"])) {
 
         <script>
             function myFunction() {
-                var x = document.getElementById("top-nav");
-                if (x.className === "topnav") {
+                var x = document.getElementById("mytopnav");
+                var y = document.getElementById("head");
+                if (x.className === "nav" && y.className === "header") {
                     x.className += " responsive";
+                    y.className += " responsive";
                 } else {
-                    x.className = "topnav";
+                    x.className = "nav";
+                    y.className = "header";
                 }
             }
             // sticky navbar

@@ -44,7 +44,7 @@ button{
     font-weight: 500;
     color: white;
     border-radius: 1em;
-    background-color: #4c311d;
+    /* background-color: #4c311d; */
 }
 footer{
     top: 0;
