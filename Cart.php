@@ -68,7 +68,7 @@ if (isset($_GET["action"])) {
 
             function redirectToPayment(sum){
                 // header("Location: Promptpay/payment.php)
-                window.location.assign("paymentQR.php");
+                window.location.assign("payment.php");
             }
         </script>
 

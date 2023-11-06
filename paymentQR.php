@@ -1,3 +1,4 @@
+<?php include "connect.php" ?>
 <?php session_start();
 $sum = $_SESSION['sum'];?>
 <html lang="en">
@@ -14,35 +15,63 @@ $sum = $_SESSION['sum'];?>
     <title>Whisk & Roll Bakery</title>
 </head>
 <body>
-    <header class="header">
-            <div class="logo">
-                <div class="logoBakery"></div>
-                <h1 class="logoName">Whisk & Roll Bakery</h1>
-            </div>
+    <?php
 
-            <nav class="navbar">
-                <a href="index.php" class="active">Home</a>
+        $date = new DateTime();
+        $date ->setTimezone(new DateTimeZone('Asia/Bangkok'));
+        $formattedDate = $date->format("Y-m-d");
+        $date2 = date("Y-m-d");
+        $status="wait";
+
+        $stmt = $pdo->prepare("INSERT INTO orders VALUES ('', ?, ?, ?, ?, ?, ?)");
+        $stmt->bindParam(1, $_POST["username"]);
+        $stmt->bindParam(2, $formattedDate);
+        $stmt->bindParam(3, $_POST["deriverydate"]);
+        $stmt->bindParam(4, $_POST["total_amount"]); 
+        $stmt->bindParam(5, $status);
+        $stmt->bindParam(6, $_POST["address"]);
+        $stmt->execute();
+        $value = '' . $_POST["username"] . '';
+        $orderID = $pdo->lastInsertId();   
+
+    ?>
+    <header class="header" id="head">
+        <div class="logo">
+            <div class="logoBakery"></div>
+            <h1 class="logoName">Whisk & Roll Bakery</h1>
+        </div>
+
+        <div id="mytopnav" class="nav">
+            <nav>
+                <a href="index.php">Home</a>
                 <a href="Cake.php">Cake</a>
                 <a href="Cupcake.php">Cupcake</a>
                 <a href="Other.php">Other</a>
             </nav>
+        </div>
 
-            <div class="icon">
-                <i id ="icon-search"class="fas fa-search" id="search"></i>
-                <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
-                    <i class="fa fa-bars"></i>
-                </a>    
-            </div>
+        <form class="example" action="menu.php" method="get">
+            <input type="search" placeholder="Search..." name="search">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
 
-            <div class="search">
-                <!-- <input type="search" placeholder="search..." id="search" onkeyup="send()"> -->
-                <input type="text" id="search"  placeholder="search.." onkeyup="send()">
+        <div class="icon-user-cart">
+        <div class="user-icon">
+                <?php if (!empty($_SESSION["username"])) { ?>
+                    <a href="userhome.php"></a>
+                <?php } else { ?>
+                    <a href="login.php"></a>
+                <?php } ?>
             </div>
-
-            <div class="icon-user-cart">
-                    <div class="user-icon"><a href="userhome.php"></a></div>
-                    <div class="shop-bag"><a href="Cart.php"></a></div>
+            <div class="shop-bag">
+                <a href="Cart.php"></a>
             </div>
+        </div>
+        <div class="icon">
+            <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
             
     </header>
         
@@ -76,6 +105,18 @@ $sum = $_SESSION['sum'];?>
                 }
             })
         })
+
+        function myFunction() {
+            var x = document.getElementById("mytopnav");
+            var y = document.getElementById("head");
+            if (x.className === "nav" && y.className === "header") {
+                x.className += " responsive";
+                y.className += " responsive";
+            } else {
+                x.className = "nav";
+                y.className = "header";
+            }
+        }
     </script>
 
 </body>

@@ -80,7 +80,14 @@
         padding: 0.75em;
     }
     
-    .user-icon a{
+    /* .user-icon a{
        
+    } */
+}
+
+
+@media(min-width: 768px) and (max-width: 1024px){
+    .borderCake img{
+        width: 300;
     }
 }

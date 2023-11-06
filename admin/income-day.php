@@ -12,15 +12,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
-    <link href="../css/admin.css" rel="stylesheet">
-</head>
+    <link href="../css/adminn.css" rel="stylesheet">
+    </head>
 <body>
 <ul class="nav">
       <li><a href="all-orders.php">ดูรายการ Order ของลูกค้า</a></li>
+      <li><a href="all-payments.php">ดูการจ่ายเงิน payment ของลูกค้า</a></li>
       <li><a class="active" href='income-day.php'>ดูยอดรวมเงินที่รับจากการชำระเงินในแต่ละวัน</a></li>
     <li><a href='menu-allsale.php'>ดูรายการอาหารที่ขายได้และยอดรวมขายได้ในแต่ละเมนู</a></li>
     <li><a href='menu.php'>จัดการเมนู</a></li>
-    <li style="float:right"><a class="redactive" href="../logout.php">Log out</a></li>
+    <li class="logout"><a class="redactive" href="../logout.php">Log out</a></li>
     </ul>
     <h2>ยอดรวมเงินที่รับจากการชำระเงินในแต่ละวัน</h2>
 

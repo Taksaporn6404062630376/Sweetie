@@ -79,10 +79,11 @@ form {
     border-radius: 10px;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); */
     border-radius: 10px;
-    margin: 0px auto;
+    margin: 9em auto;
     padding: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     max-width: 360px;
+    display: block;
 }
 
 .form-group {
@@ -142,7 +143,16 @@ label {
 
 a {
     color: #342214;
+<<<<<<< HEAD:css/register.css
 }
+=======
+    text-decoration: none;
+}
+
+/* a:hover {
+    text-decoration: underline;
+} */
+>>>>>>> a9133ce2437f7e89b7d0efffa94fc092cfe2d4bc:css/style.css
 
 .status {
     display: inline-block;
@@ -173,7 +183,12 @@ footer {
 #togglePassword:hover, #toggleCPassword:hover {
     background-color: #563c15;
 }
-
+.homeContent2 h1 { 
+    color: whitesmoke;
+    font-size: 5em;
+    font-weight: bolder;
+    text-shadow: 6px 6px  #342214;
+}
 /* ipad */
 /* Media query for screens with 768-1024 */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
@@ -247,4 +262,24 @@ footer {
         border-radius: 10px;
         box-shadow: 2px 2px 5px rgba(215, 187, 187, 0.1);
         max-width: 40em;
+}
+
+h3{
+    padding: 0;
+}
+
+/* ipad  */
+@media(min-width: 768px) and (max-width: 1024px){
+    .homeContent2 h1{
+        font-size: 3em;
+        margin-top: -0.4em;
+    }
+    .form-container{
+        margin-top: 3.4em;
+    }
+    h3 a{
+        padding: 3rem;
+        float: right;
+    }
+   
 }

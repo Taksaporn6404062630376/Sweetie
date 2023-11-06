@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
-    <link href="../css/admin.css" rel="stylesheet">
+    <link href="../css/adminn.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script>
     function confirmDelete(menuID) { 
@@ -23,10 +23,11 @@
 <body>
 <ul class="nav">
       <li><a href="all-orders.php">ดูรายการ Order ของลูกค้า</a></li>
+      <li><a href="all-payments.php">ดูการจ่ายเงิน payment ของลูกค้า</a></li>
       <li><a href='income-day.php'>ดูยอดรวมเงินที่รับจากการชำระเงินในแต่ละวัน</a></li>
     <li><a  href='menu-allsale.php'>ดูรายการอาหารที่ขายได้และยอดรวมขายได้ในแต่ละเมนู</a></li>
     <li><a class="active" href='menu.php'>จัดการเมนู</a></li>
-    <li style="float:right"><a class="redactive" href="../logout.php">Log out</a></li>
+    <li class="logout"><a class="redactive" href="../logout.php">Log out</a></li>
     </ul>
     <h2>รายการสินค้าทั้งหมด <button><a href="addmenu.php">เพิ่มรายการใหม่</a></button></h2>
     

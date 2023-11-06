@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" ');
+body {
+    font-family: 'Prompt', sans-serif;
+    margin: 30px; 
+}
+.nav{
+    margin: -30px;;
+    margin-bottom: 15px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%; 
+    margin: 20px auto;
+    text-align: center;
+    overflow-x: auto; 
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+th {
+    background-color: #f2f2f2;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Style the navigation bar */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+  
+li {
+    float: left;
+}
+  
+li a { 
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+  
+li a:hover {
+    background-color: #111;
+}
+  
+.active {
+    background-color: #4CAF50;
+}
+
+.redactive:hover{
+    background-color: red;
+}
+.logout{
+    float: right;
+}
+
+h2.alert {
+    font-size: 60px;
+    text-align: center;
+    color: #333; 
+}
+  
+a.backtopage {
+    text-decoration: none;
+    background-color: #4caf50; 
+    color: white; 
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    margin: 10px auto; 
+}
+a.backtopage:hover{
+    background-color:#333;
+}
+
+form {
+    max-width: 500px;
+    margin: auto;
+}
+
+.iptext {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+
+input[type="file"] {
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
+/*phone*/
+@media screen and (max-width: 600px) {
+    body {
+        margin: 10px; 
+    }
+    .nav {
+        margin: -10;
+    }
+    ul {
+        text-align: center;
+    }
+    li {
+        float: none;
+        display: block;
+    }  
+    li a {
+        display: block;
+        padding: 10px 0;
+    }
+    table {
+        width: 100%;
+        overflow-x: auto;
+    }
+    .logout{
+        float: none;
+    }
+}
+/*ipad*/
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    body {
+        margin: 20px; 
+    }
+    .nav{
+        margin: -20px;
+    }
+ 
+}

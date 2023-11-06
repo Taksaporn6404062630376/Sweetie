@@ -30,9 +30,11 @@
     if (!$image_type) {
         die('Uploaded file is not an image.');
     }
+    //use menuname to name the file
+    $filename = $_POST["menuname"];
 
     // Convert uploaded image to PNG format
-    $png_file_path = __DIR__ . "/../img/menu-1/" . pathinfo($image_file["name"], PATHINFO_FILENAME) . ".png";
+    $png_file_path = __DIR__ . "/../img/menu-1/" . pathinfo($filename, PATHINFO_FILENAME) . ".png";
     $success = imagepng(imagecreatefromstring(file_get_contents($image_file["tmp_name"])), $png_file_path);
 
     if (!$success) {
@@ -42,7 +44,7 @@
     // Move the temp PNG image file to the images/ directory
     move_uploaded_file(
         $png_file_path,
-        __DIR__ . "/../img/menu-1/" . $image_file["name"]
+        __DIR__ . "/../img/menu-1/" . $filename
     );
 
 
@@ -51,8 +53,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Admin</title>
-    <link href="../css/admin.css" rel="stylesheet">
-
+    <link href="../css/adminn.css" rel="stylesheet">
 </head>
 <body>
 <ul class="nav">
@@ -60,10 +61,9 @@
       <li><a href='income-day.php'>ดูยอดรวมเงินที่รับจากการชำระเงินในแต่ละวัน</a></li>
       <li><a href='menu-allsale.php'>ดูรายการอาหารที่ขายได้และยอดรวมขายได้ในแต่ละเมนู</a></li>
       <li><a class="active" href='menu.php'>จัดการเมนู</a></li>
-    <li style="float:right"><a class="redactive" href="../logout.php">Log out</a></li>
+    <li class="logout"><a class="redactive" href="../logout.php">Log out</a></li>
     </ul>
-    <h2><?=$value?></h2>
-    <a href="menu.php">next</a>
+    <h2 class="alert"><?=$value?></h2>
+    <a class="backtopage" href="menu.php">กลับสู่หน้าเมนู</a>
 </body>
 </html>
-้
