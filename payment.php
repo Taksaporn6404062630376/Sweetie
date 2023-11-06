@@ -12,11 +12,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">  
         <link href="css/home.css" rel="stylesheet">
-<<<<<<< HEAD
         <script src="JSON/location.js"></script>
-=======
         <link href="css/pay_delivery.css" rel="stylesheet">
->>>>>>> a9133ce2437f7e89b7d0efffa94fc092cfe2d4bc
     </head>
     
     <body>

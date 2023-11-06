@@ -93,8 +93,6 @@ $totalPages = ceil($totalProducts / $itemPerPage);
                     echo "</div>"; // menu-details
                     echo "</div>"; // menu-item
                 }
-<<<<<<< HEAD
-=======
 
                 ?>
                 <?php
@@ -122,7 +120,6 @@ $totalPages = ceil($totalProducts / $itemPerPage);
                 //         echo '</div></div>';
                 //     }
                 // }
->>>>>>> a9133ce2437f7e89b7d0efffa94fc092cfe2d4bc
 
                 ?>
                 

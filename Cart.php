@@ -6,7 +6,7 @@ if (isset($_GET["action"])) {
     $action = $_GET["action"];
 
     if ($action == "add") {
-        $menuID = $_GET['menuID'];
+        $menuID = $_GET['menuID'];      
 
         $cart_item = array(
             'menuID' => $menuID,
@@ -21,6 +21,7 @@ if (isset($_GET["action"])) {
         }
         if (array_key_exists($menuID, $_SESSION['cart'])) {
             $_SESSION['cart'][$menuID]['qty'] += $cart_item['qty'];
+
         } else {
             $_SESSION['cart'][$menuID] = $cart_item;
         }
@@ -120,7 +121,7 @@ if (isset($_GET["action"])) {
                 <h1>YOUR CART <hr></h1> 
             </div>
             <form>
-                <table border="1">
+                <table border="1" class='tab'>
                     <tr>
                         <th>เมนู</th>
                         <th>ขนาด</th>
@@ -162,14 +163,14 @@ if (isset($_GET["action"])) {
            
             
         
-        <footer>
+        <!-- <footer>
             <div class="footer-content">
                 
                 <h3>Our Store Locations</h3>
                 <ul id="footer-result"></ul>
                 
             </div>
-        </footer>
+        </footer> -->
 
         <script>
             function myFunction() {
