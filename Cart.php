@@ -2,42 +2,45 @@
 <?php
 
 session_start();
+if (isset($_GET["action"])) {
+    $action = $_GET["action"];
 
-if ($_GET["action"]=="add") {
-
-	$menuID = $_GET['menuID'];
-
-	$cart_item = array(
- 		'menuID' => $menuID,
-		'menuname' => isset($_GET['menuname']) ? $_GET['menuname'] : "",
-        'Size_Pound_or_Piece' => isset($_GET['Size_Pound_or_Piece']) ? $_GET['Size_Pound_or_Piece'] : "",
-		'price' => $_GET['price'],
-		'qty' => $_POST['qty']
-	);
-
-	if(empty($_SESSION['cart']))
-    	$_SESSION['cart'] = array();
- 
-	if(array_key_exists($menuID, $_SESSION['cart']))
-		$_SESSION['cart'][$menuID]['qty'] += $_POST['qty'];
- 
-	else
-	    $_SESSION['cart'][$menuID] = $cart_item;
-
-    } else if ($_GET["action"]=="update") {
-        $menuID = $_GET["menuID"];     
-        $qty = $_GET["qty"];
-        $_SESSION['cart'][$menuID]['qty'] = $qty;
-
-    } else if ($_GET["action"]=="delete") {
-        
+    if ($action == "add") {
         $menuID = $_GET['menuID'];
-        unset($_SESSION['cart'][$menuID]);
+
+        $cart_item = array(
+            'menuID' => $menuID,
+            'menuname' => isset($_GET['menuname']) ? $_GET['menuname'] : "",
+            'Size_Pound_or_Piece' => isset($_GET['Size_Pound_or_Piece']) ? $_GET['Size_Pound_or_Piece'] : "",
+            'price' => $_GET['price'],
+            'qty' => $_POST['qty']
+        );
+
+        if(empty($_SESSION['cart'])){
+            $_SESSION['cart'] = array();
+        }
+        if (array_key_exists($menuID, $_SESSION['cart'])) {
+            $_SESSION['cart'][$menuID]['qty'] += $cart_item['qty'];
+        } else {
+            $_SESSION['cart'][$menuID] = $cart_item;
+        }
+    } elseif ($action == "update") {
+        if (isset($_GET["menuID"]) && isset($_GET["qty"])) {
+            $menuID = $_GET["menuID"];
+            $qty = $_GET["qty"];
+            $_SESSION['cart'][$menuID]['qty'] = $qty;
+        }
+    } elseif ($action == "delete") {
+        if (isset($_GET["menuID"])) {
+            $menuID = $_GET['menuID'];
+            unset($_SESSION['cart'][$menuID]);
+        }
     }
+}
 ?>
-<html>
+<html lang="en">
     <head>
-        <title>ชื่อร้านยังไม่คิด</title>
+        <title>Whisk & Roll Bakery</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, intitial-scale=1.0, minimum-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -47,9 +50,19 @@ if ($_GET["action"]=="add") {
         <link href="css/home2.css" rel="stylesheet">
         <link href="css/cart.css" rel="stylesheet">
         <script>
-            function update(menuID) {
+            function updateQuantity(menuID) {
                 var qty = document.getElementById(menuID).value;
-                document.location = "Cart.php?action=update&menuID=" + menuID + "&qty=" + qty; 
+                
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "updateQty.php?menuID=" + menuID + "&qty=" + qty, true);
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        document.getElementById("total-price").innerText = "รวม " + xhr.responseText + " บาท";
+                    }
+                };
+
+                xhr.send();
             }
 
             function redirectToPayment(sum){
@@ -57,10 +70,9 @@ if ($_GET["action"]=="add") {
                 window.location.assign("paymentQR.php");
             }
         </script>
+
     </head>
     <body>
-        <!-- !!!!!!! shop name not has been entered !!!!! -->
-        
         <header class="header">
             <div class="logo">
                 <div class="logoBakery"></div>
@@ -78,7 +90,7 @@ if ($_GET["action"]=="add") {
                 <i id ="icon-search"class="fas fa-search" id="search"></i>
                 <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
-                </a>    
+                </a>
             </div>
 
             <div class="search">
@@ -96,8 +108,7 @@ if ($_GET["action"]=="add") {
         <br><br>
         <section class="cartPage">
             <div class="order">
-                
-                <h1>YOUR CART</h1> 
+                <h1>YOUR CART <hr></h1> 
             </div>
             <form>
                 <table border="1">
@@ -111,20 +122,30 @@ if ($_GET["action"]=="add") {
                     $sum = 0;
                     foreach ($_SESSION["cart"] as $item) {
                         $sum += $item["price"] * $item["qty"];
-                    $_SESSION['sum'] = $sum;
+                        $_SESSION['sum'] = $sum;
                 ?>
                     <tr>
                         <td><?=$item["menuname"]?></td>
-                        <td><?=$item["Size_Pound_or_Piece"]?></td>
+                        <td>
+                            <?php
+                                if (strpos($item['menuname'], 'เค้ก') === 0) {
+                                    echo $item["Size_Pound_or_Piece"] . " ปอนด์";
+                                } elseif (strpos($item['menuname'], 'คัพเค้ก') === 0) {
+                                    echo $item["Size_Pound_or_Piece"] . " ชิ้น";
+                                } else {
+                                    echo $item["Size_Pound_or_Piece"] . " กล่อง";
+                                }
+                            ?>
+                        </td>
                         <td><?=$item["price"]?></td>
                         <td>
-                            <input type="number" id="<?=$item["menuID"]?>" value="<?=$item["qty"]?>" min="1" max="9" >
-                            <a href="#" onclick="update(<?=$item["menuID"]?>)">แก้ไข</a>
-                            <a href="?action=delete&menuID=<?=$item["menuID"]?>">ลบ</a>
+                            <input type="number" id="<?=$item["menuID"]?>" value="<?=$item["qty"]?>" min="1" max="9" size="10" onchange="updateQuantity(<?=$item["menuID"]?>)">
+                            <!--<a href="#" onclick="update(<?=$item["menuID"]?>)">แก้ไข</a>-->
+                            <a href="?action=delete&menuID=<?=$item["menuID"]?>"><i class="fa-solid fa-trash" style="color: #000000;"></i></a>
                         </td>
                     </tr>
                 <?php } ?>
-                <tr><td colspan="4" align="right">รวม <?=$sum?> บาท</td></tr>
+                <tr><td colspan="4" align="right" id="total-price">รวม <?=$sum?> บาท</td></tr>
                 </table>
             </form>
             <button onclick="redirectToPayment(<?=$sum?>)">next</button>

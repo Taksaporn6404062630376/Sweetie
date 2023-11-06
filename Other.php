@@ -6,7 +6,7 @@ $offset = ($page - 1) * $itemPerPage;
 $totalProducts = $pdo->query("SELECT DISTINCT COUNT(menuname) FROM menu WHERE menuname NOT LIKE 'เค้ก%' AND menuname NOT LIKE 'คัพเค้ก%'")->fetchColumn();
 $totalPages = ceil($totalProducts / $itemPerPage);
 ?>
-<html>
+<html lang="en">
 
 <head>
 <title>Whisk & Roll Bakery</title>
@@ -72,14 +72,16 @@ $totalPages = ceil($totalProducts / $itemPerPage);
                     <a href="login.php"></a>
                 <?php } ?>
             </div>
-            <div class="shop-bag"><a href="#"></a></div>
+            <div class="shop-bag">
+                <a href="Cart.php"></a>
+            </div>
         </div>
 
     </header>
 
     <section class="home" id="home">
         <div class="homeContent">
-            <h1>other bakery<br> menu</h1>
+            <h1>Other Bakery<br> Menu</h1>
         </div>
     </section>
 

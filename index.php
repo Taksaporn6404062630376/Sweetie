@@ -3,7 +3,7 @@
 
 ?>
 
-<html>
+<html lang="en">
 
 <head>
     <title>Whisk & Roll Bakery</title>

@@ -1,5 +1,5 @@
 <?php include "connect.php";?>
-<html>
+<html lang="en">
     <head>
     <title>Whisk & Roll Bakery</title>
         <meta charset="utf-8">
@@ -12,7 +12,6 @@
         <link href="css/select.css" rel="stylesheet">
     </head>
     <body>
-        <!-- !!!!!!! shop name not has been entered !!!!! -->
         
         <header class="header">
             <div class="logo">
@@ -31,7 +30,7 @@
                 <i id ="icon-search"class="fas fa-search" id="search"></i>
                 <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
                     <i class="fa fa-bars"></i>
-                </a>    
+                </a>
             </div>
 
             <div class="search">
@@ -45,9 +44,6 @@
             
         </header>
 
-        
-    
-       
        
        <section class="selectSize">
             <div class="headSel">
@@ -66,7 +62,8 @@
                     $count = 0;
                     while($row = $stmt->fetch()){
                         if($count == 0){
-                            echo "<h2>".$row['menuname'] ."</h2><br>";
+                            echo "<h2>".$row['menuname']. "&emsp;".$row['menunameen'] ."</h2><br>";
+                            // echo "<h2>".$row['menunameen'] ."</h2><br>";
                             echo "<div class='borderCake'><div class='imgCake'><img src='img/menu-1/{$row['menuname']}.png'width='450'>";
                             $count++;
                         }

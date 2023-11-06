@@ -6,7 +6,7 @@ $offset = ($page - 1) * $itemPerPage;
 $totalProducts = $pdo->query("SELECT DISTINCT COUNT(menuname) FROM menu WHERE menuname LIKE 'คัพเค้ก%'")->fetchColumn();
 $totalPages = ceil($totalProducts / $itemPerPage);
 ?>
-<html>
+<html lang="en">
 
 <head>
 <title>Whisk & Roll Bakery</title>
@@ -57,14 +57,16 @@ $totalPages = ceil($totalProducts / $itemPerPage);
                     <a href="login.php"></a>
                 <?php } ?>
             </div>
-            <div class="shop-bag"><a href="#"></a></div>
+            <div class="shop-bag">
+                <a href="Cart.php"></a>
+            </div>
         </div>
 
     </header>
 
     <section class="home" id="home">
         <div class="homeContent">
-            <h1>cupcake<br>menu</h1>
+            <h1>Cupcake<br>Menu</h1>
         </div>
     </section>
 
@@ -75,7 +77,7 @@ $totalPages = ceil($totalProducts / $itemPerPage);
 
             <div class="imgTop">
                 <?php
-                $stmt = $pdo->prepare("SELECT DISTINCT menuname FROM `menu` WHERE menuname LIKE 'คัพเค้ก%';");
+                $stmt = $pdo->prepare("SELECT DISTINCT menuname,menunameen FROM `menu` WHERE menuname LIKE 'คัพเค้ก%';");
 
 
                 $stmt->execute();
@@ -84,6 +86,7 @@ $totalPages = ceil($totalProducts / $itemPerPage);
                     echo "<div class='menu-image'><img src='img/menu-1/{$row['menuname']}.png' width='350'>";
                     echo "<div class='menu-details'>";
                     echo "<div class='menu-name'>{$row['menuname']}</div>";
+                    echo "<div class='menu-name'>{$row['menunameen']}</div>";
                     echo "<div class='cart'>";
                     echo "<div class='add-cart'><a href='selectsize.php?menuname=" . $row["menuname"] . "'>view more</a></div>";
                     echo "</div>";
