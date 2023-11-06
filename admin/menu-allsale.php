@@ -18,6 +18,7 @@
 <body>
 <ul class="nav">
       <li><a href="all-orders.php">ดูรายการ Order ของลูกค้า</a></li>
+      <li><a href="all-payments.php">ดูการจ่ายเงิน payment ของลูกค้า</a></li>
       <li><a href='income-day.php'>ดูยอดรวมเงินที่รับจากการชำระเงินในแต่ละวัน</a></li>
     <li><a class="active" href='menu-allsale.php'>ดูรายการอาหารที่ขายได้และยอดรวมขายได้ในแต่ละเมนู</a></li>
     <li><a  href='menu.php'>จัดการเมนู</a></li>
