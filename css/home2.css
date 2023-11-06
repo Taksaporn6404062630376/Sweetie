@@ -48,6 +48,7 @@ html{
     font-weight: 550;
 }
 
+
 nav a:hover{
    border-bottom: 0.12em solid #333;
 }
@@ -343,4 +344,40 @@ footer{
 
 
 /* ipad  */
+@media(min-width: 768px) and (max-width: 1024px) {
+    .header{
+        padding: 1em;
+    }
+    .logoName{
+        font-size: 1.25em;
+    }
+    .nav{
+        font-size: 0.7em;
+        width: 45em;
+    }
+    .header .nav nav a{
+        margin-left: 1em;
+        margin-right: 0.2em;
+    }
+    .example{
+        display: flex;
+        margin-right: 0.5em;
+    }
+    .example input{
+        width: 9em;
+    }
+    .user-icon a{
+        font-size: 0.8em;
+        margin-right: 0.01em;
+    }
+    .shop-bag a{
+        font-size: 0.8em;
+    }
+    .menu-image img{
+        width: 300;
+    }
+    .menu-image:not(:nth-child(3n)){
+        margin-right: 0;
+    }
+}
    
