@@ -13,6 +13,7 @@
     <meta charset="UTF-8">
     <title>Admin</title>
     <link href="../css/adminn.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
 <body>
 <ul class="nav">

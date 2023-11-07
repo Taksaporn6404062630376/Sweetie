@@ -55,7 +55,6 @@ if (isset($_GET["action"])) {
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">
-        <link href="css/home2.css" rel="stylesheet">
         <link href="css/cart.css" rel="stylesheet">
         <script src="JSON/location.js"></script>
         <script>
@@ -165,7 +164,7 @@ if (isset($_GET["action"])) {
                 <tr><td colspan="4" align="right" id="total-price">รวม <?=$sum?> บาท</td></tr>
                 </table>
             </form>
-            <button onclick="redirectToPayment(<?=$sum?>)">next</button>
+            <button class="button-next" onclick="redirectToPayment(<?=$sum?>)">next</button>
         </section>
            
         <script>
