@@ -153,22 +153,6 @@ if(!isset($_SESSION['username'])) {
    </footer>
 
    <script>
-        function send() {
-            request = new XMLHttpRequest();
-            request.onreadystatechange = showResult;
-            var keyword = document.getElementById("search").value;
-            var url = "Searchmenu.php?keyword=" + keyword;
-            request.open("GET", url, true);
-            request.send(null);
-        }
-
-        function showResult() {
-            if (request.readyState == 4) {
-                if (request.status == 200)
-                    document.getElementById("result").innerHTML = request.responseText;
-
-            }
-        }
         function myFunction() {
             var x = document.getElementById("mytopnav");
             var y = document.getElementById("head");
