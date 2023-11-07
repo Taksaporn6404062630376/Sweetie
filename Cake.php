@@ -71,64 +71,35 @@ $totalPages = ceil($totalProducts / $itemPerPage);
     </section>
 
 
-    <br><br>
+    <br>
+
+    <br>
 
 
     <section class="menu-recommand">
+        
+            <div class="top-menu">
+                <div class="imgTop">
+                    <?php
+                    $stmt = $pdo->prepare("SELECT DISTINCT menuname,menunameen FROM `menu` WHERE menuname LIKE 'เค้ก%';");
+                    $stmt->execute();
+                    while ($row = $stmt->fetch()) {
+                        // echo "<div class='menu-item'>";
+                        echo "<div class='menu-image' id='menu-image'><img src='img/menu-1/{$row['menuname']}.png' width='350'>";
+                        echo "<div class='menu-details'>";
+                        echo "<div class='menu-name'>{$row['menuname']}</div>";
+                        echo "<div class='menu-name'>{$row['menunameen']}</div>";
+                        echo "<div class='cart'>";
+                        echo "<div class='add-cart'><a href='selectsize.php?menuname=" . $row["menuname"] . "'>view more</a></div>";
+                        echo "</div>";
+                        echo "</div>"; // menu-details
+                        echo "</div>"; // menu-item
+                    }
+                    ?>
 
-        <div class="top-menu">
-            <div class="imgTop">
-                <?php
-                $stmt = $pdo->prepare("SELECT DISTINCT menuname,menunameen FROM `menu` WHERE menuname LIKE 'เค้ก%';");
-                $stmt->execute();
-                while ($row = $stmt->fetch()) {
-                    // echo "<div class='menu-item'>";
-                    echo "<div class='menu-image' id='menu-image'><img src='img/menu-1/{$row['menuname']}.png' width='350'>";
-                    echo "<div class='menu-details'>";
-                    echo "<div class='menu-name'>{$row['menuname']}</div>";
-                    echo "<div class='menu-name'>{$row['menunameen']}</div>";
-                    echo "<div class='cart'>";
-                    echo "<div class='add-cart'><a href='selectsize.php?menuname=" . $row["menuname"] . "'>view more</a></div>";
-                    echo "</div>";
-                    echo "</div>"; // menu-details
-                    echo "</div>"; // menu-item
-                }
-<<<<<<< HEAD
-=======
+                </div>
 
-                ?>
-                <?php
-
-                // โหลดข้อมูล JSON จาก URL
-                // $json_data = file_get_contents('http://localhost/gitcake/json/menu.json');
-                // $data = json_decode($json_data, true);
-
-                // // สร้างอาร์เรย์เพื่อเก็บข้อมูลที่ไม่ซ้ำ
-                // $uniqueItems = array();
-
-                // // ใช้ foreach เพื่อวนลูปผ่านข้อมูลเมนูและกรองข้อมูลที่ไม่ซ้ำและขึ้นต้นด้วย "เค้ก" โดยใช้ strpos
-                // foreach ($data as $menuItem) {
-                //     $menuName = $menuItem['menuname'];
-
-                //     if (strpos($menuName, 'เค้ก') === 0 && !in_array($menuName, $uniqueItems)) {
-                //         $uniqueItems[] = $menuName;
-
-                //         echo "<div class='menu-image' id='menu-image'><img src='img/menu-1/{$menuName}.png' width='350'>";
-                //         echo "<div class='menu-details'>";
-                //         echo '<div class="menu-name">' . $menuName . '</div>';
-                //         echo '<div class="menu-name">' . $menuItem['menunameen'] . '</div>';
-                //         // echo '<div class="menu-price">ราคา: ' . $menuItem['price'] . ' บาท</div>';
-                //         echo "<div class='add-cart'><a href='selectsize.php?menuname=" . $menuItem['menuname'] ."'>view more</a></div>";
-                //         echo '</div></div>';
-                //     }
-                // }
->>>>>>> a9133ce2437f7e89b7d0efffa94fc092cfe2d4bc
-
-                ?>
-                
             </div>
-
-        </div>
     </section>
     <div class="pagecustom">
         <?php
@@ -159,7 +130,7 @@ $totalPages = ceil($totalProducts / $itemPerPage);
     </footer>
 
     <script>
-       function myFunction() {
+        function myFunction() {
             var x = document.getElementById("mytopnav");
             var y = document.getElementById("head");
             if (x.className === "nav" && y.className === "header") {

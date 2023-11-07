@@ -160,17 +160,6 @@ if (isset($_GET["action"])) {
             <button onclick="redirectToPayment(<?=$sum?>)">next</button>
         </section>
            
-            
-        
-        <footer>
-            <div class="footer-content">
-                
-                <h3>Our Store Locations</h3>
-                <ul id="footer-result"></ul>
-                
-            </div>
-        </footer>
-
         <script>
             function myFunction() {
                 var x = document.getElementById("mytopnav");
