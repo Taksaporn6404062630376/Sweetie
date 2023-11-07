@@ -83,7 +83,7 @@ $sum = $_SESSION['sum'];?>
         </div>
         
         <div class="but">
-            <a href="index.php">กลับหน้าหลัก</a>
+            <a href="ordercomplete.php">กลับหน้าหลัก</a>
         </div>
        
     </section>

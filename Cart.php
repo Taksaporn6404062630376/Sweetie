@@ -2,7 +2,6 @@
 <?php
 
 session_start();
-<<<<<<< HEAD
 if(!isset($_SESSION['username'])) {
     header("Location: login.php"); // ให้รีไดเร็คไปยังหน้า login.php
     exit(); // ใส่ exit() เพื่อให้โปรแกรมหยุดทำงานทันทีหลังจาก redirect
@@ -10,13 +9,6 @@ if(!isset($_SESSION['username'])) {
 if (!isset($_SESSION["cart"])) {
     $_SESSION["cart"] = array();
 }
-=======
-
-if(empty($_SESSION['cart'])){
-    $_SESSION['cart'] = array();
-}
-
->>>>>>> 6640c2349b9d9792799508515f8563e4d69ce15e
 if (isset($_GET["action"])) {
     $action = $_GET["action"];
 
@@ -176,20 +168,6 @@ if (isset($_GET["action"])) {
             <button onclick="redirectToPayment(<?=$sum?>)">next</button>
         </section>
            
-<<<<<<< HEAD
-=======
-            
-        
-        <!-- <footer>
-            <div class="footer-content">
-                
-                <h3>Our Store Locations</h3>
-                <ul id="footer-result"></ul>
-                
-            </div>
-        </footer> -->
-
->>>>>>> bc49c4efcd402f30fa0c0eab4c9023fb8a9095d9
         <script>
             function myFunction() {
                 var x = document.getElementById("mytopnav");
