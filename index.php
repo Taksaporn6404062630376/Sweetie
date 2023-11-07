@@ -76,7 +76,7 @@
 
             <div class="imgTop">
                 <?php
-                $stmt = $pdo->prepare("SELECT m.menuID, m.menuname, SUM(od.quantity) AS total_quantity FROM menu m 
+                $stmt = $pdo->prepare("SELECT m.menuID, m.menuname, m.menunameen, SUM(od.quantity) AS total_quantity FROM menu m 
                         LEFT JOIN orderdetails od ON m.menuID = od.menuID GROUP BY m.menuname 
                         ORDER BY total_quantity DESC LIMIT 3;");
 
@@ -87,6 +87,7 @@
                     echo "<div class='menu-image'><img src='img/menu-1/{$row['menuname']}.png' width='350'>";
                     echo "<div class='menu-details'>";
                     echo "<div class='menu-name'>{$row['menuname']}</div>";
+                    echo "<div class='menu-name'>{$row['menunameen']}</div>";
                     echo "<div class='cart'>";
                     echo "<div class='add-cart'><a href='selectsize.php?menuname=" . $row["menuname"] . "'>view more</a></div>";
                     echo "</div>";

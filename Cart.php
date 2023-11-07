@@ -2,6 +2,11 @@
 <?php
 
 session_start();
+
+if(empty($_SESSION['cart'])){
+    $_SESSION['cart'] = array();
+}
+
 if (isset($_GET["action"])) {
     $action = $_GET["action"];
 
