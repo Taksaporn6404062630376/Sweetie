@@ -28,7 +28,7 @@
       <li><a href='income-day.php'>ดูยอดรวมเงินที่รับจากการชำระเงินในแต่ละวัน</a></li>
     <li><a href='menu-allsale.php'>ดูรายการอาหารที่ขายได้และยอดรวมขายได้ในแต่ละเมนู</a></li>
     <li><a href='menu.php'>จัดการเมนู</a></li>
-    <li style="float:right"><a class="redactive" href="../logout.php">Log out</a></li>
+    <li class="logout"><a class="redactive" href="../logout.php">Log out</a></li>
     </ul>
     <h2>การจ่ายเงิน payment ของลูกค้าทั้งหมด</h2>
 

@@ -72,14 +72,15 @@ if(!isset($_SESSION['username'])) {
 
       <h1>username: <?= $_SESSION["username"] ?></h1>
       <p style="display: inline;">email: </p>
-      <h3 style="display: inline;"><?= $_SESSION["useremail"] ?></h3>
+      <h3 style="display: inline;"><?= $_SESSION["useremail"] ?></h3><hr>
       <?php
 
       $username = $_SESSION["username"];
       $stmt = $pdo->prepare("SELECT
-            orders.orderID, orders.orderdate, menuname, orderdetails.quantity, price*quantity as price FROM menu
+            orders.orderID, orders.orderdate,payment.paymentStatus, menuname, orderdetails.quantity, price*quantity as price FROM menu
             JOIN orderdetails ON orderdetails.menuID=menu.menuID
             JOIN orders ON orderdetails.orderID=orders.orderID
+            JOIN payment ON orders.orderID=payment.orderID
             JOIN members ON orders.username=members.username
             WHERE members.username = '$username'");
       $stmt->execute();
@@ -94,7 +95,14 @@ if(!isset($_SESSION['username'])) {
             }
             echo "<h2>หมายเลขคำสั่งซื้อ: " . $row["orderID"] . "<br></h2>";
             echo "<h2>วันที่สั่งซื้อ: " . $row["orderdate"] . "<br></h2>";
-
+            echo "<h2>สถานะการจ่าย: ";
+            if (strpos($row["paymentStatus"], 'pay') === 0) {
+               echo "ชำระแล้ว";
+            } else {
+               echo "กำลังตรวจสอบ";
+            }
+            echo "<br></h2>";
+            
             $currentOrderID = $row["orderID"];
          }
          // product info
