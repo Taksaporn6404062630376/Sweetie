@@ -13,9 +13,26 @@ if (!isset($_GET["username"])) {
     $orderQuery->bindParam(1, $username);
     $orderQuery->execute();
 
-    echo "<a class='alert' href='all-orders.php' >กลับสู่หน้า ALL Orders</a>";
-    echo "<h3>รายการคำสั่งซื้อของลูกค้า: {$username}</h3>";
-    echo "<ul>";
+    
+?>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link href="../css/adminn.css" rel="stylesheet">
+</head>
+<body>
+<ul class="nav">
+      <li><a class="active" href="all-orders.php">ดูรายการ Order ของลูกค้า</a></li>
+      <li><a href="all-payments.php">ดูการจ่ายเงิน payment ของลูกค้า</a></li>
+      <li><a href='income-day.php'>ดูยอดรวมเงินที่รับจากการชำระเงินในแต่ละวัน</a></li>
+      <li><a href='menu-allsale.php'>ดูรายการอาหารที่ขายได้และยอดรวมขายได้ในแต่ละเมนู</a></li>
+      <li><a href='menu.php'>จัดการเมนู</a></li>
+    <li class="logout"><a class="redactive" href="../logout.php">Log out</a></li>
+    </ul>
+    <h3>รายการคำสั่งซื้อของลูกค้า: <?=$username ?></h3>
+    <?php
+    echo "<div class='order-detail'>";
 
     $currentOrderID = null;
     $totalAmount = 0;
@@ -23,20 +40,20 @@ if (!isset($_GET["username"])) {
     while ($orderRow = $orderQuery->fetch()) {
         if ($currentOrderID !== $orderRow["orderID"]) {
             if ($currentOrderID !== null) {
-                echo "<hr>";
-                echo "<li>Total amount: {$totalAmount}</li>";
+                echo "ราคารวม : {$totalAmount}";
+                echo "<hr>"; 
                 $totalAmount = 0;
             }
-            echo "<li>Order ID: {$orderRow['orderID']}</li>";
-            echo "<li>Order Date: {$orderRow['orderdate']}</li>";
+            echo "Order ID: {$orderRow['orderID']} <br>";
+            echo "วันที่สั่ง : {$orderRow['orderdate']}<br>";
             $currentOrderID = $orderRow['orderID'];
         }
         
-        echo "<ul>";
-        echo "<li>Product ID: {$orderRow['menuID']}";
-        echo "  Quantity: {$orderRow['quantity']}";
-        echo "  Price: {$orderRow['sub_total']}</li>";
-        echo "</ul>";
+        echo "<div class='order-detail' >";
+        echo "Menu ID: {$orderRow['menuID']} | ";
+        echo "จำนวน: {$orderRow['quantity']} | ";
+        echo "ราคา: {$orderRow['sub_total']}<br>";
+        echo "</div>";
         
         
         // Calculate the total amount for the order
@@ -45,10 +62,14 @@ if (!isset($_GET["username"])) {
 
     // Calculate and display the total amount for the last order
     if ($currentOrderID !== null) {
-        echo "<li>Total amount: {$totalAmount}</li>";
+        echo "ราคารวม: {$totalAmount}<br>";
     }
 
-    echo "</ul>";
-}
-echo "<hr>";
-?>
+    echo "</div>";
+    }
+    
+        ?>
+        <br><br><a class="backtopage"href='all-orders.php'>กลับสู่หน้า ALL Orders</a>
+    
+</body>
+</html>
