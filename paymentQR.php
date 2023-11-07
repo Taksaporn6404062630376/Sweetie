@@ -33,7 +33,31 @@ $sum = $_SESSION['sum'];?>
         $stmt->execute();
         $value = '' . $_POST["username"] . '';
         $orderID = $pdo->lastInsertId();   
+        $orderID = $pdo->lastInsertId();
+    foreach($_SESSION["cart"] as $item => $pd){
+        
+        $menuID = $pd["menuID"];
+        $qty = $pd["qty"];
+        // echo $menuID. ' ';
+        // echo $qty. ' ';
 
+        // ดึงราคาจากฐานข้อมูล
+        $priceStmt = $pdo->prepare("SELECT price FROM menu WHERE menuID = ?");
+        $priceStmt->bindParam(1, $menuID);
+        $priceStmt->execute();
+        while($row = $priceStmt->fetch()){
+            $price = floatval($row['price']);
+            $sub_total = $qty * $price;
+            echo floatval($row['price'])*$pd["qty"]. ' ';
+            $orderDetailsStmt = $pdo->prepare("INSERT INTO `orderdetails` VALUES ('', ?, ?, ?, ?)");
+            $orderDetailsStmt->bindParam(1,  $orderID);
+            $orderDetailsStmt->bindParam(2,  $pd["menuID"]);
+            $orderDetailsStmt->bindParam(3, $pd["qty"]);
+            $orderDetailsStmt->bindParam(4, $sub_total);
+            $orderDetailsStmt->execute();
+            $order_details_id = $pdo->lastInsertId(); 
+        }
+    }
     ?>
     <header class="header" id="head">
         <div class="logo">

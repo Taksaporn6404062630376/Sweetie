@@ -1,5 +1,10 @@
 <?php include "connect.php";
-      session_start();
+    session_start();
+
+    if (empty($_SESSION['username'])) {
+        header("Location: login.php");
+        exit;
+    }
 ?>
 
 <html lang="en">
@@ -12,15 +17,19 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@100;200;300;400&display=swap" rel="stylesheet">  
         <link href="css/home.css" rel="stylesheet">
-<<<<<<< HEAD
         <script src="JSON/location.js"></script>
-=======
         <link href="css/pay_delivery.css" rel="stylesheet">
->>>>>>> a9133ce2437f7e89b7d0efffa94fc092cfe2d4bc
+        <style>
+            .text-right {
+                padding-left: 150px;
+            }
+            .text-right-total{
+                padding-left: 118px;
+            }
+        </style>
     </head>
     
     <body>
-        <!-- !!!!!!! shop name not has been entered !!!!! -->
         
         <nav>
             <div class="topnav" id="top-nav">
@@ -30,7 +39,7 @@
                 </a>
                 
             </div>
-        <nav>
+        </nav>
         <!--start-->
 
        
@@ -43,14 +52,24 @@
                   <?php 
                   $sum = 0;
                   foreach ($_SESSION["cart"] as $item) { 
-                    $sum += $item["price"] * $item["qty"];?>                
+                    $sum += $item["price"] * $item["qty"];?>
                             <div class="cakecontent">
                                 <div class="cakecontent-left">
                                     <img src="img/menu/<?=$item["menuname"]?>.jpg" alt="" width='120'height='120' >
                                 </div>
                                 <div class="cakecontent-right">
                                     <h2><?=$item["menuname"]?></h2>
-                                    <p>จำนวน : <?=$item["qty"]?> ชิ้น ( ขนาด <?=$item["Size_Pound_or_Piece"]?> ปอนด์)</p>
+                                    <p>จำนวน : <?=$item["qty"]?> ชิ้น ( ขนาด
+                                        <?php
+                                            if (strpos($item['menuname'], 'เค้ก') === 0) {
+                                                echo $item["Size_Pound_or_Piece"] . " ปอนด์";
+                                            } elseif (strpos($item['menuname'], 'คัพเค้ก') === 0) {
+                                                echo $item["Size_Pound_or_Piece"] . " ชิ้น";
+                                            } else {
+                                                echo $item["Size_Pound_or_Piece"] . " กล่อง";
+                                            }
+                                        ?>
+                                    )</p>
                                     <p>ราคา : <?=$item["price"]?></p>
                              
                                 </div>
@@ -59,18 +78,15 @@
 
                             
 
-                            <hr>
+                            <hr><br>
                             <div class="row lower">
-                                <div class="col text-left">Subtotal</div>
-                                <div class="col text-right"><?=$sum?></div>
+                                <div>Subtotal<span class="text-right"><?=$sum?></span></div>
                             </div>
                             <div class="row lower">
-                                <div class="col text-left">Delivery</div>
-                                <div class="col text-right">Free</div>
+                                <div>Delivery<span class="text-right">Free</span></div>
                             </div>
                             <div class="row lower">
-                                <div class="col text-left"><b>Total to pay</b></div>
-                                <div class="col text-right"><b><?=$sum?></b></div>
+                                <div><b>Total to pay<span class="text-right-total"><?=$sum?></span></b></div>
                             </div>
                             
                         </div>

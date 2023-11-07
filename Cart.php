@@ -2,11 +2,16 @@
 <?php
 
 session_start();
+
+if(empty($_SESSION['cart'])){
+    $_SESSION['cart'] = array();
+}
+
 if (isset($_GET["action"])) {
     $action = $_GET["action"];
 
     if ($action == "add") {
-        $menuID = $_GET['menuID'];
+        $menuID = $_GET['menuID'];      
 
         $cart_item = array(
             'menuID' => $menuID,
@@ -21,6 +26,7 @@ if (isset($_GET["action"])) {
         }
         if (array_key_exists($menuID, $_SESSION['cart'])) {
             $_SESSION['cart'][$menuID]['qty'] += $cart_item['qty'];
+
         } else {
             $_SESSION['cart'][$menuID] = $cart_item;
         }
@@ -120,7 +126,7 @@ if (isset($_GET["action"])) {
                 <h1>YOUR CART <hr></h1> 
             </div>
             <form>
-                <table border="1">
+                <table border="1" class='tab'>
                     <tr>
                         <th>เมนู</th>
                         <th>ขนาด</th>
@@ -160,6 +166,20 @@ if (isset($_GET["action"])) {
             <button onclick="redirectToPayment(<?=$sum?>)">next</button>
         </section>
            
+<<<<<<< HEAD
+=======
+            
+        
+        <!-- <footer>
+            <div class="footer-content">
+                
+                <h3>Our Store Locations</h3>
+                <ul id="footer-result"></ul>
+                
+            </div>
+        </footer> -->
+
+>>>>>>> bc49c4efcd402f30fa0c0eab4c9023fb8a9095d9
         <script>
             function myFunction() {
                 var x = document.getElementById("mytopnav");
