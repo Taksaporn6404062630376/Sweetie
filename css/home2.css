@@ -188,7 +188,7 @@ section{
 .imgTop {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 .menu-item{
     overflow:hidden;
