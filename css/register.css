@@ -88,6 +88,7 @@ form {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     max-width: 360px;
     display: block;
+    
 }
 
 .form-group {
@@ -189,6 +190,7 @@ a {
         margin: auto;
         padding: 30px;
         max-width: 500px;
+        min-height: 100vh;
     }
 
     .form-group {
@@ -213,7 +215,7 @@ a {
 
 /* labtop */
 /* Media query for screens with 1024px */
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1025px) {
     body {
         /*background-color: chocolate;*/
         background-image: url("../img/home/cake_head.jpg");
@@ -252,6 +254,7 @@ a {
         border-radius: 10px;
         box-shadow: 2px 2px 5px rgba(215, 187, 187, 0.1);
         max-width: 40em;
+        min-height: 100vh;
 }
 
     
