@@ -30,7 +30,7 @@ try {
             $_SESSION["fullname"] = $row["name"];
             $_SESSION["username"] = $row["username"];
             $_SESSION['useremail'] = $row['email'];
-            setcookie("user", $username, time() + 3600, "/"); // Cookie  1 ชม
+            setcookie("user", $username, time() + 3600*24); // Cookie  1 ชม
             header("Location: ../index.php");
             exit();
         } else {

@@ -41,7 +41,6 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
     <link href="css/home2.css" rel="stylesheet">
     <script src="JSON/location.js"></script>
 </head>
-
 <body>
     <header class="header" id="head">
         <div class="logo">
@@ -116,42 +115,7 @@ if (isset($_GET['search']) && !empty($_GET['search'])) {
             echo "<p>No results found.</p>";
         }
         echo '</section>';
-    } else {
-
-
-
-        echo '<section class="menu-recommand">';
-        echo '<div class="head-menu">';
-        echo '<h1>Menu</h1>';
-        echo '</div>'; ?>
-
-        <?php
-        $stmt = $pdo->prepare("SELECT DISTINCT menuname FROM menu LIMIT :limit OFFSET :offset");
-        $stmt->bindParam(':limit', $itemPerPage, PDO::PARAM_INT);
-        $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
-        $stmt->execute();
-
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            // echo "<div class='menu-item'>";
-            echo "<div class='menu-image'><a href='selectsize_pound.php?menuname=" . $row["menuname"] . "'><img src='img/menu-1/{$row['menuname']}.png' width='350'></a>";
-            echo "<div class 'menu-details'>";
-            echo "<div class='menu-name'>{$row['menuname']}</div>";
-            echo "<div class='menu-name'>{$row['menunameen']}</div>";
-            echo "<div class='cart'>";
-            echo "<div class='add-cart'><a href='#'>add cart</a></div>";
-            echo "</div>";
-            echo "</div>"; // menu-details
-            echo "</div>"; // menu-item
-        }
-        ?>
-
-    <?php
-        // เปิดคำสั่ง PHP อีกครั้ง
-        echo '</div>';
-        echo '</div>';
-        echo '</section>';
-        // header("Location: menu.php?search=&page=1");
-    }
+    } 
     ?>
 
 

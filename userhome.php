@@ -65,11 +65,7 @@ if(!isset($_SESSION['username'])) {
       </div>
 
     </header>
-
-   <div class="homeContent2" style="justify-content:flex-start; height: 10%; padding-top:10rem;">
-      <h1> สวัสดี คุณ <?= $_SESSION["fullname"] ?></h1>
-   </div>
-
+    <br><br><br><br><br>
 
 
    <section class="form-container">
@@ -96,8 +92,8 @@ if(!isset($_SESSION['username'])) {
             if ($currentOrderID !== null) {
                echo "<hr>\n";
             }
-            echo "<h3>หมายเลขคำสั่งซื้อ: " . $row["orderID"] . "<br></h3>";
-            echo "<h3>วันที่สั่งซื้อ: " . $row["orderdate"] . "<br></h3>";
+            echo "<h2>หมายเลขคำสั่งซื้อ: " . $row["orderID"] . "<br></h2>";
+            echo "<h2>วันที่สั่งซื้อ: " . $row["orderdate"] . "<br></h2>";
 
             $currentOrderID = $row["orderID"];
          }

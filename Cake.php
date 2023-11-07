@@ -71,11 +71,36 @@ $totalPages = ceil($totalProducts / $itemPerPage);
     </section>
 
 
-    <br><br>
+    <br>
+
+    <br>
 
 
     <section class="menu-recommand">
+        
+            <div class="top-menu">
+                <div class="imgTop">
+                    <?php
+                    $stmt = $pdo->prepare("SELECT DISTINCT menuname,menunameen FROM `menu` WHERE menuname LIKE 'เค้ก%';");
+                    $stmt->execute();
+                    while ($row = $stmt->fetch()) {
+                        // echo "<div class='menu-item'>";
+                        echo "<div class='menu-image' id='menu-image'><img src='img/menu-1/{$row['menuname']}.png' width='350'>";
+                        echo "<div class='menu-details'>";
+                        echo "<div class='menu-name'>{$row['menuname']}</div>";
+                        echo "<div class='menu-name'>{$row['menunameen']}</div>";
+                        echo "<div class='cart'>";
+                        echo "<div class='add-cart'><a href='selectsize.php?menuname=" . $row["menuname"] . "'>view more</a></div>";
+                        echo "</div>";
+                        echo "</div>"; // menu-details
+                        echo "</div>"; // menu-item
+                    }
+                    ?>
 
+<<<<<<< HEAD
+                </div>
+
+=======
         <div class="top-menu">
             <div class="imgTop">
                 <?php
@@ -123,9 +148,8 @@ $totalPages = ceil($totalProducts / $itemPerPage);
 
                 ?>
                 
+>>>>>>> bc49c4efcd402f30fa0c0eab4c9023fb8a9095d9
             </div>
-
-        </div>
     </section>
     <div class="pagecustom">
         <?php
@@ -156,7 +180,7 @@ $totalPages = ceil($totalProducts / $itemPerPage);
     </footer>
 
     <script>
-       function myFunction() {
+        function myFunction() {
             var x = document.getElementById("mytopnav");
             var y = document.getElementById("head");
             if (x.className === "nav" && y.className === "header") {
