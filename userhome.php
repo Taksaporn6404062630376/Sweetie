@@ -23,7 +23,7 @@ if(!isset($_SESSION['username'])) {
    <script src="JSON/location.js"></script>
 </head>
 
-<body style="margin: 0;">
+<body style="margin: 0;" class="h-user">
    <header class="header" id="head">
       <div class="logo">
          <div class="logoBakery"></div>

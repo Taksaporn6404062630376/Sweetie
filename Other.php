@@ -1,4 +1,5 @@
 <?php include "connect.php";
+session_start();
 $itemPerPage = 9; // จำนวนรายการที่ต้องการแสดงในหนึ่งหน้า
 $page = isset($_GET['page']) ? $_GET['page'] : 1;
 $offset = ($page - 1) * $itemPerPage;

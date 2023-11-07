@@ -28,9 +28,13 @@
 /* mobile */
 /* @media(max-width: 430px) */
 body {
-    background-color: chocolate;
+    /*background-color: chocolate;*/
+    background-image: url("../img/home/cake_head.jpg");
     margin: 1em;
     padding: 0;
+}
+.h-user{
+    backdrop-filter: blur(3px);
 }
 
 h1 {
@@ -177,7 +181,8 @@ a {
 /* Media query for screens with 768-1024 */
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     body {
-        background-color: chocolate;
+        /*background-color: chocolate;*/
+        background-image: url("../img/home/cake_head.jpg");
         margin: 1em;
     }
     .form-container {
@@ -210,7 +215,8 @@ a {
 /* Media query for screens with 1024px */
 @media screen and (min-width: 1024px) {
     body {
-        background-color: chocolate;
+        /*background-color: chocolate;*/
+        background-image: url("../img/home/cake_head.jpg");
         margin: 2rem;
     }
 	.btn {

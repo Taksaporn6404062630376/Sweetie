@@ -26,6 +26,9 @@
             .text-right-total{
                 padding-left: 118px;
             }
+            .topnav a{
+               font-size:2.5em;
+            }
         </style>
     </head>
     
