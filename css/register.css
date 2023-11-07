@@ -143,16 +143,13 @@ label {
 
 a {
     color: #342214;
-<<<<<<< HEAD:css/register.css
 }
-=======
-    text-decoration: none;
-}
+    /* text-decoration: none;
+} */
 
 /* a:hover {
     text-decoration: underline;
 } */
->>>>>>> a9133ce2437f7e89b7d0efffa94fc092cfe2d4bc:css/style.css
 
 .status {
     display: inline-block;

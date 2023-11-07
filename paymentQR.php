@@ -33,7 +33,7 @@ $sum = $_SESSION['sum'];?>
         $stmt->execute();
         $value = '' . $_POST["username"] . '';
         $orderID = $pdo->lastInsertId();   
-        $orderID = $pdo->lastInsertId();
+        
     foreach($_SESSION["cart"] as $item => $pd){
         
         $menuID = $pd["menuID"];
@@ -48,7 +48,7 @@ $sum = $_SESSION['sum'];?>
         while($row = $priceStmt->fetch()){
             $price = floatval($row['price']);
             $sub_total = $qty * $price;
-            echo floatval($row['price'])*$pd["qty"]. ' ';
+            // echo floatval($row['price'])*$pd["qty"]. ' ';
             $orderDetailsStmt = $pdo->prepare("INSERT INTO `orderdetails` VALUES ('', ?, ?, ?, ?)");
             $orderDetailsStmt->bindParam(1,  $orderID);
             $orderDetailsStmt->bindParam(2,  $pd["menuID"]);
@@ -58,55 +58,32 @@ $sum = $_SESSION['sum'];?>
             $order_details_id = $pdo->lastInsertId(); 
         }
     }
+    
+        $paymentStatus = 'wait';
+        $payment = $pdo->prepare("INSERT INTO `payment` VALUES ('',?,?,?)");
+        $payment->bindParam(1, $orderID);
+        $payment->bindParam(2, $paymentStatus);
+        $payment->bindParam(3, $formattedDate);
+        $payment->execute();
+        $paymentID  = $pdo->lastInsertId();  
     ?>
-    <header class="header" id="head">
-        <div class="logo">
-            <div class="logoBakery"></div>
-            <h1 class="logoName">Whisk & Roll Bakery</h1>
-        </div>
+        
 
-        <div id="mytopnav" class="nav">
-            <nav>
-                <a href="index.php">Home</a>
-                <a href="Cake.php">Cake</a>
-                <a href="Cupcake.php">Cupcake</a>
-                <a href="Other.php">Other</a>
-            </nav>
-        </div>
-
-        <form class="example" action="menu.php" method="get">
-            <input type="search" placeholder="Search..." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
-        </form>
-
-        <div class="icon-user-cart">
-        <div class="user-icon">
-                <?php if (!empty($_SESSION["username"])) { ?>
-                    <a href="userhome.php"></a>
-                <?php } else { ?>
-                    <a href="login.php"></a>
-                <?php } ?>
-            </div>
-            <div class="shop-bag">
-                <a href="Cart.php"></a>
-            </div>
-        </div>
-        <div class="icon">
-            <a href="javascript:void(0);" id="menu-bar" onclick="myFunction()">
-                <i class="fa fa-bars"></i>
-            </a>
-        </div>
-            
-    </header>
         
     <div class="hidden-sum">
-        <input type="text" id="amount" value="<?= $sum?>">  
+        <input type="hidden" id="amount" value="<?= $sum?>">  
     </div>
     <section class="qr-code">
-        <div class='border-qr'>
-            <h2>กรุณาชำระเงิน</h2>
-            <img id="imgqr" src="" style="width: 400px; object-fit: contain;">
-            <h3>ยอดชำระ : <?= $sum?> บาท</h3>
+        <div class="top-qr">
+            <div class='border-qr'>
+                <h2>กรุณาชำระเงิน</h2>
+                <img id="imgqr" src="" style="width: 400px; object-fit: contain;">
+                <h3>ยอดชำระ : <?= $sum?> บาท</h3>
+            </div>
+        </div>
+        
+        <div class="but">
+            <a href="index.php">กลับหน้าหลัก</a>
         </div>
        
     </section>

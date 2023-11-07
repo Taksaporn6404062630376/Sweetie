@@ -2,6 +2,13 @@
 <?php
 
 session_start();
+if(!isset($_SESSION['username'])) {
+    header("Location: login.php"); // ให้รีไดเร็คไปยังหน้า login.php
+    exit(); // ใส่ exit() เพื่อให้โปรแกรมหยุดทำงานทันทีหลังจาก redirect
+ }
+if (!isset($_SESSION["cart"])) {
+    $_SESSION["cart"] = array();
+}
 if (isset($_GET["action"])) {
     $action = $_GET["action"];
 

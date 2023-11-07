@@ -28,7 +28,7 @@
     <li><a href='menu-allsale.php'>ดูรายการอาหารที่ขายได้และยอดรวมขายได้ในแต่ละเมนู</a></li>
     <li><a href='menu.php'>จัดการเมนู</a></li>
     <li class="logout"><a class="redactive" href="../logout.php">Log out</a></li>
-    </ul>
+</ul>
     <h2>รายการ Order ของลูกค้าทั้งหมด</h2>
 
     <table>

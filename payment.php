@@ -91,17 +91,17 @@
                                 <input type="hidden" name="username" value="<?=$_SESSION["username"]?>">
                                 <input type="hidden" name="total_amount" value="<?=$sum?>">
                                 <span>ชื่อ-สกุล :</span>
-                                <input placeholder="Linda Williams">
+                                <input type="text" placeholder="Linda Williams" title="กรุณากรอกข้อมูล" required>
                                 <span>เบอร์โทรศัพท์ :</span>
-                                <input placeholder="012 345 6789">
+                                <input type="tel" placeholder="012 345 6789" required>
                                 <div class="area">
                                     <span>ที่อยู่ :</span><br>
-                                    <textarea name="address" rows="5" cols="50"></textarea>
+                                    <textarea name="address" rows="5" cols="50" required></textarea>
                                 </div>
                                 
                                 <div class="row">
                                     <div class="col-4"><span>derivery date :</span>
-                                        <input type="date" name="deriverydate">
+                                        <input type="date" name="deriverydate" required>
                                     </div>
                                 </div>
                                 <input class="btn" type="submit"value="pay for your order" >
