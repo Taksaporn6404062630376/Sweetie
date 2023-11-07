@@ -22,7 +22,7 @@ $totalPages = ceil($totalProducts / $itemPerPage);
 </head>
 
 <body>
-    <!-- !!!!!!! shop name not has been entered !!!!! -->
+
     <header class="header" id="head">
         <div class="logo">
             <div class="logoBakery"></div>
