@@ -2,8 +2,8 @@
 include 'connect.php';
 session_start();
 if(!isset($_SESSION['username'])) {
-   header("Location: login.php"); // ให้รีไดเร็คไปยังหน้า login.php
-   exit(); // ใส่ exit() เพื่อให้โปรแกรมหยุดทำงานทันทีหลังจาก redirect
+   header("Location: login.php");
+   exit();
 }
 ?>
 <!DOCTYPE html>

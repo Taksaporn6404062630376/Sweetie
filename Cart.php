@@ -13,7 +13,7 @@ if (isset($_GET["action"])) {
     $action = $_GET["action"];
 
     if ($action == "add") {
-        $menuID = $_GET['menuID'];      
+        $menuID = $_GET['menuID'];
 
         $cart_item = array(
             'menuID' => $menuID,
@@ -31,12 +31,6 @@ if (isset($_GET["action"])) {
 
         } else {
             $_SESSION['cart'][$menuID] = $cart_item;
-        }
-    } elseif ($action == "update") {
-        if (isset($_GET["menuID"]) && isset($_GET["qty"])) {
-            $menuID = $_GET["menuID"];
-            $qty = $_GET["qty"];
-            $_SESSION['cart'][$menuID]['qty'] = $qty;
         }
     } elseif ($action == "delete") {
         if (isset($_GET["menuID"])) {
@@ -156,7 +150,6 @@ if (isset($_GET["action"])) {
                         <td><?=$item["price"]?></td>
                         <td>
                             <input type="number" id="<?=$item["menuID"]?>" value="<?=$item["qty"]?>" min="1" max="9" size="10" onchange="updateQuantity(<?=$item["menuID"]?>)">
-                            <!--<a href="#" onclick="update(<?=$item["menuID"]?>)">แก้ไข</a>-->
                             <a href="?action=delete&menuID=<?=$item["menuID"]?>"><i class="fa-solid fa-trash" style="color: #000000;"></i></a>
                         </td>
                     </tr>
