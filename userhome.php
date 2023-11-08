@@ -77,7 +77,7 @@ if(!isset($_SESSION['username'])) {
 
       $username = $_SESSION["username"];
       $stmt = $pdo->prepare("SELECT
-            orders.orderID, orders.orderdate,payment.paymentStatus, menuname, orderdetails.quantity, price*quantity as price FROM menu
+            orders.orderID, CONCAT(DAY(orderdate), '-', MONTH(orderdate), '-', YEAR(orderdate)+543) as orderdate ,payment.paymentStatus, menuname, orderdetails.quantity, price*quantity as price FROM menu
             JOIN orderdetails ON orderdetails.menuID=menu.menuID
             JOIN orders ON orderdetails.orderID=orders.orderID
             JOIN payment ON orders.orderID=payment.orderID
